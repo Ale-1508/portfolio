@@ -10,7 +10,9 @@ interface GlobalContextType {
   setState: React.Dispatch<React.SetStateAction<GlobalState>>;
 }
 
-const defaultState: GlobalState = {};
+const defaultState: GlobalState = {
+  currentRoute: "work",
+};
 
 const GlobalStateContext = createContext<GlobalContextType>({
   state: defaultState,
