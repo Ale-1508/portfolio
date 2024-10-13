@@ -59,7 +59,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
             : route
           }
           onClick={ (e)=>{
-            e.preventDefault();
+            //e.preventDefault();
             onClick(name)
           } }
         >
