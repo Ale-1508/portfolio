@@ -13,7 +13,6 @@ interface NavbarOptionProps {
 
 export default function Navbar() {
   const [currentScreen, setCurrentScreen] = useState("Work");
-  const { state, setState } = useGlobalState();
 
   const options = [
     { name:"Work", isDefault:true },
@@ -23,8 +22,6 @@ export default function Navbar() {
   ]
 
   const handleChangeRoute = (newRoute:string) => {
-    console.log(state.currentRoute)
-    setState({...state, currentRoute: newRoute})
     setCurrentScreen(newRoute);
   }
   
