@@ -10,33 +10,33 @@ interface NavbarOptionProps {
   onClick: (name:string) => void;
 }
 
+const navbarOptions = [
+  {
+    name:"Work",
+    isDefault:true
+  },
+  {
+    name:"About",
+  },
+  {
+    name:"Showcase",
+  },
+  {
+    name:"Contacts",
+  },
+]
+
 export default function Navbar() {
   const [currentScreen, setCurrentScreen] = useState("Work");
 
-  const options = [
-    {
-      name:"Work",
-      isDefault:true
-    },
-    {
-      name:"About",
-    },
-    {
-      name:"Showcase",
-    },
-    {
-      name:"Contact",
-    },
-  ]
-
-  const handleChangeRoute = (name:string) => {
-    setCurrentScreen(name);
+  const handleChangeRoute = (newScreen:string) => {
+    setCurrentScreen(newScreen);
   }
   
   return (
     <ul className='my-8 justify-center
                    flex flex-row space-x-4'>
-      {options.map((option) => {
+      {navbarOptions.map((option) => {
         return <NavbarOption 
           key={option.name.toLowerCase()} 
           name={option.name} 
