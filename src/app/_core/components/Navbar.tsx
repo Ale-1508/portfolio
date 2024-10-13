@@ -14,19 +14,10 @@ export default function Navbar() {
   const [currentScreen, setCurrentScreen] = useState("Work");
 
   const options = [
-    {
-      name:"Work",
-      isDefault:true
-    },
-    {
-      name:"About",
-    },
-    {
-      name:"Showcase",
-    },
-    {
-      name:"Contact",
-    },
+    { name:"Work", isDefault:true },
+    { name:"About" },
+    { name:"Showcase" },
+    { name:"Contact" },
   ]
 
   const handleChangeRoute = (name:string) => {
