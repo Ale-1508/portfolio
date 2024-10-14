@@ -43,28 +43,27 @@ export default function Navbar( { currentPath } : { currentPath:string }) {
 
 const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: NavbarOptionProps ) => {
   return(
-    <li key={route}>
-      <div 
-        className={
-          `w-auto px-5 py-1.5 
-          flex flex-row gap-2
-          rounded-3xl
-          font-semibold
-          text-secondary
-          ${isSelected ? 'bg-primary' : ''}`
+    <li key={route}
+      className={
+        `w-auto px-5 py-1.5 
+        rounded-3xl
+        font-semibold
+        text-secondary
+        ${isSelected ? 'bg-primary' : ''}`
+      }
+    >
+      <Link 
+        className='flex flex-row gap-2'
+        href={
+          isDefault
+          ? "/"
+          : route
         }
+        onClick={ ()=>{
+          onClick(name)
+        } }
       >
-        <Link href={
-            isDefault
-            ? "/"
-            : route
-          }
-          onClick={ ()=>{
-            onClick(name)
-          } }
-        >
-          {name}
-        </Link>
+        {name}
         {
           isDefault
           ? <div className='
@@ -78,7 +77,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
             </div> 
           : null
         }
-      </div>
+      </Link>
     </li>
   );
 }
