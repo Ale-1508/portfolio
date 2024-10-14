@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: theme('colors.gray.500');
+  --background: linear-gradient(to right, #eed991, #ccf7f4);;
   --foreground: #171717;
 }
 
@@ -15,6 +15,7 @@
 }
 
 body {
+  height: 100%;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
