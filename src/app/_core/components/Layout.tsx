@@ -5,16 +5,15 @@ import GlobalStateProvider from '../GlobalStateContext';
 
 type LayoutProps = {
   children: ReactNode;
+  currentPath: string;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children } ) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentPath } ) => {
   return (
-    <GlobalStateProvider>
-      <div>
-        <Navbar />
-        {children}
-      </div>
-    </GlobalStateProvider>
+    <>
+      <Navbar currentPath={currentPath}/>
+      {children}
+    </>
   );
 };
 

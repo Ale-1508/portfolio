@@ -3,7 +3,7 @@ import Layout from "./_core/components/Layout";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout currentPath="Work">
       <HomeScreen />
     </Layout>
   );
