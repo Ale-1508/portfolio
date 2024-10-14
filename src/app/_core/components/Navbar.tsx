@@ -1,7 +1,6 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
-import { useGlobalState } from '../GlobalStateContext';
 
 interface NavbarOptionProps {
   name: string;
@@ -49,7 +48,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
         rounded-3xl
         font-semibold
         text-secondary
-        ${isSelected ? 'bg-primary' : ''}`
+        ${isSelected ? 'bg-primary-200' : ''}`
       }
     >
       <Link 
