@@ -70,6 +70,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
           ? <div className='
               size-6 text-center
               rounded-md
+              select-none
               ring-gray-100-1
             bg-gray-200'
           >
