@@ -48,6 +48,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
         rounded-3xl
         font-semibold
         text-secondary
+        selection:bg-primary-200
         ${isSelected ? 'bg-primary-200' : ''}`
       }
     >
