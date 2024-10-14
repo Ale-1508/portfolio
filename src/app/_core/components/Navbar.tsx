@@ -14,7 +14,7 @@ interface NavbarOptionProps {
 export default function Navbar( { currentPath } : { currentPath:string }) {
   const [currentScreen, setCurrentScreen] = useState(currentPath);
 
-  const options = [
+  const navbarOptions = [
     { name:"Work", isDefault:true },
     { name:"About" },
     { name:"Showcase" },
