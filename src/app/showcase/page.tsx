@@ -1,6 +1,13 @@
+"use client";
+
+import { usePathname } from 'next/navigation'
+
 import Layout from "../_core/components/Layout";
 
-export default function AboutScreen() {
+export default function ShowcaseScreen() {
+  const pathname = usePathname()
+  console.log(pathname);
+
   return (
     <Layout>
       <div>
