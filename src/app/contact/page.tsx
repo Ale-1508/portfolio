@@ -1,8 +1,8 @@
 import Layout from "../_core/components/Layout";
 
-export default function AboutScreen() {
+export default function ContactScreen() {
   return (
-    <Layout>
+    <Layout currentPath="Contact">
       <div>
         <h1>Contact Page</h1>
       </div>

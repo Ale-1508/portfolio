@@ -1,8 +1,8 @@
 import Layout from "../_core/components/Layout";
 
-export default function AboutScreen() {
+export default function ShowcaseScreen() {
   return (
-    <Layout>
+    <Layout currentPath="Showcase">
       <div>
         <h1>Showcase Page</h1>
       </div>

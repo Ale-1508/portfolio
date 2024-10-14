@@ -1,17 +1,19 @@
 import React, { ReactNode } from 'react';
 
 import Navbar from './Navbar';
+import GlobalStateProvider from '../GlobalStateContext';
 
 type LayoutProps = {
   children: ReactNode;
+  currentPath: string;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children } ) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentPath } ) => {
   return (
-    <div className='bg-gray-500'>
-      <Navbar />
+    <>
+      <Navbar currentPath={currentPath}/>
       {children}
-    </div>
+    </>
   );
 };
 

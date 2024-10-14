@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
+import { useGlobalState } from '../GlobalStateContext';
 
 interface NavbarOptionProps {
   name: string;
@@ -10,27 +11,18 @@ interface NavbarOptionProps {
   onClick: (name:string) => void;
 }
 
-const navbarOptions = [
-  {
-    name:"Work",
-    isDefault:true
-  },
-  {
-    name:"About",
-  },
-  {
-    name:"Showcase",
-  },
-  {
-    name:"Contacts",
-  },
-]
+export default function Navbar( { currentPath } : { currentPath:string }) {
+  const [currentScreen, setCurrentScreen] = useState(currentPath);
 
-export default function Navbar() {
-  const [currentScreen, setCurrentScreen] = useState("Work");
+  const options = [
+    { name:"Work", isDefault:true },
+    { name:"About" },
+    { name:"Showcase" },
+    { name:"Contact" },
+  ]
 
-  const handleChangeRoute = (newScreen:string) => {
-    setCurrentScreen(newScreen);
+  const handleChangeRoute = (newRoute:string) => {
+    setCurrentScreen(newRoute);
   }
   
   return (
@@ -67,8 +59,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
             ? "/"
             : route
           }
-          onClick={ (e)=>{
-            e.preventDefault();
+          onClick={ ()=>{
             onClick(name)
           } }
         >
