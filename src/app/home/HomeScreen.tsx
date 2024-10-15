@@ -1,8 +1,11 @@
+import WhoAmI from "./components/WhoAmI";
+
+
 function HomeScreen() {
   return(
-    <div className="w-full h-full bg-cyan-200">
-      ye
-    </div>
+    <>
+      <WhoAmI />
+    </>
   );
 }
 

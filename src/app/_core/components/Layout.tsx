@@ -10,10 +10,10 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children, currentPath } ) => {
   return (
-    <>
+    <div className="flex flex-col gap-16">
       <Navbar currentPath={currentPath}/>
       {children}
-    </>
+    </div>
   );
 };
 
