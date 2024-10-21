@@ -5,11 +5,25 @@ const projects = [
     title:"Discord Manager",
     description:"An app built entirely in python to manage a premium discord group",
     photo:"",
+    span: 2
   },
   {
-    title:"Titolo",
+    title:"Project2",
     description:"",
     photo:"",
+    span: 1
+  },
+  {
+    title:"Project3",
+    description:"",
+    photo:"",
+    span: 2
+  },
+  {
+    title:"Project4",
+    description:"",
+    photo:"",
+    span: 1
   },
 ]
 
@@ -17,6 +31,7 @@ interface ProjectCardProps {
   title : string
   description ?: string
   photo ?: string
+  span: number
 }
 
 const TitleSection = () => {
@@ -54,13 +69,14 @@ const DescriptionSection = () => {
 
 const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
   return(
-    <div className="
-      flex flex-row gap-4
+    <li className={`
+      flex flex-row gap-4 p-8
       rounded-2xl cursor-pointer
       bg-primary-50
-      p-8
-    ">
-      <div className="flex flex-col gap-4 flex-1">
+      row-span-${ project.span.toString() }`
+    }>
+      <div className="flex flex-col gap-4 
+          md:basis-1/2 lg:basis-2/3">
         <h1 className="
           w-full text-2xl text-ellipsis
           leading-tight
@@ -83,10 +99,10 @@ const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
             </Balancer>
         </h1>  
       </div>
-      <div className="flex-1">
+      <div className="md:basis-1/2 lg:basis-1/3">
         hello
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -96,7 +112,7 @@ const ProjectSection = () => {
       xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 my-4
       grid-cols-1 sm:grid-cols-1 lg:grid-cols-2">
        { projects.map(
-        (project) => <li><ProjectCard project={project}/></li>
+        (project) => <ProjectCard project={project}/>
       ) }
     </ul>
   );
