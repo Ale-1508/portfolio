@@ -109,8 +109,8 @@ const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
 const ProjectSection = () => {
   return(
     <ul className="list-none grid gap-4
-      xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 my-4
-      sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+      xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
+      sm:grid-cols-1 lg:grid-cols-2">
        { projects.map(
         (project) => <ProjectCard project={project}/>
       ) }
