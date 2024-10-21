@@ -69,7 +69,9 @@ const DescriptionSection = () => {
 
 const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
   return(
-    <li className={`
+    <li 
+    key={project.title}
+    className={`
       flex flex-row gap-4 p-8
       rounded-2xl cursor-pointer
       bg-primary-50
