@@ -2,24 +2,28 @@ import Balancer from 'react-wrap-balancer'
 
 const projects = [
   {
+    id:1,
     title:"Discord Manager",
     description:"An app built entirely in python to manage a premium discord group",
     photo:"",
     span: 2
   },
   {
+    id:2,
     title:"Project2",
     description:"",
     photo:"",
     span: 1
   },
   {
+    id:3,
     title:"Project3",
     description:"",
     photo:"",
     span: 2
   },
   {
+    id:4,
     title:"Project4",
     description:"",
     photo:"",
@@ -28,6 +32,7 @@ const projects = [
 ]
 
 interface ProjectCardProps {
+  id: number
   title : string
   description ?: string
   photo ?: string
@@ -70,13 +75,13 @@ const DescriptionSection = () => {
 const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
   return(
     <li 
-    key={project.title}
-    className={`
-      flex flex-row gap-4 p-8
-      rounded-2xl cursor-pointer
-      bg-primary-50
-      row-span-${ project.span.toString() }`
-    }>
+      key={project.id}
+      className={`
+        flex flex-row gap-4 p-8
+        rounded-2xl cursor-pointer
+        bg-primary-50
+        row-span-${ project.span.toString() }`
+      }>
       <div className="flex flex-col gap-4 
           md:basis-1/2 lg:basis-2/3">
         <h1 className="
@@ -114,7 +119,7 @@ const ProjectSection = () => {
       xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
       sm:grid-cols-1 lg:grid-cols-2">
        { projects.map(
-        (project) => <ProjectCard project={project}/>
+        (project) => <ProjectCard key={project.id} project={project}/>
       ) }
     </ul>
   );
