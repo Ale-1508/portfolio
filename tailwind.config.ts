@@ -12,9 +12,24 @@ const config: Config = {
       screens: {
         'xs': '475px',
       },
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
+        '6xl': '3rem',
+      },
+      boxShadow: {
+        'elevation-5': '0 5px 15px rgba(0, 0, 0, 0.3)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        /*
+        Tanya dice: grigio avio e lilla per gradiente e come colore principale blu più scuro tipo Blue Navy e/o Ottanio
+        Primavera: Rosa e Verde Testo: Marrone bello
+        Estate: Quelli che ci sono adesso Testo: Verde Scuro
+        Autunno: Arancio Spooky, Ocra/Terracotta Testo: Ruggine
+        Inverno: Avio, Lilla Testo: Ottanio
+        */
         primary: {
           900: "#031514",
           800: "#052b28",
