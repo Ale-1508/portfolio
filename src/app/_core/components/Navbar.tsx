@@ -49,7 +49,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
         font-semibold
         text-secondary
         selection:bg-primary-200
-        ${isSelected ? 'bg-primary-200' : ''}`
+        ${isSelected ? 'bg-primary-300 selection: bg-opacity-25' : ''}`
       }
     >
       <Link 
