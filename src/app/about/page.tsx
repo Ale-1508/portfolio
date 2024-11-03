@@ -9,8 +9,6 @@ import WorkPrinciples from "./components/WorkPrinciples";
 import MoreAboutMe from "./components/MoreAboutMe";
 import PictureGallery from "./components/PictureGallery";
 
-// transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`
-
 export default function AboutScreen() {
   const [isVisible, setIsVisible] = useState(false);
 
