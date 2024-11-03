@@ -11,6 +11,10 @@ const config: Config = {
     extend: {
       screens: {
         'xs': '475px',
+        'ml': '896px'
+      },
+      fontSize: {
+        '4.5xl': '2.75rem',
       },
       borderRadius: {
         '4xl': '2rem',
@@ -44,7 +48,10 @@ const config: Config = {
         },
         secondary: "#27211e",
         tertiary: "#27211e",
-        accents: "#e6cda5",
+        accents: {
+          ivory: "#fffff0",
+          dunno: "#e6cda5",
+        },
         gray: {
           900: "#202225",
           800: "#2f3136",
