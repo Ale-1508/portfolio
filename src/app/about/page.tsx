@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react"
 import Layout from "../_core/components/Layout";
 import classNames from 'classnames';
-import Image from 'next/image'
-import Balancer from "react-wrap-balancer";
+
 
 import AboutMe from "./components/AboutMe";
 import TimeLine from "./components/TimeLine";
@@ -22,8 +21,9 @@ export default function AboutScreen() {
   }, [])
   
   return (
-    <Layout currentPath="About">
+    <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32">
       <AboutMe />
+      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <TimeLine />
       <WorkPrinciples />
       <MoreAboutMe />
