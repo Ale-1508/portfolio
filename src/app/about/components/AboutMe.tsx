@@ -49,7 +49,7 @@ const Description = () => {
 const PicureOfMe = () => {
   return (
     <Image
-      className="rounded-t-10xl rounded-b-2xl"
+      className="rounded-t-10xl rounded-b-2xl shadow-2xl"
       src={`/images/me-full.jpg`}
       width={224}
       height={224}
