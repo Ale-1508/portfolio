@@ -23,8 +23,8 @@ export default function AboutScreen() {
       <AboutMe />
       <TimeLine />
       <WorkPrinciples />
-      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <MoreAboutMe />
+      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <PictureGallery />
     </Layout>
   );
