@@ -4,15 +4,16 @@ import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
 import { useEffect, useState } from "react"
 
-const Title = () => {
+const Title = ( {isVisible} : {isVisible:boolean}) => {
   return (
-    <h1 className="
+    <h1 className={`
         flex flex-row w-full
         text-6xl md:text-7xl lg:text-8xl  
         font-semibold leading-tight
         text-center justify-center
         text-primary-600
-    ">
+        transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       I'm Alessandro
     </h1>
   )
@@ -63,7 +64,6 @@ const PicureOfMe = () => {
 const AboutMe = () => {
   
 const [isVisible, setIsVisible] = useState(false);
-// transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}
 
 useEffect( () => {
   setIsVisible(true);
@@ -76,7 +76,7 @@ useEffect( () => {
       selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
-      <Title />
+      <Title isVisible={isVisible}/>
       <div className="
         flex flex-col ml:flex-row 
         gap-8 ml:gap-24
