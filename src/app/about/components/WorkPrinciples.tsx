@@ -1,5 +1,8 @@
+"use client";
+
 import classNames from "classnames";
 import Balancer from "react-wrap-balancer";
+import { useEffect, useState } from "react"
 
 const myPrinciples = [
   {
@@ -82,8 +85,17 @@ const Card = ( ) => {
 }
 
 const WorkPrinciples = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+
   return (
-    <div className="flex flex-col gap-8 justify-center items-center">
+    <div className={`
+      flex flex-col gap-8 justify-center items-center 
+      transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+      `}>
       <h1 className="
         text-3xl md:text-4xl lg:text-5xl 
         font-semibold leading-tight

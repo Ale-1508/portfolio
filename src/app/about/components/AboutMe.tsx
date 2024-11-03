@@ -1,6 +1,8 @@
+"use client";
+
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
-// transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`
+import { useEffect, useState } from "react"
 
 const Title = () => {
   return (
@@ -59,11 +61,21 @@ const PicureOfMe = () => {
 }
 
 const AboutMe = () => {
+  
+const [isVisible, setIsVisible] = useState(false);
+// transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}
+
+useEffect( () => {
+  setIsVisible(true);
+}, [])
+
+
   return (
-    <div className="
+    <div className={`
       flex flex-col gap-16 font-sans
-    selection:bg-primary-500 selection:text-primary-50
-    ">
+      selection:bg-primary-500 selection:text-primary-50
+      transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       <Title />
       <div className="
         flex flex-col ml:flex-row 

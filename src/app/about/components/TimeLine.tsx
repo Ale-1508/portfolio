@@ -1,4 +1,6 @@
-import classNames from 'classnames';
+"use client";
+
+import { useEffect, useState } from "react"
 
 const experiences = [
   {
@@ -34,8 +36,16 @@ const getDateDifference = (from: number, to: number | undefined, onGoing: boolea
 const getLastDigit = (number: number) => number % 10;
 
 const TimeLine = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+  
   return (
-    <div className='grid grid-cols-4 gap-y-4'>
+    <div className={`grid grid-cols-4 gap-y-4 
+      transition-transform duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       {experiences.map((experience) => {
         const dateDifference = getDateDifference(experience.from, experience.to, experience.onGoing);
         

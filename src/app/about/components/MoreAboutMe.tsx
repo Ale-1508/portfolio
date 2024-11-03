@@ -1,8 +1,19 @@
+"use client";
 import Balancer from "react-wrap-balancer"
+import { useEffect, useState } from "react"
 
 const MoreAboutMe = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+
   return (
-    <div className="flex flex-col gap-10 justify-center items-center">
+    <div className={`
+      flex flex-col gap-10 justify-center items-center
+      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       <h1 className="w-full xl:w-160
         flex justify-start items-start 
         text-3xl md:text-4xl lg:text-5xl 
