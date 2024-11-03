@@ -47,7 +47,8 @@ const TimeLine = () => {
               flex justify-center md:justify-between items-center
               rounded-4xl py-4 px-8
               bg-primary-500 text-white
-              selection:bg-primary-300
+              selection:bg-primary-300 cursor-pointer
+              hover:bg-primary-600 hover:shadow-2xl
           ">
             <div className='flex flex-col gap-2'>
               <h2 className='font-semibold
