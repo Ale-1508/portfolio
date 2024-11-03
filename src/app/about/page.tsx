@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Layout from "../_core/components/Layout";
-import classNames from 'classnames';
-
 
 import AboutMe from "./components/AboutMe";
 import TimeLine from "./components/TimeLine";
@@ -21,10 +19,10 @@ export default function AboutScreen() {
   }, [])
   
   return (
-    <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32">
+    <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-24">
       <AboutMe />
-      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <TimeLine />
+      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <WorkPrinciples />
       <MoreAboutMe />
       <PictureGallery />
