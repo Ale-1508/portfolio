@@ -27,6 +27,9 @@ const config: Config = {
       },
       width: {
         '128': '32rem',
+        '160': '40rem',
+        '192': '48rem',
+        '256': '64rem',
         '35vw': '35vw',
       },
       boxShadow: {
