@@ -23,24 +23,25 @@ const Description = () => {
       w-full lg:w-128 
       justify-center items-center
     '>
-      <Balancer className="w-full flex">
-        <h2 className='
-          text-2xl md:text-3xl lg:text-4xl 
-          font-semibold leading-tight
-          text-primary-600
-          '>An Italian Full-Stack Developer based in Venice.
-        </h2>
-      </Balancer>
-      <Balancer className="w-full flex">
-        <p className='
-          text-md md:text-lg lg:text-xl 
-          font-normal leading-tight
-          text-primary-600
-        '>
+      <h2 className='
+        text-2xl md:text-3xl lg:text-4xl 
+        font-semibold leading-tight
+        text-primary-600
+      '>
+        <Balancer className="w-full flex">
+          An Italian Full-Stack Developer based in Venice.
+        </Balancer>
+      </h2>
+      <p className='
+        text-md md:text-lg lg:text-xl 
+        font-normal leading-tight
+        text-primary-600
+      '>
+        <Balancer className="w-full flex">
           Hi there! I'm a passionate <span className='font-semibold'>Full-Stack</span> Developer with over <span className='font-semibold'>4</span> years of experience crafting elegant software solutions. <br /><br />
           My expertise spans <span className='font-semibold'>Web</span>, <span className='font-semibold'>Desktop</span> and <span className='font-semibold'>Mobile</span> app development, where I bring innovative ideas to life. Let's connect and build something extraordinary together!
-        </p>
-      </Balancer>
+        </Balancer>
+      </p>
     </div>
   )
 }
@@ -66,8 +67,8 @@ const AboutMe = () => {
       <Title />
       <div className="
         flex flex-col ml:flex-row 
+        gap-8 ml:gap-24
         justify-center items-center 
-        gap-24
       ">
         <PicureOfMe />
         <Description />
