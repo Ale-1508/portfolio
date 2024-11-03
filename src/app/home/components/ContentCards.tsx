@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react"
 import classNames from 'classnames';
 import Image from 'next/image'
+import Balancer from "react-wrap-balancer";
 
 const cards = [
   {
     id:1,
     title: "About Me",
+    callToAction: "",
     description: "",
     img: "about-me.svg",
     link: "",
@@ -17,7 +19,12 @@ const cards = [
   {
     id:2,
     title: "Articles",
-    description: "Read my articles!",
+    callToAction: "Read my latest Articles",
+    description: `Welcome to my "Articles" section! Here, 
+    I share my experiences and insights as a developer, 
+    exploring everything from new programming languages to complex algorithms. 
+    Dive in to discover my journey in tech and get inspired to innovate. 
+    Happy reading!`,
     img: "articles.svg",
     link: "",
     large: true,
@@ -26,7 +33,11 @@ const cards = [
   {
     id:3,
     title: "Showcase",
-    description: "Take a look at my previous works",
+    callToAction: "Take a look at my previous Works",
+    description: `Welcome to my "Work Showcase"! 
+    Here, you'll find a collection of my projects, 
+    each reflecting my skills and dedication to creating innovative solutions. 
+    Explore the highlights of my work and discover the passion I bring to every challenge.`,
     img: "showcase.svg",
     link: "",
     large: true,
@@ -35,6 +46,7 @@ const cards = [
   {
     id:4,
     title: "Contributions",
+    callToAction: "",
     description: "",
     img: "contributions.svg",
     link: "",
@@ -47,6 +59,7 @@ type CardType = {
   id: number
   title: string
   description?: string
+  callToAction?: string
   img: string,
   link: string,
   large: boolean,
@@ -59,11 +72,10 @@ interface CardProps {
 
 const Card = ({ card }: CardProps ) => {
   const cardClassNames = classNames(
-    "flex cursor-pointer h-80 m-2 py-8 px-16 gap-4",
+    "flex cursor-pointer m-2 py-8 px-16 gap-4",
     "rounded-5xl justify-evenly items-center", 
-    "bg-sageGreen-400 hover:bg-sageGreen-500 text-white",
-    "hover:shadow-2xl",
-    "text-4xl font-medium",
+    "bg-accents-ivory hover:bg-sageGreen-200 text-white",
+    "hover:shadow-2xl bg-opacity-25 hover:bg-opacity-25",
     "xs:col-span-3",
     {
       'xl:col-span-2 flex-row': card.large,
@@ -77,13 +89,18 @@ const Card = ({ card }: CardProps ) => {
         { 'w-full': card.large },
         { 'justify-center': !card.large },
       )}>
-        <h1 className="text-primary-600">{card.title}</h1>
-        {card.large && <p className="text-lg font-light text-primary-800">{card.description}</p>
-        }
+        <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
+        {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
+        <Balancer className="text-base font-normal text-primary-800">
+          {card.description}
+        </Balancer>
       </div>
       {card.img !== "" &&
       <Image
-        className="rounded-3xl"
+        className={classNames(
+          "rounded-3xl ",
+          { 'xs:hidden md:hidden ml:inline': card.large },
+        )}
         src={`/images/${card.img}`}
         width={224}
         height={224}
