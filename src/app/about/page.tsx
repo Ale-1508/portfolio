@@ -22,8 +22,8 @@ export default function AboutScreen() {
     <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-24">
       <AboutMe />
       <TimeLine />
-      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <WorkPrinciples />
+      <h1 className="text-5xl">END OF CONSTRUCTION SITE</h1>
       <MoreAboutMe />
       <PictureGallery />
     </Layout>
