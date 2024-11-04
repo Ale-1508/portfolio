@@ -103,7 +103,8 @@ const config: Config = {
   plugins: [
     plugin(function ({ addUtilities }: pluginsType ) { 
       const newUtilities = { 
-        '.placeholder-font-normal::placeholder': { fontWeight: '500', },
+        '.placeholder-font-normal::placeholder': { fontWeight: '400', },
+        '.placeholder-font-medium::placeholder': { fontWeight: '500', },
         '.placeholder-font-semibold::placeholder': { fontWeight: '600', },
         '.placeholder-font-bold::placeholder': { fontWeight: '700', },
       }
