@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@/components/*": ["src/app/_core/components/*"],
-      "@/input-elements/*": ["src/app/_core/components/input-elements/*"],
+      "@/textfields/*": ["src/app/_core/components/textfields/*"],
+      "@/labels/*": ["src/app/_core/components/labels/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
