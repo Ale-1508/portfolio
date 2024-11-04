@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+const plugin = require('tailwindcss/plugin');
+
+type pluginsType = { addUtilities: (utilities: any, variants: string[]) => void }
 
 const config: Config = {
   content: [
@@ -97,6 +100,16 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }: pluginsType ) { 
+      const newUtilities = { 
+        '.placeholder-font-normal::placeholder': { fontWeight: '500', },
+        '.placeholder-font-semibold::placeholder': { fontWeight: '600', },
+        '.placeholder-font-bold::placeholder': { fontWeight: '700', },
+      }
+      
+      addUtilities(newUtilities, ['responsive', 'hover', 'focus']) 
+    },),
+  ],
 };
 export default config;
