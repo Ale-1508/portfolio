@@ -19,7 +19,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
+      "@/components/*": ["src/app/_core/components/*"],
+      "@/input-elements/*": ["src/app/_core/components/input-elements/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
