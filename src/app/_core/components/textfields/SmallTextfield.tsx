@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition, faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface SmallTextfieldProps {
   startValue?: string
@@ -13,18 +13,47 @@ interface SmallTextfieldProps {
 }
 
 export const SmallTextfield = ( { startValue="", hint="", inputType="text", required=false, icon }: SmallTextfieldProps ) => {
-  const [value, setValue ] = useState(startValue);
+  const [ state, setState ] = useState({
+    value: startValue,
+    trailingIcon: {
+      name: faCircleInfo,
+      show: false
+    }
+  });
 
   const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setState(prevState => ({...prevState, value:e.target.value}));
+  }
+  
+  const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
+    setState(prevState => ({
+      ...prevState, 
+      trailingIcon: { ...prevState.trailingIcon, show: false, name: faCircleInfo }
+    }));
+  }
+  
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    let inputOk = true;
+    if (inputOk) {
+      setState(prevState => ({
+        ...prevState, 
+        trailingIcon: { ...prevState.trailingIcon, show: true, name: faCheck }
+      }));
+    } else {
+      setState(prevState => ({
+        ...prevState, 
+        trailingIcon: { ...prevState.trailingIcon, show: true }
+      }));
+    }
   }
 
+  
   return (
     <div className="
       flex flex-row items-center
-      pl-4 rounded-2xl
+      pl-4 pr-2 rounded-2xl
       text-md lg:text-lg font-normal 
       text-primary-600
       bg-white
@@ -33,9 +62,11 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
       { icon!==undefined && <FontAwesomeIcon icon={icon} /> }
       <input 
         type={inputType}
-        value={value}
+        value={state.value}
         placeholder={hint}
         onChange={handleChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         required={required}
         className="
           px-4 py-2 w-96
@@ -44,8 +75,9 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
           text-primary-600
           placeholder-primary-400 placeholder-font-normal
           focus:outline-none
-        "
+          "
       />
+      <FontAwesomeIcon icon={state.trailingIcon.name} className={state.trailingIcon.show ? "inline" : "hidden"}/>
     </div>
   )
 }
