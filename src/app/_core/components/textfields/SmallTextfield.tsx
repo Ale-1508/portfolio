@@ -9,10 +9,10 @@ interface SmallTextfieldProps {
   hint?: string
   inputType?: string
   required ?: boolean
-  icon: IconDefinition | undefined
+  icon?: IconDefinition | undefined
 }
 
-export const SmallTextfield = ( { startValue="", hint="", inputType="text", required=false, icon }: SmallTextfieldProps ) => {
+export const SmallTextfield = ( { startValue="", hint="", inputType="text", required=false, icon=undefined }: SmallTextfieldProps ) => {
   const [ state, setState ] = useState({
     value: startValue,
     trailingIcon: {
@@ -57,6 +57,7 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
       text-md lg:text-lg font-normal 
       text-primary-600
       bg-white
+      selectable-none
       focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
     ">
       { icon!==undefined && <FontAwesomeIcon icon={icon} /> }
