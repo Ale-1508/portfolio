@@ -12,10 +12,9 @@ const PrimaryButton = ( { text, onSubmit } :PrimaryButtonProps) => {
         py-2 px-8 rounded-3xl
         text-white text-md font-normal font-sans select-none
         bg-primary-500 cursor-pointer
-        hover:bg-primary-700
-        focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
+        hover:bg-primary-600 hover:shadow-2xl
+        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50
         duration-500 ease-out
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
       "
       onSubmit={onSubmit}
     > 
@@ -24,4 +23,4 @@ const PrimaryButton = ( { text, onSubmit } :PrimaryButtonProps) => {
   )
 }
 
-export default PrimaryButton
+export default PrimaryButton;
