@@ -57,7 +57,7 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
       text-md lg:text-lg font-normal 
       text-primary-600
       bg-white
-      selectable-none
+      selectable-none hover:shadow-md
       focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
     ">
       { icon!==undefined && <FontAwesomeIcon icon={icon} /> }
