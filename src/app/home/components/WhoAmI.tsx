@@ -1,27 +1,45 @@
+"use client";
+
+import { useEffect, useState } from "react"
+
 const TitleSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+
   return(
-    <h1 className="
+    <h1 className={`
       w-full text-7xl text-center
       leading-tight
       font-semibold font-sans
       flex flex-row justify-center
       text-primary-600
-      selection:bg-primary-500 selection:text-primary-50"
-    >
+      selection:bg-primary-500 selection:text-primary-50
+      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       Hi. I'm Alessandro.<br />A Full-Stack Developer.
     </h1>
   )
 }
 
 const DescriptionSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+  
   return(
-    <div className="
+    <div className={`
       text-center justify-center items-center
       flex flex-col gap-2 group
       font-semibold font-sans
       text-gray-700
       selection:bg-primary-500 selection:text-primary-50"
-    >
+      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       <h1 className="leading-tight text-lg
         flex flex-row justify-center">
         I love transforming ideas into seamless user experiences.<br/> let's build something amazing together!
