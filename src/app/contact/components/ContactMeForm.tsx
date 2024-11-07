@@ -6,8 +6,10 @@ import { useEffect, useState } from "react"
 import { faEnvelope, faUser, faMobile } from '@fortawesome/free-solid-svg-icons';
 
 import { SmallTextfield } from "@/textfields/SmallTextfield";
+import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
 import PrimaryButton from "@/buttons/PrimaryButton"
+
 
 /*
 full name
@@ -30,18 +32,21 @@ my city
 
 const formFields = [
   {
+    key: "full-name",
     value:"Full Name",
     hint:"Your full name",
     icon:faUser,
     inputType:"text",
   },
   {
+    key: "email",
     value:"Email",
     hint:"Enter your email",
     icon:faEnvelope,
     inputType:"email",
   },
   {
+    key: "phone-number",
     value:"Phone Number",
     hint:"Your phone number",
     icon:faMobile,
@@ -65,16 +70,16 @@ const FormComponent = ( ) => {
   return (
     <form className={cardClassNames}>
       { formFields.map((field) => (
-        <div className={fieldClassNames}>
+        <div className={fieldClassNames} key={field.key}>
           <SmallLabel value={field.value}/>
           <SmallTextfield hint={field.hint} inputType={field.inputType} icon={field.icon}/>
         </div>
       ))}
       <div className={fieldClassNames}>
         <SmallLabel value="Your Message"/>
-        <SmallTextfield hint="Write here your message" inputType="text" />
+        <LargeTextField hint="Write here your message"/>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-center">
         <PrimaryButton text="Submit" onSubmit={()=>console.log("ye")}/>
       </div>
     </form>
