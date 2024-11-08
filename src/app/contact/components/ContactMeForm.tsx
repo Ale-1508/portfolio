@@ -77,7 +77,7 @@ const FormComponent = ( ) => {
       ))}
       <div className={fieldClassNames}>
         <SmallLabel value="Your Message"/>
-        <LargeTextField hint="Write here your message"/>
+        <LargeTextField hint="Write here your message" minLenght={20}/>
       </div>
       <div className="flex justify-center">
         <PrimaryButton text="Submit" onSubmit={()=>console.log("ye")}/>
