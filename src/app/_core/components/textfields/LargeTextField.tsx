@@ -1,18 +1,24 @@
 "use client"
 
+import classNames from "classnames";
 import { useState, ChangeEvent } from "react";
-import { IconDefinition, faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface SmallTextfieldProps {
   startValue?: string
   hint?: string
-  required ?: boolean
-  icon?: IconDefinition | undefined
+  required?: boolean
+  minLenght?: number
 }
 
-export const LargeTextField = ( { startValue="", hint="", required=false }: SmallTextfieldProps ) => {
+export const LargeTextField = ( { startValue="", hint="", minLenght=20, required=false }: SmallTextfieldProps ) => {
   const [ value, setState ] = useState(startValue);
   const valueLenght = value.length;
+  const wordCounterClassNames = classNames(
+    "transition duration-500 ease-out",
+    ( valueLenght < minLenght ? "opacity-100" : "opacity-0" ),
+    "w-full flex justify-end items-end  -ml-1",
+    "font-medium text-sm"
+  )
 
   const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
 
@@ -32,7 +38,6 @@ export const LargeTextField = ( { startValue="", hint="", required=false }: Smal
       <div className="
         flex flex-col items-start h-48
         px-4 py-2 rounded-2xl
-        
         bg-white
         selectable-none hover:shadow-md
         focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
@@ -56,12 +61,7 @@ export const LargeTextField = ( { startValue="", hint="", required=false }: Smal
         />
         
       </div>
-      { <p className={`
-        transition duration-500 ease-out ${ valueLenght < 20 ? "opacity-100" : "opacity-0" }
-        w-full flex -ml-1
-        justify-end items-end 
-        font-medium text-sm
-      `}>{valueLenght}/20</p> }
+      { <p className={wordCounterClassNames}>{valueLenght}/{minLenght}</p> }
     </div>
   )
 }
