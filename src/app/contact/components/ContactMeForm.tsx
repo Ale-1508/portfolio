@@ -31,6 +31,7 @@ my city
 type formField = {
   value: string, 
   error?: string, 
+  valid: boolean
 }
 
 interface formData {
@@ -81,18 +82,22 @@ const initialFormData = {
   fullName: {
     value: "",
     error: "",
+    valid: false
   },
   email: {
     value: "",
     error: "",
+    valid: false
   },
   phoneNumber: {
     value: "",
     error: "",
+    valid: false
   },
   message: {
     value: "",
     error: "",
+    valid: false
   },
 }
 
@@ -112,17 +117,18 @@ const FormComponent = ( ) => {
 
   const validateForm = (): boolean => {
     let isValid = true
-    if(!validateTextField(formData.fullName.value)) {
+    if(!formData.fullName.valid) {
       setFormData(prevState => ({ ...prevState, fullName: {...prevState.fullName, error: "Full Name can't be Empty"}, })); 
       isValid = false;
     }
     
-    if(!validateEmail(formData.email.value)) {
+    console.log(formData.email.valid)
+    if(!formData.email.valid) {
       setFormData(prevState => ({ ...prevState, email: {...prevState.email, error: "Valid Format: yourmail@example.it"}, })); 
       isValid = false;
     }
 
-    if(!validateMobileNumber(formData.phoneNumber.value)) {
+    if(!formData.phoneNumber.valid) {
       setFormData(prevState => ({ ...prevState, phoneNumber: {...prevState.phoneNumber, error: "Valid Format: +XX XXXXXXXXXX"}, })); 
       isValid = false;
     }
@@ -135,28 +141,39 @@ const FormComponent = ( ) => {
     if(validateForm()){
       setFormData(initialFormData); 
     }
-    };
+  };
     
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => { 
     const { name, value } = e.target; 
+
+    let validInput = false;
     switch (name) {
-      case value:
-        
+      case "fullName":
+        validInput = validateTextField(value);
+        break;
+          
+      case "email":
+        validInput = validateEmail(value);
+        break;
+
+      case "phoneNumber":
+        validInput = validateMobileNumber(value);
         break;
     
       default:
         break;
     }
-    setFormData(prevState => ({ ...prevState, [name]: {...[name], value: value}, })); 
+    setFormData(prevState => ({ ...prevState, [name]: {...[name], value: value, valid: validInput}, })); 
   };
 
   return (
-    <form className={cardClassNames} onSubmit={formSubmit}>
+    <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
       { formFields.map((field) => (
         <div className={fieldClassNames} key={field.key}>
           <SmallLabel value={field.label}/>
           <SmallTextfield 
             value={formData[field.key].value} 
+            isValid={formData[field.key].valid} 
             data={field} 
             handleChange={handleChange} 
             error={formData[field.key].error}/>

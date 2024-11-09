@@ -1,6 +1,4 @@
-"use client"
-
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,6 +13,7 @@ interface textfieldData{
 
 interface SmallTextfieldProps {
   value?: string, 
+  isValid: boolean
   data?: textfieldData
   required ?: boolean
   icon?: IconDefinition | undefined
@@ -23,6 +22,7 @@ interface SmallTextfieldProps {
 }
 
 export const SmallTextfield = ( { 
+  isValid,
   value="", 
   data={
     key: "",
@@ -30,36 +30,11 @@ export const SmallTextfield = ( {
     icon: undefined, 
     inputType: "text", 
     handleValidation: () => true
-  }, 
+  },
   required=false,
   error, 
   handleChange,
 }: SmallTextfieldProps ) => {
-  const [ state, setState ] = useState({
-    trailingIcon: {
-      name: faCheck,
-      show: false
-    }
-  });
-
-  const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
-
-  const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
-    setState(prevState => ({
-      ...prevState, 
-      trailingIcon: { ...prevState.trailingIcon, show: false }
-    }));
-  }
-
-  
-  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(data.handleValidation(value))
-    setState(prevState => ({
-      ...prevState, 
-      trailingIcon: { ...prevState.trailingIcon, show: data.handleValidation(value) }
-    }));
-  }
-
   
   return (
     <div className="flex flex-col">
@@ -80,8 +55,6 @@ export const SmallTextfield = ( {
           value={value}
           placeholder={data.hint}
           onChange={handleChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
           required={required}
           className="
             px-4 py-2 w-96
@@ -92,10 +65,8 @@ export const SmallTextfield = ( {
             focus:outline-none
             "
         />
-        { error
-          ? <FontAwesomeIcon icon={faCircleInfo} className={error ? "inline" : "hidden"}/>
-          : <FontAwesomeIcon icon={faCheck} className={state.trailingIcon.show ? "inline" : "hidden"}/>
-        }
+        { isValid && <FontAwesomeIcon icon={faCheck}/>}
+        { error && <FontAwesomeIcon icon={faCircleInfo}/>}
       </div>
       {error && <span className="
         flex w-full justify-end
