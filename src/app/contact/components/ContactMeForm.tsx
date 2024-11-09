@@ -9,24 +9,6 @@ import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
 import PrimaryButton from "@/buttons/PrimaryButton"
 import { validateEmail, validateTextField, validateMobileNumber } from "@/formLogic/validationLogic"
-/*
-full name
-email
-phone
-message
-button to send message
-
-I'm looking for:
-- WebApp
-- Landing Page
-- Desktop App
-- Mobile App
-
-contact me:
-email
-mobile
-my city
-*/
 
 type formField = {
   value: string, 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import classNames from 'classnames';
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
+import Link from "next/link";
 
 const cards = [
   {
@@ -12,7 +13,7 @@ const cards = [
     callToAction: "",
     description: "",
     img: "about-me.svg",
-    link: "",
+    link: "/about",
     large: false,
     alt: "Picture of Me"
   },
@@ -26,7 +27,7 @@ const cards = [
     Dive in to discover my journey in tech and get inspired to innovate. 
     Happy reading!`,
     img: "articles.svg",
-    link: "",
+    link: "/articles",
     large: true,
     alt: ""
   },
@@ -39,7 +40,7 @@ const cards = [
     each reflecting my skills and dedication to creating innovative solutions. 
     Explore the highlights of my work and discover the passion I bring to every challenge.`,
     img: "showcase.svg",
-    link: "",
+    link: "/showcase",
     large: true,
     alt: ""
   },
@@ -49,7 +50,7 @@ const cards = [
     callToAction: "",
     description: "",
     img: "contributions.svg",
-    link: "",
+    link: "/contributions",
     large: false,
     alt: ""
   },
@@ -82,32 +83,32 @@ const Card = ({ card }: CardProps ) => {
       'xl:col-span-1 flex-col': !card.large,
     },
   );
-  return (
-    <li className={cardClassNames}>
-      <div className={classNames(
-        "flex flex-col gap-4 m-0 justify-start items-start h-full",
-        { 'w-full': card.large },
-        { 'justify-center': !card.large },
-      )}>
-        <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
-        {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
-        <Balancer className="text-base font-normal text-primary-800">
-          {card.description}
-        </Balancer>
-      </div>
-      {card.img !== "" &&
-      <Image
-        className={classNames(
-          "rounded-3xl ",
-          { 'xs:hidden md:hidden ml:inline': card.large },
-        )}
-        src={`/images/${card.img}`}
-        width={224}
-        height={224}
-        alt={card.alt}
-      />
-      } 
-    </li>
+  return ( 
+    <Link href={card.link} className={cardClassNames}>
+        <div className={classNames(
+          "flex flex-col gap-4 m-0 justify-start items-start h-full",
+          { 'w-full': card.large },
+          { 'justify-center': !card.large },
+        )}>
+          <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
+          {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
+          <Balancer className="text-base font-normal text-primary-800">
+            {card.description}
+          </Balancer>
+        </div>
+        {card.img !== "" &&
+        <Image
+          className={classNames(
+            "rounded-3xl ",
+            { 'xs:hidden md:hidden ml:inline': card.large },
+          )}
+          src={`/images/${card.img}`}
+          width={224}
+          height={224}
+          alt={card.alt}
+        />
+        } 
+    </Link>
   )
 }
 
