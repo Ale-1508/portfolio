@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames'
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 type LayoutProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPath, className } ) =>
       >
         {children}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -25,6 +25,7 @@
       "@/labels/*": ["src/app/_core/components/labels/*"],
       "@/buttons/*": ["src/app/_core/components/buttons/*"],
       "@/formLogic/*": ["src/logic/_core/form/*"],
+      "@/logic/*": ["src/logic/_core/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
