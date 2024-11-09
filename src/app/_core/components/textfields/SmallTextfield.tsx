@@ -57,7 +57,7 @@ export const SmallTextfield = ( {
           onChange={handleChange}
           required={required}
           className="
-            px-4 py-2 w-96
+            px-4 py-2 w-full
             bg-transparent
             text-md lg:text-lg font-normal 
             text-primary-600
