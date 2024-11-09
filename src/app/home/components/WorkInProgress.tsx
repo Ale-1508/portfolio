@@ -58,7 +58,7 @@ const DescriptionSection = () => {
   let projectNumber: number = 3
 
   return(
-    <h1 className="text-lg leading-8 
+    <h1 className="text-md md:text-lg leading-8 
         flex flex-row justify-center
         text-center items-center
         font-semibold font-sans
@@ -66,7 +66,7 @@ const DescriptionSection = () => {
         text-gray-700
         selection:text-primary-50">
       I'm currently working on
-      <span className="mx-1 text-primary-600 text-2xl font-semibold">{projectNumber}</span>
+      <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold">{projectNumber}</span>
       {projectNumber>1 ? "projects" : "project"} from start to finish!
     </h1>
   )
