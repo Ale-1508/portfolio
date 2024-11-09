@@ -8,7 +8,7 @@ import { SmallTextfield } from "@/textfields/SmallTextfield";
 import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
 import PrimaryButton from "@/buttons/PrimaryButton"
-
+import { validateEmail, validateTextField, validateMobileNumber } from "@/formLogic/validationLogic"
 /*
 full name
 email
@@ -28,11 +28,16 @@ mobile
 my city
 */
 
+type formField = {
+  value: string, 
+  error?: string, 
+}
+
 interface formData {
-  fullName: string,
-  email: string,
-  phoneNumber: string,
-  message: string,
+  fullName: formField,
+  email: formField,
+  phoneNumber: formField,
+  message: formField,
 }
 
 type formKeys = "fullName" | "email" | "phoneNumber" | "message";
@@ -41,6 +46,7 @@ interface FormFields {
   label: string,
   hint: string,
   icon: IconDefinition,
+  handleValidation(value: string): boolean
   inputType: string,
 }
 
@@ -51,6 +57,7 @@ const formFields: FormFields[] = [
     hint:"Your full name",
     icon:faUser,
     inputType:"text",
+    handleValidation: validateTextField,
   },
   {
     key: "email",
@@ -58,6 +65,7 @@ const formFields: FormFields[] = [
     hint:"Enter your email",
     icon:faEnvelope,
     inputType:"email",
+    handleValidation: validateEmail,
   },
   {
     key: "phoneNumber",
@@ -65,14 +73,27 @@ const formFields: FormFields[] = [
     hint:"Your phone number",
     icon:faMobile,
     inputType:"tel",
+    handleValidation: validateMobileNumber,
   },
 ]
 
 const initialFormData = {
-  fullName: "",
-  email: "",
-  phoneNumber: "",
-  message: "",
+  fullName: {
+    value: "",
+    error: "",
+  },
+  email: {
+    value: "",
+    error: "",
+  },
+  phoneNumber: {
+    value: "",
+    error: "",
+  },
+  message: {
+    value: "",
+    error: "",
+  },
 }
 
 const FormComponent = ( ) => {
@@ -89,18 +110,44 @@ const FormComponent = ( ) => {
   );
   const fieldClassNames = "flex flex-col gap-2"
 
-  const formSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault(); 
-    console.log(formData.fullName);
-    console.log(formData.email);
-    console.log(formData.phoneNumber);
-    console.log(formData.message);
-    setFormData({ fullName: "", email: "", phoneNumber: "", message: "", }); 
+  const validateForm = (): boolean => {
+    let isValid = true
+    if(!validateTextField(formData.fullName.value)) {
+      setFormData(prevState => ({ ...prevState, fullName: {...prevState.fullName, error: "Full Name can't be Empty"}, })); 
+      isValid = false;
+    }
+    
+    if(!validateEmail(formData.email.value)) {
+      setFormData(prevState => ({ ...prevState, email: {...prevState.email, error: "Valid Format: yourmail@example.it"}, })); 
+      isValid = false;
+    }
+
+    if(!validateMobileNumber(formData.phoneNumber.value)) {
+      setFormData(prevState => ({ ...prevState, phoneNumber: {...prevState.phoneNumber, error: "Valid Format: +XX XXXXXXXXXX"}, })); 
+      isValid = false;
+    }
+    return isValid;
   }
-  
+
+  const formSubmit = (e: React.SyntheticEvent) => { 
+    e.preventDefault(); 
+    
+    if(validateForm()){
+      setFormData(initialFormData); 
+    }
+    };
+    
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => { 
     const { name, value } = e.target; 
-    setFormData(prevState => ({ ...prevState, [name]: value, })); 
+    switch (name) {
+      case value:
+        
+        break;
+    
+      default:
+        break;
+    }
+    setFormData(prevState => ({ ...prevState, [name]: {...[name], value: value}, })); 
   };
 
   return (
@@ -108,12 +155,16 @@ const FormComponent = ( ) => {
       { formFields.map((field) => (
         <div className={fieldClassNames} key={field.key}>
           <SmallLabel value={field.label}/>
-          <SmallTextfield value={formData[field.key]} data={field} handleChange={handleChange}/>
+          <SmallTextfield 
+            value={formData[field.key].value} 
+            data={field} 
+            handleChange={handleChange} 
+            error={formData[field.key].error}/>
         </div>
       ))}
       <div className={fieldClassNames}>
         <SmallLabel value="Your Message"/>
-        <LargeTextField value={formData.message} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
+        <LargeTextField value={formData.message.value} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
       </div>
       <div className="flex justify-center">
         <PrimaryButton text="Submit"/>

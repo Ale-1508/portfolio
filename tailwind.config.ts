@@ -96,6 +96,9 @@ const config: Config = {
           850: "#2c3828",
           900: "#1e251b",
           950: "#0f130d",
+        },
+        supportingColors: {
+          error: "#cc0000"
         }
       },
     },
