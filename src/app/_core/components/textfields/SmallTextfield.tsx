@@ -4,17 +4,34 @@ import { useState, ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-interface SmallTextfieldProps {
-  startValue?: string
-  hint?: string
-  inputType?: string
-  required ?: boolean
-  icon?: IconDefinition | undefined
+interface textfieldData{
+  key: string,
+  label?: string,
+  hint: string,
+  icon: IconDefinition | undefined,
+  inputType: string,
 }
 
-export const SmallTextfield = ( { startValue="", hint="", inputType="text", required=false, icon=undefined }: SmallTextfieldProps ) => {
+interface SmallTextfieldProps {
+  value?: string, 
+  data?: textfieldData
+  required ?: boolean
+  icon?: IconDefinition | undefined
+  handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void
+}
+
+export const SmallTextfield = ( { 
+  value="", 
+  data={
+    key: "",
+    hint: "", 
+    icon: undefined, 
+    inputType: "text", 
+  }, 
+  required=false, 
+  handleChange,
+}: SmallTextfieldProps ) => {
   const [ state, setState ] = useState({
-    value: startValue,
     trailingIcon: {
       name: faCircleInfo,
       show: false
@@ -23,16 +40,13 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
 
   const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setState(prevState => ({...prevState, value:e.target.value}));
-  }
-  
   const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
     setState(prevState => ({
       ...prevState, 
       trailingIcon: { ...prevState.trailingIcon, show: false, name: faCircleInfo }
     }));
   }
+
   
   const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
     let inputOk = true;
@@ -60,11 +74,12 @@ export const SmallTextfield = ( { startValue="", hint="", inputType="text", requ
       selectable-none hover:shadow-md
       focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
     ">
-      { icon!==undefined && <FontAwesomeIcon icon={icon} /> }
+      { data.icon!==undefined && <FontAwesomeIcon icon={data.icon} /> }
       <input 
-        type={inputType}
-        value={state.value}
-        placeholder={hint}
+        name={data.key}
+        type={data.inputType}
+        value={value}
+        placeholder={data.hint}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}

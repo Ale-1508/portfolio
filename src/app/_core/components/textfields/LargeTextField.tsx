@@ -3,15 +3,16 @@
 import classNames from "classnames";
 import { useState, ChangeEvent } from "react";
 
-interface SmallTextfieldProps {
-  startValue?: string
+interface LargeTextfieldProps {
+  name: string,
+  value?: string
   hint?: string
   required?: boolean
   minLenght?: number
+  handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void
 }
 
-export const LargeTextField = ( { startValue="", hint="", minLenght=20, required=false }: SmallTextfieldProps ) => {
-  const [ value, setState ] = useState(startValue);
+export const LargeTextField = ( { name, value="", hint="", minLenght=20, required=false, handleChange}: LargeTextfieldProps ) => {
   const valueLenght = value.length;
   const wordCounterClassNames = classNames(
     "transition duration-500 ease-out",
@@ -21,10 +22,6 @@ export const LargeTextField = ( { startValue="", hint="", minLenght=20, required
   )
 
   const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setState( e.target.value );
-  }
   
   const handleFocus = (e: ChangeEvent<HTMLTextAreaElement>) => {}
   
@@ -43,6 +40,7 @@ export const LargeTextField = ( { startValue="", hint="", minLenght=20, required
         focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
       ">
         <textarea 
+          name={name}
           value={value}
           placeholder={hint}
           onChange={handleChange}
