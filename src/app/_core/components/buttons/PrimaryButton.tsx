@@ -1,11 +1,10 @@
 interface PrimaryButtonProps {
   text: string,
-  onSubmit(): void,
 }
 
-const PrimaryButton = ( { text, onSubmit } :PrimaryButtonProps) => {
+const PrimaryButton = ( { text } :PrimaryButtonProps) => {
   return (
-    <div 
+    <input 
       className="
         flex flex-row w-32
         items-center justify-center
@@ -16,10 +15,9 @@ const PrimaryButton = ( { text, onSubmit } :PrimaryButtonProps) => {
         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50
         duration-500 ease-out
       "
-      onSubmit={onSubmit}
-    > 
-      { text }     
-    </div>
+      value={ text }
+      type="submit"
+    /> 
   )
 }
 
