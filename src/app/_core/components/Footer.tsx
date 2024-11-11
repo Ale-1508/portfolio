@@ -143,6 +143,8 @@ const Footer = () => {
   return (
     <div className={`
       flex flex-col gap-16 justify-center p-16
+      selection:bg-primary-500 selection:text-primary-50
+      text-gray-800
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <div className="grid grid-cols-1 gap-16 md-gap-8 md:grid-cols-3">
