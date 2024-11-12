@@ -1,3 +1,6 @@
+import { faFigma, faFlutter, faPython, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+
 export interface Project {
   id: number;
   title: string;
@@ -55,3 +58,21 @@ export const projectList: Project[] = [
     }
   },
 ]
+
+export const getStackIcon = ( iconName: string ): IconDefinition | undefined => {
+  switch (iconName) {
+    case "figma":
+      return faFigma;
+    case "flet":
+      return undefined
+    case "flutter":
+      return faFlutter;
+    case "python":
+      return faPython;
+    case "sqlite":
+      return faDatabase;
+  
+    default:
+      return undefined;
+  }
+}

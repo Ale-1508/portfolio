@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Balancer from "react-wrap-balancer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { faImage, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-import { Project } from "../data/projects"
+import { Project, getStackIcon } from "../data/projects"
 
 
 const cardClassNames = `
@@ -71,7 +71,29 @@ interface ProjectComponentProps {
   project: Project
 }
 
+interface IconComponentProps { 
+  icon:IconDefinition | undefined, 
+  label: string
+}
+
 const picturesRoot = "/images/projects"
+
+
+const IconComponent = ( { icon, label }: IconComponentProps ) => { 
+  if (!icon) return null; 
+  return ( 
+    <div className="relative flex items-center justify-center font-sans"> 
+      <div className="group"> 
+        <FontAwesomeIcon className="text-primary-600 w-8 h-8" icon={icon} /> 
+        <span className="absolute bottom-full left-1/2 
+          transform -translate-x-1/2 mb-2 w-max px-2 py-1 
+          rounded bg-primary-800 text-white text-xs opacity-0 
+          group-hover:opacity-100 transition-opacity duration-300"
+        > {label} </span> 
+      </div> 
+    </div> 
+  );
+};
 
 const TextSection = ({ project }: ProjectComponentProps) => {
   return (
@@ -83,8 +105,11 @@ const TextSection = ({ project }: ProjectComponentProps) => {
         { project.keyFeatures.map(( feature ) => (<li key={feature} className={liClassNames}>{feature}</li>)) }
       </ul>
       <h2 className={h2ClassNames}>Tech Stack</h2>
-      <ul className={ulClassNames}>
-        { project.techStack.map(( element ) => (<li key={element} className={liClassNames}>{element}</li>)) }
+      <ul className={`
+        flex flex-row  
+        ml-4 gap-8
+      `}>
+        { project.techStack.map(( iconName ) => (<IconComponent icon={getStackIcon(iconName)} label={iconName} />))}
       </ul>
     </div>
   )
