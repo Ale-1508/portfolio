@@ -3,7 +3,7 @@ import Balancer from "react-wrap-balancer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-import { Project, getStackIcon } from "../data/projects"
+import { Project, getStackIcon, getStackIconSVG } from "../data/projects"
 
 
 const cardClassNames = `
@@ -71,13 +71,15 @@ interface ProjectComponentProps {
   project: Project
 }
 
-interface IconComponentProps { 
-  icon:IconDefinition | undefined, 
-  label: string
-}
+interface BaseIconComponentProps { label: string; } 
+
+interface IconComponentProps extends BaseIconComponentProps { icon: IconDefinition | undefined; } 
+interface IconComponentPropsSVG extends BaseIconComponentProps { icon: string | undefined; }
 
 const picturesRoot = "/images/projects"
+const iconsRoot = "/images/icons"
 
+// add color to icons and instead of icons use png brand images edit also project.ts
 
 const IconComponent = ( { icon, label }: IconComponentProps ) => { 
   if (!icon) return null; 
@@ -85,6 +87,25 @@ const IconComponent = ( { icon, label }: IconComponentProps ) => {
     <div className="relative flex items-center justify-center font-sans"> 
       <div className="group"> 
         <FontAwesomeIcon className="text-primary-600 w-8 h-8" icon={icon} /> 
+        <span className="absolute bottom-full left-1/2 
+          transform -translate-x-1/2 mb-2 w-max px-2 py-1 
+          rounded bg-primary-800 text-white text-xs opacity-0 
+          group-hover:opacity-100 transition-opacity duration-300"
+        > {label} </span> 
+      </div> 
+    </div> 
+  );
+};
+
+const IconComponentSVG = ( { icon, label }: IconComponentPropsSVG ) => { 
+  if (!icon) return null; 
+  
+  return ( 
+    <div className="relative flex items-center justify-center font-sans"> 
+      <div className="group"> 
+        <div className={"w-8 h-8 relative"}>
+          <Image src={`${iconsRoot}/${icon}`} alt={label} fill style={{ objectFit: 'contain' }} />
+        </div> 
         <span className="absolute bottom-full left-1/2 
           transform -translate-x-1/2 mb-2 w-max px-2 py-1 
           rounded bg-primary-800 text-white text-xs opacity-0 
@@ -109,11 +130,12 @@ const TextSection = ({ project }: ProjectComponentProps) => {
         flex flex-row  
         ml-4 gap-8
       `}>
-        { project.techStack.map(( iconName ) => (<IconComponent icon={getStackIcon(iconName)} label={iconName} />))}
+        { project.techStack.map(( iconName ) => (<IconComponentSVG key={iconName} icon={getStackIconSVG(iconName)} label={iconName} />))}
       </ul>
     </div>
   )
 }
+// { project.techStack.map(( iconName ) => (<IconComponent icon={getStackIcon(iconName)} label={iconName} />))}
 
 const ImageSection = ({ project }: ProjectComponentProps) => {
   return (

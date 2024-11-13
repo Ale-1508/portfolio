@@ -76,3 +76,21 @@ export const getStackIcon = ( iconName: string ): IconDefinition | undefined => 
       return undefined;
   }
 }
+
+export const getStackIconSVG = ( iconName: string ): string | undefined => {
+  switch (iconName) {
+    case "figma":
+      return "figma.svg";
+    case "flet":
+      return undefined
+    case "flutter":
+      return "flutter.svg";
+    case "python":
+      return "python.svg";
+    case "sqlite":
+      return "sqlite.png";
+      
+    default:
+      return undefined;
+  }
+}
