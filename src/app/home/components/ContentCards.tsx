@@ -27,7 +27,7 @@ const cards = [
     Dive in to discover my journey in tech and get inspired to innovate. 
     Happy reading!`,
     img: "articles.svg",
-    link: "/articles",
+    link: "https://www.linkedin.com/in/alessandro-masiero",
     large: true,
     alt: ""
   },
@@ -50,7 +50,7 @@ const cards = [
     callToAction: "",
     description: "",
     img: "contributions.svg",
-    link: "/contributions",
+    link: "https://github.com/Ale-1508",
     large: false,
     alt: ""
   },
