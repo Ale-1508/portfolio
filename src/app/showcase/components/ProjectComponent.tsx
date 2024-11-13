@@ -3,10 +3,10 @@ import Balancer from "react-wrap-balancer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-import { Project, getStackIcon, getStackIconSVG } from "../data/projects"
-
+import { Project, getStackIconSVG } from "../data/projects"
 
 const cardClassNames = `
+  cursor-pointer
   flex flex-col xl:flex-row
   items-center justify-center
   gap-8 w-full 
@@ -78,8 +78,6 @@ interface IconComponentPropsSVG extends BaseIconComponentProps { icon: string | 
 
 const picturesRoot = "/images/projects"
 const iconsRoot = "/images/icons"
-
-// add color to icons and instead of icons use png brand images edit also project.ts
 
 const IconComponent = ( { icon, label }: IconComponentProps ) => { 
   if (!icon) return null; 
@@ -163,9 +161,9 @@ const ProjectComponent = ( { project }: ProjectComponentProps ) => {
   return (
     <div className={cardClassNames}>
       <TextSection project={project}/>
-      <ImageSection project={project}/>
     </div>
   )
 }
+//<ImageSection project={project}/>
 
 export default ProjectComponent;

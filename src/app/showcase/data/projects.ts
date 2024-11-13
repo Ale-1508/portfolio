@@ -43,18 +43,23 @@ export const projectList: Project[] = [
   },
   {
     id: 2,
-    title: "ye",
-    description: "",
+    title: "ToDo App",
+    description: `
+      An elegant and intuitive ToDo application
+      crafted entirely with Flutter.
+    `,
     keyFeatures: [
-      "ye1", 
-      "ye2",
+      "Add to Do", 
+      "Define Task Priority",
+      "Specify Task Expiry Date",
+      "Complete Tasks"
     ],
     techStack: [
       "flutter"
     ],
     img: {
-      src: "",
-      alt: ""
+      src: "flutter-to-do.png",
+      alt: "",
     }
   },
 ]

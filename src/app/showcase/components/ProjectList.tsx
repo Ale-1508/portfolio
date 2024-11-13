@@ -4,7 +4,7 @@ import ProjectComponent from "./ProjectComponent";
 
 const ProjectList = () => {
   return (
-    <div className='flex flex-col gap-8'>
+    <div className='grid grid-cols-1 xl:grid-cols-2 gap-8'>
       { projectList.map( ( project ) => (<ProjectComponent key={project.id} project={project}/>)) }
     </div>
   )
