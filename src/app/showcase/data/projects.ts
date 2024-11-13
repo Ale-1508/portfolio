@@ -93,7 +93,7 @@ export const getStackIconSVG = ( iconName: string ): string | undefined => {
     case "python":
       return "python.svg";
     case "sqlite":
-      return "sqlite.png";
+      return "sqlite.svg";
       
     default:
       return undefined;

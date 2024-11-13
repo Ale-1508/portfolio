@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { Project, getStackIconSVG } from "../data/projects"
+import classNames from 'classnames';
 
 const cardClassNames = `
   cursor-pointer
@@ -101,7 +102,7 @@ const IconComponentSVG = ( { icon, label }: IconComponentPropsSVG ) => {
   return ( 
     <div className="relative flex items-center justify-center font-sans"> 
       <div className="group"> 
-        <div className={"w-8 h-8 relative"}>
+        <div className={classNames(" h-8 relative", label==="sqlite" ? "w-16" : "w-8")}>
           <Image src={`${iconsRoot}/${icon}`} alt={label} fill style={{ objectFit: 'contain' }} />
         </div> 
         <span className="absolute bottom-full left-1/2 
