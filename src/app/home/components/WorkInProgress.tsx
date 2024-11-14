@@ -1,136 +1,119 @@
+"use client";
+
 import Balancer from 'react-wrap-balancer'
-
-const projects = [
-  {
-    id:1,
-    title:"Discord Manager",
-    description:"An app built entirely in python to manage a premium discord group",
-    photo:"",
-    span: 2
-  },
-  {
-    id:2,
-    title:"Project2",
-    description:"",
-    photo:"",
-    span: 1
-  },
-  {
-    id:3,
-    title:"Project3",
-    description:"",
-    photo:"",
-    span: 2
-  },
-  {
-    id:4,
-    title:"Project4",
-    description:"",
-    photo:"",
-    span: 1
-  },
-]
-
-interface ProjectCardProps {
-  id: number
-  title : string
-  description ?: string
-  photo ?: string
-  span: number
-}
+import { projects, Project } from "../data/projects"
+import { useEffect, useState } from 'react'
 
 const TitleSection = () => {
   return(
     <h1 className="
       w-full text-7xl text-center
-      leading-tight
-      font-semibold font-sans
+      font-semibold
       flex flex-row justify-center
       text-primary-600
-      selection:bg-primary-500 selection:text-primary-50"
-    >
+    ">
       Work In Progress:
     </h1>
   )
 }
 
 const DescriptionSection = () => {
-  let projectNumber: number = 3
+  let projectNumber: number = projects.length
 
   return(
-    <h1 className="text-md md:text-lg leading-8 
-        flex flex-row justify-center
-        text-center items-center
-        font-semibold font-sans
-        selection:bg-primary-500
-        text-gray-700
-        selection:text-primary-50">
-      I'm currently working on
-      <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold">{projectNumber}</span>
-      {projectNumber>1 ? "projects" : "project"} from start to finish!
-    </h1>
+    <div className='
+      flex flex-col group gap-4
+      justify-center items-center 
+      text-gray-700 select-none
+    '>
+      <h1 className={`text-md md:text-lg
+          text-center font-semibold
+        `}>
+        I'm currently working on
+        <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold leading-tight">{projectNumber}</span>
+        {projectNumber>1 ? "projects" : "project"} from start to finish!
+      </h1>
+      <p className="text-md font-semibold
+        opacity-0 group-hover:opacity-100 
+        transition-opacity duration-500 ease-in-out"
+      >
+        These are the projects to which I'm currently dedicating my efforts.
+      </p>
+    </div>
   )
 }
 
-const ProjectCard = ( { project } : { project:ProjectCardProps } ) => {
+//md:basis-1/2 lg:basis-2/3
+const ProjectCard = ( { project } : { project:Project } ) => {
   return(
     <li 
       key={project.id}
       className={`
+        m-2 py-8 px-16 
+        "bg-accents-ivory hover:bg-sageGreen-200 text-white
+        hover:shadow-lg bg-opacity-25 hover:bg-opacity-25
         flex flex-row gap-4 p-8
-        rounded-2xl cursor-pointer
+        rounded-5xl cursor-pointer
         bg-primary-50
-        row-span-${ project.span.toString() }`
-      }>
-      <div className="flex flex-col gap-4 
-          md:basis-1/2 lg:basis-2/3">
+      `}>
+      <div className="flex flex-col gap-4"> 
         <h1 className="
           w-full text-2xl text-ellipsis
           leading-tight
-          font-semibold font-sans
+          font-semibold
           flex flex-row justify-start
           text-primary-600
-          selection:bg-primary-500 selection:text-primary-50"
-        >
+        ">
           {project.title}
         </h1>
         <h1 className="text-lg leading-8 
           flex flex-row justify-start
           text-left items-center
-          font-medium font-sans
-          selection:bg-primary-500
-          text-gray-700
-          selection:text-primary-50">
+          font-medium
+          text-gray-700">
             <Balancer>
               {project.description}
             </Balancer>
         </h1>  
       </div>
-      <div className="md:basis-1/2 lg:basis-1/3">
-        hello
-      </div>
     </li>
   );
 }
 
-const ProjectSection = () => {
+const ProjectSection = ( {isVisible} : {isVisible:boolean} ) => {
   return(
-    <ul className="list-none grid gap-4
+    <ul className={`list-none grid gap-4
       xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
-      sm:grid-cols-1 lg:grid-cols-2">
+      grid-cols-1 xl:grid-cols-2
+      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
        { projects.map(
-        (project) => <ProjectCard key={project.id} project={project}/>
+        (project, index) => (
+          index < 4 
+          ? <ProjectCard key={project.id} project={project}/>
+          : null
+        )
       ) }
     </ul>
   );
 }
 
 export default function WorkInProgress() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect( () => {
+    setIsVisible(true);
+  }, [])
+  
   return(
-    <div className="flex flex-col gap-8">
+    <div className={`
+      flex flex-col gap-8 font-sans leading-tight
+      selection:bg-primary-500 selection:text-primary-50
+      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+    `}>
       <TitleSection />
       <DescriptionSection />
-      <ProjectSection />
+      <ProjectSection isVisible={isVisible} />
     </div>
   );
 }
