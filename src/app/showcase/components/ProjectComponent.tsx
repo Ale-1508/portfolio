@@ -6,8 +6,8 @@ import { faImage, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Project, getStackIconSVG } from "../data/projects"
 import classNames from 'classnames';
 
+// cursor-pointer
 const cardClassNames = `
-  cursor-pointer
   flex flex-col xl:flex-row
   items-center justify-center
   gap-8 w-full 
