@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react"
+import { workExperiences } from "@/app/experience/data/experiences";
+import Link from "next/link";
 
 const experiences = [
   {
@@ -21,9 +23,9 @@ const experiences = [
   },
 ];
 
-const getDateDifference = (from: number, to: number | undefined, onGoing: boolean): number => {
+const getDateDifference = (from: number, to: number | undefined): number => {
   const currentYear = new Date().getFullYear();
-  if (onGoing) {
+  if (!to) {
     return Math.min(currentYear - from, 4);
   } else if (to !== undefined) {
     const diff = to - from;
@@ -41,6 +43,7 @@ const TimeLine = () => {
     width: 0,
     height: 0
   });
+  const today = new Date();
 
   const handleResize = () => {
     setWindowSize({
@@ -66,20 +69,24 @@ const TimeLine = () => {
   useEffect( () => {
     setIsVisible(true);
   }, [])
-  
+
   return (
     <div className={`grid grid-cols-1 ml:grid-cols-4 gap-y-4
       transition-transform duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
-      {experiences.map((experience) => {
-        const dateDifference = getDateDifference(experience.from, experience.to, experience.onGoing);
+      {workExperiences.map((experience) => {
+        const dateDifference = getDateDifference(
+          experience.period.start.getFullYear(), 
+          experience.period.end?.getFullYear() 
+        );
         const containerStyle = windowSize.width >= 896
-          ? {gridColumn: `${getLastDigit(experience.from) + 1} / span ${dateDifference}`}
+          ? {gridColumn: `${getLastDigit(experience.period.start.getFullYear()) + 1} / span ${dateDifference}`}
           : {}
 
         return (
-          <div
+          <Link
             key={experience.id}
+            href={`/experience?${experience.company}`}
             style={containerStyle}
             className="
               timeline-media 
@@ -97,8 +104,8 @@ const TimeLine = () => {
                 text-md lg:text-lg
               '>{experience.role}</h3>
             </div>
-            <h1 className='text-3xl font-semibold'>{dateDifference}{ experience.onGoing ? "+" : ""}</h1>
-          </div>
+            <h1 className='text-3xl font-semibold'>{dateDifference}{ !experience.period.end ? "+" : ""}</h1>
+          </Link>
         );
       })}
     </div>
