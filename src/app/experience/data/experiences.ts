@@ -1,6 +1,6 @@
 export interface WorkExperiences {
   id: number
-  title: string
+  company: string
   role: string
   description: string
   period: { 
@@ -13,7 +13,7 @@ export interface WorkExperiences {
 export const workExperiences: WorkExperiences[] = [
   {
     id: 1,
-    title: "Freelancer",
+    company: "Freelancer",
     role: "Software Developer",
     description: `
     With a rich experience in developing over 22 projects, 
@@ -29,7 +29,7 @@ export const workExperiences: WorkExperiences[] = [
   }, 
   {
     id: 2,
-    title: "Idea Grip",
+    company: "Idea Grip",
     role: "Technical Support Specialist",
     description: `
     The company specializes in providing comprehensive 
@@ -41,7 +41,7 @@ export const workExperiences: WorkExperiences[] = [
     ensuring a smooth and efficient user experience.
     `,
     period: { 
-      start:new Date(2020, 8, 1)
+      start:new Date(2023, 6, 1)
     },
     achievements: [""]
   }, 
