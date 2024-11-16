@@ -2,8 +2,8 @@
 
 import Layout from "../_core/components/Layout";
 
+import { Header } from "@/components/Header";
 import { useEffect, useState } from "react"
-import { Header } from "./components/Header";
 import ProjectList from "./components/ProjectList";
 
 export default function ShowcaseScreen() {
