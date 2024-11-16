@@ -86,7 +86,7 @@ const TimeLine = () => {
         return (
           <Link
             key={experience.id}
-            href={`/experience?${experience.company}`}
+            href={`/experience?id=${experience.company}`}
             style={containerStyle}
             className="
               timeline-media 
