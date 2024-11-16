@@ -13,8 +13,8 @@ const cardClassNames = `
   gap-8 w-full 
   m-2 py-8 px-8 md:px-16
   rounded-4xl
-  bg-accents-ivory hover:bg-sageGreen-200 bg-opacity-25
-  hover:shadow-lg hover:bg-opacity-25
+  bg-accents-ivory bg-opacity-25
+  hover:bg-sageGreen-200 hover:shadow-lg hover:bg-opacity-25
   leading-tight
 `;
 
