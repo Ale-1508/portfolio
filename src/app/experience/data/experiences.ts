@@ -44,7 +44,7 @@ export const workExperiences: WorkExperiences[] = [
     The company specializes in providing comprehensive 
     ERP software solutions for road haulages, 
     tailored for both Italian and international small to medium enterprises (PMI). 
-    In my role, I manage the entire customer lifecycle—from seamless 
+    In my role, I manage the entire customer lifecycle from seamless 
     software installation and API integration to end-to-end training. 
     I ensure that any technical challenges are swiftly resolved, 
     ensuring a smooth and efficient user experience.
