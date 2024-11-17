@@ -27,7 +27,7 @@ export default function ShowcaseScreen() {
         `}>
         <Header title="My Experience" isVisible={isVisible}></Header>
         {workExperienceID
-          ? <ExperienceDetails />
+          ? <ExperienceDetails id={workExperienceID}/>
           : <ExperienceList />
         }
       </div>
