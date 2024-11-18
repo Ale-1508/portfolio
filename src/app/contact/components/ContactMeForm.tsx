@@ -104,7 +104,6 @@ const FormComponent = ( ) => {
       isValid = false;
     }
     
-    console.log(formData.email.valid)
     if(!formData.email.valid) {
       setFormData(prevState => ({ ...prevState, email: {...prevState.email, error: "Valid Format: yourmail@example.it"}, })); 
       isValid = false;
