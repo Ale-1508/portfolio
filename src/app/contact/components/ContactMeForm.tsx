@@ -117,11 +117,32 @@ const FormComponent = ( ) => {
     return isValid;
   }
 
-  const formSubmit = (e: React.SyntheticEvent) => { 
+  const formSubmit = async (e: React.SyntheticEvent) => { 
     e.preventDefault(); 
     
     if(validateForm()){
-      setFormData(initialFormData); 
+      try { 
+        const response = await fetch('/api/v1/users-messages', { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json', }, 
+          body: JSON.stringify({ 
+            fullName: formData.fullName.value, 
+            email: formData.email.value, 
+            phoneNumber: formData.phoneNumber.value, 
+            message: formData.message.value, 
+          }), 
+        }); 
+        
+        if (!response.ok) { 
+          throw new Error('Failed to send message'); 
+        } 
+        
+        const data = await response.json(); 
+        console.log('Message sent:', data); 
+        setFormData(initialFormData);
+      } catch (error) { 
+        console.error('Error:', error); 
+      }
     }
   };
     
