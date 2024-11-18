@@ -4,7 +4,7 @@ import classNames from "classnames"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { copyToClipboard } from "@/logic/common/browserUtils"
+import { copyToClipboard } from "@/logic/_core/common/browserUtils"
 import { useEffect, useState } from "react";
 
 const contacts = {
