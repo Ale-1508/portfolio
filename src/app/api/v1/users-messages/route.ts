@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/logic/db';
-import UserMessage from '@/models/usersMessages';
+import UserMessage from '@/data/models/contactMessage';
+import ContactMessage from '@/data/models/contactMessage';
 
 export async function POST(request: NextRequest) {
   await dbConnect();
@@ -12,16 +13,16 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const newUser = new UserMessage({
+    const newMessage = new ContactMessage({
       fullName,
       email,
       phoneNumber,
       message,
     });
 
-    await newUser.save();
+    await newMessage.save();
 
-    return NextResponse.json(newUser, { status: 201 });
+    return NextResponse.json(newMessage, { status: 201 });
   } catch (error) {
     console.log(error)
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
