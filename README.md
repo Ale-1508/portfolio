@@ -41,3 +41,18 @@ Primary: #acd8dc
 Secondary: #27211e
 Tertiary: #27211e
 Details: #e6cda5
+
+# Packages
+
+### Mongose 
+
+For MongoDB connection;
+
+```
+npm install mongoose
+```
+
+Types:
+```
+npm install @types/node @types/mongoose
+```
