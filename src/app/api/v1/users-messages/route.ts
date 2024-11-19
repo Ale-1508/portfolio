@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/logic/db';
-import UserMessage from '@/data/models/contactMessage';
 import ContactMessage from '@/data/models/contactMessage';
 
 export async function POST(request: NextRequest) {
