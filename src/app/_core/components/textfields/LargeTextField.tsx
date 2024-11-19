@@ -23,11 +23,6 @@ export const LargeTextField = ( { name, value="", hint="", minLenght=20, require
 
   const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
   
-  const handleFocus = (e: ChangeEvent<HTMLTextAreaElement>) => {}
-  
-  const handleBlur = (e: ChangeEvent<HTMLTextAreaElement>) => {}
-
-  
   return (
     <div className="
       flex flex-col gap-2
@@ -44,8 +39,6 @@ export const LargeTextField = ( { name, value="", hint="", minLenght=20, require
           value={value}
           placeholder={hint}
           onChange={handleChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
           required={required}
           className="
             py-2 w-full h-full
