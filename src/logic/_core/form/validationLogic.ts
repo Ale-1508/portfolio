@@ -22,3 +22,7 @@ export function validateMobileNumber( mobileNumber: string ):boolean {
 
   return isValid;
 }
+
+export function validateMessage( message: string ):boolean {
+  return message.length>=20 ? true : false;
+}

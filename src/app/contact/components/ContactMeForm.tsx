@@ -8,7 +8,8 @@ import { SmallTextfield } from "@/textfields/SmallTextfield";
 import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
 import PrimaryButton from "@/buttons/PrimaryButton"
-import { validateEmail, validateTextField, validateMobileNumber } from "@/formLogic/validationLogic"
+import { validateEmail, validateTextField, validateMobileNumber, validateMessage } from "@/formLogic/validationLogic"
+import Modal from "@/app/_core/components/alerts/Modal";
 
 type formField = {
   value: string, 
@@ -85,6 +86,7 @@ const initialFormData = {
 
 const FormComponent = ( ) => {
   const [ formData, setFormData ] = useState<formData>(initialFormData)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cardClassNames = classNames(
     "flex flex-col",
@@ -113,6 +115,12 @@ const FormComponent = ( ) => {
       setFormData(prevState => ({ ...prevState, phoneNumber: {...prevState.phoneNumber, error: "Valid Format: +XX XXXXXXXXXX"}, })); 
       isValid = false;
     }
+
+    if(!formData.message.valid) {
+      setFormData(prevState => ({ ...prevState, message: {...prevState.message, error: "Your Message should be at least 20 characters long"}, })); 
+      isValid = false;
+    }
+
     return isValid;
   }
 
@@ -139,6 +147,7 @@ const FormComponent = ( ) => {
         const data = await response.json(); 
         console.log('Message sent:', data); 
         setFormData(initialFormData);
+        setIsModalOpen(true);
       } catch (error) { 
         console.error('Error:', error); 
       }
@@ -161,6 +170,10 @@ const FormComponent = ( ) => {
       case "phoneNumber":
         validInput = validateMobileNumber(value);
         break;
+      
+        case "message":
+        validInput = validateMessage(value);
+        break;
     
       default:
         break;
@@ -168,27 +181,32 @@ const FormComponent = ( ) => {
     setFormData(prevState => ({ ...prevState, [name]: {...[name], value: value, valid: validInput}, })); 
   };
 
+  const closeModal = () => setIsModalOpen(false)
+
   return (
-    <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
-      { formFields.map((field) => (
-        <div className={fieldClassNames} key={field.key}>
-          <SmallLabel value={field.label}/>
-          <SmallTextfield 
-            value={formData[field.key].value} 
-            isValid={formData[field.key].valid} 
-            data={field} 
-            handleChange={handleChange} 
-            error={formData[field.key].error}/>
+    <div>
+      <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
+        { formFields.map((field) => (
+          <div className={fieldClassNames} key={field.key}>
+            <SmallLabel value={field.label}/>
+            <SmallTextfield 
+              value={formData[field.key].value} 
+              isValid={formData[field.key].valid} 
+              data={field} 
+              handleChange={handleChange} 
+              error={formData[field.key].error}/>
+          </div>
+        ))}
+        <div className={fieldClassNames}>
+          <SmallLabel value="Your Message"/>
+          <LargeTextField value={formData.message.value} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
         </div>
-      ))}
-      <div className={fieldClassNames}>
-        <SmallLabel value="Your Message"/>
-        <LargeTextField value={formData.message.value} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
-      </div>
-      <div className="flex justify-center">
-        <PrimaryButton text="Submit"/>
-      </div>
-    </form>
+        <div className="flex justify-center">
+          <PrimaryButton text="Submit"/>
+        </div>
+      </form>
+      <Modal isOpen={isModalOpen} onClose={closeModal}> <p>Process done!</p> </Modal>
+    </div>
   )
 }
 
