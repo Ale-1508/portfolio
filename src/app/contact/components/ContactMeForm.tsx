@@ -205,7 +205,7 @@ const FormComponent = ( ) => {
           <PrimaryButton text="Submit"/>
         </div>
       </form>
-      <Modal isOpen={isModalOpen} onClose={closeModal}> <p>Process done!</p> </Modal>
+      <Modal title="Test" isOpen={isModalOpen} onOk={()=>{}} onClose={closeModal}> <p>Process done!</p> </Modal>
     </div>
   )
 }
