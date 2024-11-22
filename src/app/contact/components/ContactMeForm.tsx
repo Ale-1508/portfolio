@@ -127,6 +127,8 @@ const FormComponent = ( ) => {
   const formSubmit = async (e: React.SyntheticEvent) => { 
     e.preventDefault(); 
     
+    setIsModalOpen(true);
+    return;
     if(validateForm()){
       try { 
         const response = await fetch('/api/v1/users-messages', { 

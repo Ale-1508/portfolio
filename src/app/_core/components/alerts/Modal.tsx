@@ -1,7 +1,6 @@
 "use client";
 
 import React, { ReactNode, useRef, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 
 interface ModalProps {
     title: string;
@@ -12,18 +11,27 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }: ModalProps) => {
-    const searchParams = useSearchParams()
     const dialogRef = useRef<null | HTMLDialogElement>(null)
-    const showDialog = searchParams.get('showDialog')
 
     useEffect(() => {
-        console.log("ye");
-        console.log(isOpen);
+        console.log("open")
         if(isOpen){
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
         }
+    }, [isOpen]);
+    
+    useEffect(() => {
+        // bug -> I need to use add event listener only if dialog is visible
+        console.log("close")
+        if(!isOpen){
+            document.addEventListener('click', () => { closeDialog() });
+        }
+
+        return( () => {
+            document.removeEventListener('click', () => {} );
+        } )
     }, [isOpen]);
 
     const closeDialog = () => {
@@ -38,7 +46,10 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }:
 
     const dialog: JSX.Element | null = isOpen
         ? (
-            <dialog ref={dialogRef}>
+            <dialog ref={dialogRef} className={`
+                w-64 p-16
+                rounded-4xl
+            `}>
                 <div>
                     <div>
                         <h1>{title}</h1>
