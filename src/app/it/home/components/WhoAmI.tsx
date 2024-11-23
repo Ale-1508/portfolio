@@ -44,7 +44,7 @@ const DescriptionSection = () => {
         flex flex-row justify-center
       ">
         Mi piace trasformare le idee in impeccabili User Experience seguendo<br/> 
-        l'intero processo di sviluppo dalla progettazione alla realizzazione.
+        {"l'intero processo di sviluppo dalla progettazione alla realizzazione."}
       </h1>
       <p className="text-md w-fit
         opacity-0 group-hover:opacity-100 

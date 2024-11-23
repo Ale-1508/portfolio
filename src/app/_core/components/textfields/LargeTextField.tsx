@@ -1,7 +1,7 @@
 "use client"
 
 import classNames from "classnames";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 
 interface LargeTextfieldProps {
   name: string,
@@ -20,8 +20,6 @@ export const LargeTextField = ( { name, value="", hint="", minLenght=20, require
     "w-full flex justify-end items-end  -ml-1",
     "font-medium text-sm"
   )
-
-  const capitalizeFirstLetter = (string: string) => { return string.charAt(0).toUpperCase() + string.slice(1); };
   
   return (
     <div className="

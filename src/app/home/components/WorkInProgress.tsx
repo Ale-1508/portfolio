@@ -18,7 +18,7 @@ const TitleSection = () => {
 }
 
 const DescriptionSection = () => {
-  let projectNumber: number = projects.length
+  const projectNumber: number = projects.length
 
   return(
     <div className='
@@ -29,7 +29,7 @@ const DescriptionSection = () => {
       <h1 className={`text-md md:text-lg
           text-center font-semibold
         `}>
-        I'm currently working on
+        {"I'm currently working on"}
         <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold leading-tight">{projectNumber}</span>
         {projectNumber>1 ? "projects" : "project"} from start to finish!
       </h1>
@@ -37,7 +37,7 @@ const DescriptionSection = () => {
         opacity-0 group-hover:opacity-100 
         transition-opacity duration-500 ease-in-out"
       >
-        These are the projects to which I'm currently dedicating my efforts.
+        {"These are the projects to which I'm currently dedicating my efforts."}
       </p>
     </div>
   )

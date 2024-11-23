@@ -14,7 +14,7 @@ const Title = ( {isVisible} : {isVisible:boolean}) => {
         text-primary-600
         transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
-      I'm Alessandro
+      {"I'm Alessandro"}
     </h1>
   )
 }
@@ -41,8 +41,8 @@ const Description = () => {
         text-primary-600
       '>
         <Balancer className="w-full flex">
-          Hi there! I'm a passionate <span className='font-semibold'>Full-Stack</span> Developer with over <span className='font-semibold'>4</span> years of experience crafting elegant software solutions. <br /><br />
-          My expertise spans <span className='font-semibold'>Web</span>, <span className='font-semibold'>Desktop</span> and <span className='font-semibold'>Mobile</span> app development, where I bring innovative ideas to life. Let's connect and build something extraordinary together!
+          {"Hi there! I'm a passionate"} <span className='font-semibold'>Full-Stack</span> Developer with over <span className='font-semibold'>4</span> years of experience crafting elegant software solutions. <br /><br />
+          My expertise spans <span className='font-semibold'>Web</span>, <span className='font-semibold'>Desktop</span> and <span className='font-semibold'>Mobile</span> {"app development, where I bring innovative ideas to life. Let's connect and build something extraordinary together!"}
         </Balancer>
       </p>
     </div>

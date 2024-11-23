@@ -1,6 +1,3 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import Layout from "../_core/components/Layout";
 
 import AboutMe from "./components/AboutMe";
@@ -10,12 +7,6 @@ import MoreAboutMe from "./components/MoreAboutMe";
 import PictureGallery from "./components/PictureGallery";
 
 export default function AboutScreen() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-  
   return (
     <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-24 mb-16">
       <AboutMe />

@@ -17,7 +17,7 @@ declare global {
   var mongoose: MongooseCache;
 }
 
-let cached: MongooseCache = global.mongoose || (global.mongoose = { conn: null, promise: null });
+const cached: MongooseCache = global.mongoose || (global.mongoose = { conn: null, promise: null });
 
 async function dbConnect(): Promise<Mongoose> {
   if (cached.conn) {

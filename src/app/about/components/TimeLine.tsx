@@ -4,25 +4,6 @@ import { useEffect, useState } from "react"
 import { workExperiences } from "@/app/experience/data/experiences";
 import Link from "next/link";
 
-const experiences = [
-  {
-    id: 1,
-    role: 'Software Developer',
-    company: 'Freelancer',
-    from: 2020,
-    to: undefined,
-    onGoing: true
-  },
-  {
-    id: 2,
-    role: 'Technical Support Specialist',
-    company: 'IG3 SRL',
-    from: 2023,
-    to: undefined,
-    onGoing: true
-  },
-];
-
 const getDateDifference = (from: number, to: number | undefined): number => {
   const currentYear = new Date().getFullYear();
   if (!to) {
@@ -43,7 +24,6 @@ const TimeLine = () => {
     width: 0,
     height: 0
   });
-  const today = new Date();
 
   const handleResize = () => {
     setWindowSize({

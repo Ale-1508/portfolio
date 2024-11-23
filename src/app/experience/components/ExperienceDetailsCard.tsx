@@ -39,7 +39,7 @@ const ExperienceDetailsCard = ( {experience}: ExperienceDetailsProps ) => {
       <ul className="list-disc flex flex-col gap-2 mx-4">
         {
           experience.achievements.map( (achievement: string) => (
-            <li><Balancer>{achievement}</Balancer></li>
+            <li key={achievement}><Balancer>{achievement}</Balancer></li>
           ))
         }
       </ul>

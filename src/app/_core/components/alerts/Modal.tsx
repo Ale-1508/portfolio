@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useRef, useEffect } from 'react';
+import React, { ReactNode, useRef, useEffect, useCallback } from 'react';
 import { PrimaryButton } from '@/buttons/PrimaryButton';
 
 interface ModalProps {
@@ -11,24 +11,13 @@ interface ModalProps {
     isOpen: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ onClose, onOk, children, isOpen }: ModalProps) => {
     const dialogRef = useRef<null | HTMLDialogElement>(null)
 
-    useEffect(() => {
-        console.log("open")
-        if(isOpen){
-            dialogRef.current?.showModal();
-            document.addEventListener('click', () => { closeDialog() });
-        } else {
-            dialogRef.current?.close();
-            document.removeEventListener('click', () => {} );
-        }
-    }, [isOpen]);
-
-    const closeDialog = () => {
+    const closeDialog = useCallback(() => {
         dialogRef.current?.close();
         onClose();
-    }
+    }, [onClose]);
 
     const clickOk = () => {
         onOk();
@@ -51,6 +40,17 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }:
                 />
             </dialog>
         ) : null
+
+    useEffect(() => {
+        console.log("open")
+        if(isOpen){
+            dialogRef.current?.showModal();
+            document.addEventListener('click', () => { closeDialog() });
+        } else {
+            dialogRef.current?.close();
+            document.removeEventListener('click', () => {} );
+        }
+    }, [isOpen, closeDialog]);
 
     return dialog;
 };

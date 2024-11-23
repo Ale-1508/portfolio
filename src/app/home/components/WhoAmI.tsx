@@ -19,7 +19,7 @@ const TitleSection = () => {
       selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
-      Hi. I'm Alessandro.<br />A Full-Stack Developer.
+      {"Hi. I'm Alessandro."}<br />A Full-Stack Developer.
     </h1>
   )
 }
@@ -42,7 +42,7 @@ const DescriptionSection = () => {
     `}>
       <h1 className="leading-tight text-lg
         flex flex-row justify-center">
-        I love transforming ideas into seamless user experiences.<br/> let's build something amazing together!
+        I love transforming ideas into seamless user experiences.<br/> {"let's build something amazing together!"}
       </h1>
       <p className="text-md w-fit
         opacity-0 group-hover:opacity-100 
