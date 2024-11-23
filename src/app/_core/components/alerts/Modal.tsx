@@ -17,21 +17,11 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }:
         console.log("open")
         if(isOpen){
             dialogRef.current?.showModal();
+            document.addEventListener('click', () => { closeDialog() });
         } else {
             dialogRef.current?.close();
-        }
-    }, [isOpen]);
-    
-    useEffect(() => {
-        // bug -> I need to use add event listener only if dialog is visible
-        console.log("close")
-        if(!isOpen){
-            document.addEventListener('click', () => { closeDialog() });
-        }
-
-        return( () => {
             document.removeEventListener('click', () => {} );
-        } )
+        }
     }, [isOpen]);
 
     const closeDialog = () => {
