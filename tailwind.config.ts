@@ -65,6 +65,7 @@ const config: Config = {
         accents: {
           ivory: "#fffff0",
           dunno: "#e6cda5",
+          lightGreen: "#effbda",
         },
         gray: {
           900: "#202225",

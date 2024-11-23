@@ -7,9 +7,10 @@ import { faEnvelope, faUser, faMobile, IconDefinition } from '@fortawesome/free-
 import { SmallTextfield } from "@/textfields/SmallTextfield";
 import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
-import PrimaryButton from "@/buttons/PrimaryButton"
+import { PrimaryFormButton } from "@/buttons/PrimaryButton"
 import { validateEmail, validateTextField, validateMobileNumber, validateMessage } from "@/formLogic/validationLogic"
 import Modal from "@/app/_core/components/alerts/Modal";
+import Balancer from "react-wrap-balancer";
 
 type formField = {
   value: string, 
@@ -86,7 +87,10 @@ const initialFormData = {
 
 const FormComponent = ( ) => {
   const [ formData, setFormData ] = useState<formData>(initialFormData)
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, setModal] = useState({
+    isOpen: false,
+    description: ""
+  })
 
   const cardClassNames = classNames(
     "flex flex-col",
@@ -126,10 +130,10 @@ const FormComponent = ( ) => {
 
   const formSubmit = async (e: React.SyntheticEvent) => { 
     e.preventDefault(); 
-    
-    setIsModalOpen(true);
-    return;
+
     if(validateForm()){
+      let output: string = "";
+
       try { 
         const response = await fetch('/api/v1/users-messages', { 
           method: 'POST', 
@@ -149,11 +153,18 @@ const FormComponent = ( ) => {
         const data = await response.json(); 
         console.log('Message sent:', data); 
         setFormData(initialFormData);
-        setIsModalOpen(true);
+        output = "Thank you! Your message has been successfully sent.";
       } catch (error) { 
+        output = "Oops! An error occurred. Please try again.";
         console.error('Error:', error); 
       }
-    }
+
+      setModal( prevState => ({
+        ...prevState,
+        description: output,
+        isOpen: true
+      }));
+    } 
   };
     
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => { 
@@ -183,7 +194,10 @@ const FormComponent = ( ) => {
     setFormData(prevState => ({ ...prevState, [name]: {...[name], value: value, valid: validInput}, })); 
   };
 
-  const closeModal = () => setIsModalOpen(false)
+  const closeModal = () => setModal( prevState => ({
+    ...prevState,
+    isOpen: false
+  }));
 
   return (
     <div>
@@ -204,10 +218,12 @@ const FormComponent = ( ) => {
           <LargeTextField value={formData.message.value} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
         </div>
         <div className="flex justify-center">
-          <PrimaryButton text="Submit"/>
+          <PrimaryFormButton text="Submit"/>
         </div>
       </form>
-      <Modal title="Test" isOpen={isModalOpen} onOk={()=>{}} onClose={closeModal}> <p>Process done!</p> </Modal>
+      <Modal title="OutputMessage" isOpen={modal.isOpen} onOk={()=>{}} onClose={closeModal}> 
+        <p className={`text-xl`}><Balancer>{modal.description}</Balancer></p> 
+      </Modal>
     </div>
   )
 }

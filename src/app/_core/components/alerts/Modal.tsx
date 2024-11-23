@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ReactNode, useRef, useEffect } from 'react';
+import { PrimaryButton } from '@/buttons/PrimaryButton';
 
 interface ModalProps {
     title: string;
@@ -37,26 +38,17 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onOk, children, isOpen }:
     const dialog: JSX.Element | null = isOpen
         ? (
             <dialog ref={dialogRef} className={`
-                w-64 p-16
+                w-96 px-16 py-8
+                justify-between items-center
+                flex flex-col gap-8
                 rounded-4xl
+                bg-white
             `}>
-                <div>
-                    <div>
-                        <h1>{title}</h1>
-                        <button
-                            onClick={closeDialog}
-                        >X</button>
-                    </div>
-                    <div>
-                        {children}
-                        <div>
-                            <button 
-                                onClick={clickOk}
-                            >
-                                Ok
-                            </button></div>
-                    </div>
-                </div>
+                {children}
+                <PrimaryButton
+                    text="OK"
+                    onClick={clickOk}
+                />
             </dialog>
         ) : null
 
