@@ -90,7 +90,7 @@ const Card = ({ card }: CardProps ) => {
           { 'w-full': card.large },
           { 'justify-center': !card.large },
         )}>
-          <h1 className="text-4xl sm:text-5xl font-medium text-primary-500">{card.title}</h1>
+          <h1 className="text-3xl sm:text-5xl font-semibold sm:font-medium text-primary-500">{card.title}</h1>
           {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
           <Balancer className="text-base font-normal text-primary-800">
             {card.description}
@@ -99,8 +99,8 @@ const Card = ({ card }: CardProps ) => {
         {card.img !== "" &&
         <Image
           className={classNames(
-            "rounded-3xl ",
-            { 'hidden md:hidden ml:inline': card.large },
+            "rounded-3xl mt-2",
+            { 'hidden md:hidden ml:inline mt-0': card.large },
           )}
           src={`/images/${card.img}`}
           width={224}
