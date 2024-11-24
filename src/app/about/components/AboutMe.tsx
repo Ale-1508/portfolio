@@ -52,8 +52,11 @@ const Description = () => {
 const PicureOfMe = () => {
   return (
     <Image
-      className="rounded-t-10xl rounded-b-2xl shadow-2xl"
-      src={`/images/me-full.jpg`}
+      className={`
+        rounded-t-10xl rounded-b-4xl shadow-2xl
+        select-none
+      `}
+      src={`/images/me.jpg`}
       width={224}
       height={224}
       alt="A picture of Me"
