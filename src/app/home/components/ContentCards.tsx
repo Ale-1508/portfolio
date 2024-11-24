@@ -73,7 +73,7 @@ interface CardProps {
 
 const Card = ({ card }: CardProps ) => {
   const cardClassNames = classNames(
-    "flex cursor-pointer m-2 py-8 px-16 gap-4",
+    "flex cursor-pointer m-2 py-8 px-8 sm:px-16 gap-4",
     "rounded-5xl justify-evenly items-center", 
     "bg-accents-ivory hover:bg-sageGreen-200 text-white",
     "hover:shadow-lg bg-opacity-25 hover:bg-opacity-25",
@@ -90,7 +90,7 @@ const Card = ({ card }: CardProps ) => {
           { 'w-full': card.large },
           { 'justify-center': !card.large },
         )}>
-          <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-medium text-primary-500">{card.title}</h1>
           {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
           <Balancer className="text-base font-normal text-primary-800">
             {card.description}
@@ -100,7 +100,7 @@ const Card = ({ card }: CardProps ) => {
         <Image
           className={classNames(
             "rounded-3xl ",
-            { 'xs:hidden md:hidden ml:inline': card.large },
+            { 'hidden md:hidden ml:inline': card.large },
           )}
           src={`/images/${card.img}`}
           width={224}
@@ -120,8 +120,8 @@ const ContentCards = () => {
   }, [])
 
   return (
-    <ul className={`grid grid-cols-3 justify-center gap-8
-                   xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
+    <ul className={`grid grid-cols-1 sm:grid-cols-3 justify-center gap-8
+                   mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
                    transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
       { cards.map(
         (card) => <Card key={card.id} card={card}/>
