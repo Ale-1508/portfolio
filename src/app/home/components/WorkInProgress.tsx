@@ -7,12 +7,13 @@ import { useEffect, useState } from 'react'
 const TitleSection = () => {
   return(
     <h1 className="
-      w-full text-7xl text-center
+      w-full text-center
+      text-3xl xs:text-4xl sm:text-5xl lg:text-7xl
       font-semibold
       flex flex-row justify-center
       text-primary-600
     ">
-      Work In Progress:
+      {`Work In Progress:`}
     </h1>
   )
 }
@@ -26,18 +27,31 @@ const DescriptionSection = () => {
       justify-center items-center 
       text-gray-700 select-none
     '>
-      <h1 className={`text-md md:text-lg
+      <h1 className={`
+          text-md md:text-lg
           text-center font-semibold
         `}>
-        {"I'm currently working on"}
-        <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold leading-tight">{projectNumber}</span>
-        {projectNumber>1 ? "projects" : "project"} from start to finish!
+        <Balancer>
+          {"I'm currently working on"}
+          <span className={`mx-1 
+            text-primary-600 
+            text-lg sm:text-xl md:text-2xl 
+            font-semibold 
+            leading-tight
+          `}>
+            {projectNumber}
+          </span>
+          {projectNumber>1 ? "projects" : "project"}
+          {` from start to finish!`}
+        </Balancer>
       </h1>
-      <p className="text-md font-semibold
+      <p className="hidden sm:block text-md font-semibold
         opacity-0 group-hover:opacity-100 
         transition-opacity duration-500 ease-in-out"
       >
-        {"These are the projects to which I'm currently dedicating my efforts."}
+        <Balancer>
+          {"These are the projects to which I'm currently dedicating most of my efforts."}
+        </Balancer>
       </p>
     </div>
   )
@@ -49,7 +63,7 @@ const ProjectCard = ( { project } : { project:Project } ) => {
     <li 
       key={project.id}
       className={`
-        m-2 py-8 px-16 
+        m-2 py-8 px-8 sm:px-16 
         "bg-accents-ivory hover:bg-sageGreen-200 text-white
         hover:shadow-lg bg-opacity-25 hover:bg-opacity-25
         flex flex-row gap-4 p-8
@@ -58,7 +72,7 @@ const ProjectCard = ( { project } : { project:Project } ) => {
       `}>
       <div className="flex flex-col gap-4"> 
         <h1 className="
-          w-full text-2xl text-ellipsis
+          w-full text-xl sm:text-2xl text-ellipsis
           leading-tight
           font-semibold
           flex flex-row justify-start
@@ -66,7 +80,8 @@ const ProjectCard = ( { project } : { project:Project } ) => {
         ">
           {project.title}
         </h1>
-        <h1 className="text-lg leading-8 
+        <h1 className="leading-8 
+          text-md sm:text-lg
           flex flex-row justify-start
           text-left items-center
           font-medium
@@ -107,7 +122,7 @@ export default function WorkInProgress() {
   
   return(
     <div className={`
-      flex flex-col gap-8 font-sans leading-tight
+      flex flex-col gap-8 font-sans leading-tight mx-8
       selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
