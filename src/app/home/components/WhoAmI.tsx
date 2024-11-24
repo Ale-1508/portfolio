@@ -12,16 +12,22 @@ const TitleSection = () => {
 
   return(
     <h1 className={`
+      flex flex-col gap-0 md:gap-2
       w-full text-center
       text-3xl xs:text-4xl sm:text-5xl lg:text-7xl
       leading-tight
       font-semibold font-sans
-      flex flex-row justify-center
+      justify-center
       text-primary-600
       selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
-      {"Hi. I'm Alessandro."}<br />A Full-Stack Developer.
+      <span>
+        {"Hi. I'm Alessandro."}
+      </span>
+      <span>
+        {`A Full-Stack Developer.`}
+      </span>
     </h1>
   )
 }
