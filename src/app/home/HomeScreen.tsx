@@ -6,7 +6,10 @@ import WorkInProgress from "./components/WorkInProgress";
 
 function HomeScreen() {
   return(
-    <Layout currentPath="Work" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-12 mb-16">
+    <Layout currentPath="Work" className={`
+      gap-12 mb-16
+      flex justify-center
+    `}>
       <WhoAmI />
       <ContentCards />
       <WorkInProgress />

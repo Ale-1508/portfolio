@@ -5,5 +5,3 @@ export default function Home() {
     <HomeScreen />
   );
 }
-
-// Need to adapt for breakpoints < xs

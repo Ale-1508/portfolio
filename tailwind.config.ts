@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const plugin = require('tailwindcss/plugin');
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type pluginsType = { addUtilities: (utilities: any, variants: string[]) => void }
 
 const config: Config = {
