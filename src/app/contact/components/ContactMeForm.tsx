@@ -89,6 +89,7 @@ const FormComponent = ( ) => {
   const [ formData, setFormData ] = useState<formData>(initialFormData)
   const [modal, setModal] = useState({
     isOpen: false,
+    isWaiting: false,
     description: ""
   })
 
@@ -134,6 +135,13 @@ const FormComponent = ( ) => {
     if(validateForm()){
       let output: string = "";
 
+      setModal( prevState => ({
+        ...prevState,
+        description: "I'm Working on it",
+        isOpen: true,
+        isWaiting: true,
+      }));
+
       try { 
         const response = await fetch('/api/v1/users-messages', { 
           method: 'POST', 
@@ -162,7 +170,8 @@ const FormComponent = ( ) => {
       setModal( prevState => ({
         ...prevState,
         description: output,
-        isOpen: true
+        isOpen: true,
+        isWaiting: false,
       }));
     } 
   };
@@ -221,8 +230,16 @@ const FormComponent = ( ) => {
           <PrimaryFormButton text="Submit"/>
         </div>
       </form>
-      <Modal title="OutputMessage" isOpen={modal.isOpen} onOk={()=>{}} onClose={closeModal}> 
-        <p className={`text-xl`}><Balancer>{modal.description}</Balancer></p> 
+      <Modal 
+        title="OutputMessage" 
+        isOpen={modal.isOpen} 
+        isWaiting={modal.isWaiting} 
+        loadingMessage="Sending your Message..."
+        onOk={()=>{}} 
+        onClose={closeModal}> 
+          <p className={`text-xl`}>
+            <Balancer>{modal.description}</Balancer>
+          </p> 
       </Modal>
     </div>
   )
