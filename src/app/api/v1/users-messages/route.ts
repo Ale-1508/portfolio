@@ -31,4 +31,3 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   return NextResponse.json({ message: 'GET method is not supported on this endpoint' }, { status: 405 });
 }
-
