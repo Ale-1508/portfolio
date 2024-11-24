@@ -96,10 +96,10 @@ const WorkPrinciples = () => {
       transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
       `}>
       <h1 className="
-        text-3xl md:text-4xl lg:text-5xl 
+        text-2xl md:text-4xl lg:text-5xl 
         font-semibold leading-tight
         text-primary-600
-      ">My Principles:</h1>
+      ">{`My Principles:`}</h1>
       <Card />
     </div>
   )

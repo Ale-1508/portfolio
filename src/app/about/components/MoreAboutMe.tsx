@@ -16,10 +16,10 @@ const MoreAboutMe = () => {
     `}>
       <h1 className="w-full xl:w-160
         flex justify-start items-start 
-        text-3xl md:text-4xl lg:text-5xl 
+        text-2xl md:text-4xl lg:text-5xl 
         font-semibold leading-tight
         text-primary-600
-      ">More About Me:</h1>
+      ">{`More About Me:`}</h1>
       <p className="
         w-full xl:w-160
         text-lg lg:text-xl 

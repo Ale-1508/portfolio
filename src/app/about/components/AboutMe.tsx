@@ -8,7 +8,7 @@ const Title = ( {isVisible} : {isVisible:boolean}) => {
   return (
     <h1 className={`
         flex flex-row w-full
-        text-6xl md:text-7xl lg:text-8xl  
+        text-4xl sm:text-5xl md:text-7xl lg:text-8xl  
         font-semibold leading-tight
         text-center justify-center
         text-primary-600
@@ -27,12 +27,12 @@ const Description = () => {
       justify-center items-center
     '>
       <h2 className='
-        text-2xl md:text-3xl lg:text-4xl 
+        text-xl md:text-2xl lg:text-4xl 
         font-semibold leading-tight
         text-primary-600
       '>
         <Balancer className="w-full flex">
-          An Italian Full-Stack Developer based in Venice.
+          {`An Italian Full-Stack Developer based in Venice.`}
         </Balancer>
       </h2>
       <p className='
@@ -79,7 +79,7 @@ useEffect( () => {
       <Title isVisible={isVisible}/>
       <div className="
         flex flex-col ml:flex-row 
-        gap-8 ml:gap-24
+        gap-16 ml:gap-24
         justify-center items-center 
       ">
         <PicureOfMe />
