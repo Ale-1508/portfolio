@@ -209,7 +209,7 @@ const FormComponent = ( ) => {
   }));
 
   return (
-    <div>
+    <div className="flex justify-center w-full">
       <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
         { formFields.map((field) => (
           <div className={fieldClassNames} key={field.key}>
