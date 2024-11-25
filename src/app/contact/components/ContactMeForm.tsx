@@ -97,7 +97,7 @@ const FormComponent = ( ) => {
     "flex flex-col",
     "w-full md:max-w-4xl",
     "items-start justify-start",
-    "m-2 py-8 px-8 md:16 gap-8",
+    "m-2 py-8 px-8 md:px-16 gap-8",
     "rounded-4xl justify-evenly items-center", 
     "bg-accents-ivory bg-opacity-25 text-white",
     "md:col-span-2",
@@ -209,7 +209,7 @@ const FormComponent = ( ) => {
   }));
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center w-full md:w-auto">
       <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
         { formFields.map((field) => (
           <div className={fieldClassNames} key={field.key}>
