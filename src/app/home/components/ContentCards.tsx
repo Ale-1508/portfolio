@@ -90,7 +90,7 @@ const Card = ({ card }: CardProps ) => {
           { 'w-full': card.large },
           { 'justify-center': !card.large },
         )}>
-          <h1 className="text-3xl sm:text-5xl font-semibold sm:font-medium text-primary-500">{card.title}</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold sm:font-medium text-primary-500">{card.title}</h1>
           {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
           <Balancer className="text-base font-normal text-primary-800">
             {card.description}
