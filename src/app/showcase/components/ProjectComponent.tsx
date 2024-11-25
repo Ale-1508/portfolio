@@ -9,7 +9,7 @@ const cardClassNames = `
   flex flex-col xl:flex-row
   items-center justify-center
   gap-8 w-full 
-  m-2 py-8 px-8 md:px-16
+  py-8 px-8 md:px-16
   rounded-4xl
   bg-accents-ivory bg-opacity-25
   hover:bg-sageGreen-200 hover:shadow-lg hover:bg-opacity-25
