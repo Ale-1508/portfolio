@@ -1,4 +1,4 @@
-type Season = "winter" | "spring" | "summer" | "fall";
+export type Season = "winter" | "spring" | "summer" | "fall" | undefined;
 
 export const getSeason = (): Season | undefined => {
   const today = new Date();
