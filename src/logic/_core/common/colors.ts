@@ -7,6 +7,7 @@ export interface ColorPalette {
   secondary: ColorScheme,
   tertiary: ColorScheme,
   accents: ColorScheme,
+  bgGradient: string
   text: {
     primary: ColorScheme
   }
@@ -14,6 +15,7 @@ export interface ColorPalette {
     primary: ColorScheme
   }
 }
+
 
 const winterPalette = {
   text: {
@@ -42,6 +44,7 @@ const winterPalette = {
   bg:{
     primary:{}
   },
+  bgGradient: "linear-gradient(to right, #ccf7f4, #f0efff)",
   primary: {},
   secondary: {},
   tertiary: {},
@@ -75,6 +78,7 @@ const springPalette = {
   bg:{
     primary:{}
   },
+  bgGradient: "linear-gradient(to right, #fce9f9, #e3ffcc)",
   primary: {},
   secondary: {},
   tertiary: {},
@@ -108,6 +112,7 @@ const summerPalette = {
   bg:{
     primary:{}
   },
+  bgGradient: "linear-gradient(to right, #eed991, #ccf7f4)",
   primary: {},
   secondary: {},
   tertiary: {},
@@ -141,6 +146,7 @@ export const fallPalette = {
   bg:{
     primary:{}
   },
+  bgGradient: "linear-gradient(to right, #ffedb2, #be6240)",
   primary:{},
   secondary: {},
   tertiary: {},
@@ -150,7 +156,7 @@ export const fallPalette = {
 export const getColorPalette = (): ColorPalette => {
   const season: Season = getSeason();
 
-  return winterPalette; // PLACEHOLDER for testing purpose
+  return fallPalette; // PLACEHOLDER for testing purpose
   switch (season) {
     case "winter":
       return winterPalette; 

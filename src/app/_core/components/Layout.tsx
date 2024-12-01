@@ -15,7 +15,10 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children, currentPath, className } ) => {
 
   return (
-    <div className='flex flex-col gap-8'>
+    <div 
+      className='flex flex-col gap-8 w-full'
+      style={{background: activePalette.bgGradient}}
+    >
       <Navbar currentPath={currentPath}/>
       <div className={classNames(
         "flex flex-col gap-16 font-sans", 
