@@ -1,5 +1,6 @@
 "use client";
 
+import { activePalette } from "@/logic/_core/common/colors";
 import { useEffect, useState } from "react"
 import Balancer from "react-wrap-balancer";
 
@@ -18,8 +19,6 @@ const TitleSection = () => {
       leading-tight
       font-semibold font-sans
       justify-center
-      text-primary-600
-      selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <span>
@@ -46,9 +45,8 @@ const DescriptionSection = () => {
       mx-4
       flex flex-col gap-2 group
       font-semibold font-sans
-      text-gray-700
-      selection:bg-primary-500 selection:text-primary-50"
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
+      ${activePalette.text.primary["700"]}
     `}>
       <p className="leading-tight
         flex flex-col gap-1 justify-center">
