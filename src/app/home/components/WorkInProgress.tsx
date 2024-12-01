@@ -3,6 +3,7 @@
 import Balancer from 'react-wrap-balancer'
 import { projects, Project } from "../data/projects"
 import { useEffect, useState } from 'react'
+import { activePalette } from "@/logic/_core/common/colors";
 
 const TitleSection = () => {
   return(
@@ -11,7 +12,6 @@ const TitleSection = () => {
       text-3xl xs:text-4xl sm:text-5xl lg:text-7xl
       font-semibold
       flex flex-row justify-center
-      text-primary-600
     ">
       {`Work In Progress:`}
     </h1>
@@ -22,11 +22,11 @@ const DescriptionSection = () => {
   const projectNumber: number = projects.length
 
   return(
-    <div className='
+    <div className={`
       flex flex-col group gap-4
       justify-center items-center 
-      text-gray-700 select-none
-    '>
+      ${activePalette.text.primary["700"]} select-none
+    `}>
       <h1 className={`
           text-md md:text-lg
           text-center font-semibold
@@ -34,7 +34,7 @@ const DescriptionSection = () => {
         <Balancer>
           {"I'm currently working on"}
           <span className={`mx-1 
-            text-primary-600 
+            ${activePalette.text.primary["600"]}
             text-lg sm:text-xl md:text-2xl 
             font-semibold 
             leading-tight
@@ -64,31 +64,32 @@ const ProjectCard = ( { project } : { project:Project } ) => {
       key={project.id}
       className={`
         m-2 py-8 px-8 sm:px-16 
-        "bg-accents-ivory hover:bg-sageGreen-200 text-white
+        "bg-accents-ivory hover:bg-sageGreen-200
         hover:shadow-lg bg-opacity-25 hover:bg-opacity-25
         flex flex-row gap-4 p-8
         rounded-5xl cursor-pointer
         bg-primary-50
       `}>
       <div className="flex flex-col gap-4"> 
-        <h1 className="
+        <h1 className={`
           w-full text-xl sm:text-2xl text-ellipsis
           leading-tight
           font-semibold
           flex flex-row justify-start
-          text-primary-600
-        ">
+          ${activePalette.text.primary["600"]}
+        `}>
           {project.title}
         </h1>
-        <h1 className="leading-8 
+        <h1 className={`leading-8 
           text-md sm:text-lg
           flex flex-row justify-start
           text-left items-center
           font-medium
-          text-gray-700">
-            <Balancer>
-              {project.description}
-            </Balancer>
+          ${activePalette.text.primary["700"]}
+        `}>
+          <Balancer>
+            {project.description}
+          </Balancer>
         </h1>  
       </div>
     </li>
@@ -123,7 +124,6 @@ export default function WorkInProgress() {
   return(
     <div className={`
       flex flex-col gap-8 font-sans leading-tight mx-8
-      selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <TitleSection />
