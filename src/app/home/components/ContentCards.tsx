@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
 import Link from "next/link";
+import { activePalette } from "@/logic/_core/common/colors";
 
 const cards = [
   {
@@ -90,9 +91,9 @@ const Card = ({ card }: CardProps ) => {
           { 'w-full': card.large },
           { 'justify-center': !card.large },
         )}>
-          <h1 className="text-3xl sm:text-4xl font-semibold sm:font-medium text-primary-500">{card.title}</h1>
-          {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
-          <Balancer className="text-base font-normal text-primary-800">
+          <h1 className={`text-3xl sm:text-4xl font-semibold sm:font-medium ${activePalette.text.primary["500"]}`}>{card.title}</h1>
+          {card.large && <p className={`text-lg ${activePalette.text.primary["800"]} font-semibold`}>{card.callToAction}</p>}
+          <Balancer className={`text-base font-normal ${activePalette.text.primary["800"]}`}>
             {card.description}
           </Balancer>
         </div>
