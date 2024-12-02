@@ -75,7 +75,7 @@ const TimeLine = () => {
               rounded-4xl py-4 px-8
               ${activePalette.bg.primary["500"]} text-white
               ${activePalette.bg.selection} cursor-pointer
-              ${activePalette.bg.hover} hover:shadow-2xl
+              ${activePalette.bg.hover["600"]} hover:shadow-2xl
             `}>
             <div className='flex flex-col gap-2'>
               <h2 className='font-semibold
