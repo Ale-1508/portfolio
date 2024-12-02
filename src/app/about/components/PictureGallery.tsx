@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from "react"
+import { activePalette } from "@/logic/_core/common/colors";
 
 interface Picture {
   src: string
@@ -93,14 +94,14 @@ const PictureGallery = () => {
           height={picture.height !== undefined ? picture.height : 256}
           alt={picture.alt}
         />
-        <span className="
+        <span className={`
           opacity-0 group-hover:opacity-100  
           transition-transform duration-500 ease-out 
           text-center
           rounded-2xl mt-2 p-2
-          bg-accents-ivory bg-opacity-25  
-          text-gray-700
-        ">{picture.alt}</span>
+          ${activePalette.bg.primary["200"]} bg-opacity-25  
+          ${activePalette.text.primary["700"]}
+        `}>{picture.alt}</span>
       </div>
         
       ))}

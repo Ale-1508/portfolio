@@ -12,7 +12,9 @@ export interface ColorPalette {
     primary: ColorScheme
   }
   bg: {
-    primary: ColorScheme
+    primary: ColorScheme,
+    hover: ColorScheme,
+    selection: ColorScheme,
   }
 }
 
@@ -42,7 +44,29 @@ const winterPalette = {
     },
   },
   bg:{
-    primary:{}
+    primary: {
+      50: `bg-winter-50`,
+      100: `bg-winter-100`,
+      150: `bg-winter-150`,
+      200: `bg-winter-200`,
+      250: `bg-winter-250`,
+      300: `bg-winter-300`,
+      350: `bg-winter-350`,
+      400: `bg-winter-400`,
+      450: `bg-winter-450`,
+      500: `bg-winter-500`,
+      550: `bg-winter-550`,
+      600: `bg-winter-600`,
+      650: `bg-winter-650`,
+      700: `bg-winter-700`,
+      750: `bg-winter-750`,
+      800: `bg-winter-800`,
+      850: `bg-winter-850`,
+      900: `bg-winter-900`,
+      950: `bg-winter-950`,
+    },
+    hover: `hover:bg-winter-600`,
+    selection: `selection:bg-winter-300`,
   },
   bgGradient: "linear-gradient(to right, #ccf7f4, #f0efff)",
   primary: {},
@@ -76,7 +100,29 @@ const springPalette = {
     },
   },
   bg:{
-    primary:{}
+    primary: {
+      50: `bg-spring-50`,
+      100: `bg-spring-100`,
+      150: `bg-spring-150`,
+      200: `bg-spring-200`,
+      250: `bg-spring-250`,
+      300: `bg-spring-300`,
+      350: `bg-spring-350`,
+      400: `bg-spring-400`,
+      450: `bg-spring-450`,
+      500: `bg-spring-500`,
+      550: `bg-spring-550`,
+      600: `bg-spring-600`,
+      650: `bg-spring-650`,
+      700: `bg-spring-700`,
+      750: `bg-spring-750`,
+      800: `bg-spring-800`,
+      850: `bg-spring-850`,
+      900: `bg-spring-900`,
+      950: `bg-spring-950`,
+    },
+    hover: `hover:bg-spring-600`,
+    selection: `selection:bg-spring-300`,
   },
   bgGradient: "linear-gradient(to right, #fce9f9, #e3ffcc)",
   primary: {},
@@ -110,7 +156,29 @@ const summerPalette = {
     },
   },
   bg:{
-    primary:{}
+    primary: {
+      50: `bg-summer-50`,
+      100: `bg-summer-100`,
+      150: `bg-summer-150`,
+      200: `bg-summer-200`,
+      250: `bg-summer-250`,
+      300: `bg-summer-300`,
+      350: `bg-summer-350`,
+      400: `bg-summer-400`,
+      450: `bg-summer-450`,
+      500: `bg-summer-500`,
+      550: `bg-summer-550`,
+      600: `bg-summer-600`,
+      650: `bg-summer-650`,
+      700: `bg-summer-700`,
+      750: `bg-summer-750`,
+      800: `bg-summer-800`,
+      850: `bg-summer-850`,
+      900: `bg-summer-900`,
+      950: `bg-summer-950`,
+    },
+    hover: `hover:bg-summer-600`,
+    selection: `selection:bg-summer-300`,
   },
   bgGradient: "linear-gradient(to right, #eed991, #ccf7f4)",
   primary: {},
@@ -119,7 +187,7 @@ const summerPalette = {
   accents: {},
 } 
 
-export const fallPalette = {
+const fallPalette = {
   text: {
     primary: {
       50: `text-fall-50`,
@@ -144,7 +212,29 @@ export const fallPalette = {
     },
   },
   bg:{
-    primary:{}
+    primary: {
+      50: `bg-fall-50`,
+      100: `bg-fall-100`,
+      150: `bg-fall-150`,
+      200: `bg-fall-200`,
+      250: `bg-fall-250`,
+      300: `bg-fall-300`,
+      350: `bg-fall-350`,
+      400: `bg-fall-400`,
+      450: `bg-fall-450`,
+      500: `bg-fall-500`,
+      550: `bg-fall-550`,
+      600: `bg-fall-600`,
+      650: `bg-fall-650`,
+      700: `bg-fall-700`,
+      750: `bg-fall-750`,
+      800: `bg-fall-800`,
+      850: `bg-fall-850`,
+      900: `bg-fall-900`,
+      950: `bg-fall-950`,
+    },
+    hover: `hover:bg-fall-600`,
+    selection: `selection:bg-fall-300`,
   },
   bgGradient: "linear-gradient(to right, #ffedb2, #be6240)",
   primary:{},

@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react"
 import { workExperiences } from "@/app/experience/data/experiences";
-import Link from "next/link";
+import { activePalette } from "@/logic/_core/common/colors";
 
 const getDateDifference = (from: number, to: number | undefined): number => {
   const currentYear = new Date().getFullYear();
@@ -68,14 +69,14 @@ const TimeLine = () => {
             key={experience.id}
             href={`/experience?id=${experience.company}`}
             style={containerStyle}
-            className="
+            className={`
               timeline-media 
               flex justify-between items-center
               rounded-4xl py-4 px-8
-              bg-primary-500 text-white
-              selection:bg-primary-300 cursor-pointer
-              hover:bg-primary-600 hover:shadow-2xl
-          ">
+              ${activePalette.bg.primary["500"]} text-white
+              ${activePalette.bg.selection} cursor-pointer
+              ${activePalette.bg.hover} hover:shadow-2xl
+            `}>
             <div className='flex flex-col gap-2'>
               <h2 className='font-semibold
                 text-xl lg:text-2xl

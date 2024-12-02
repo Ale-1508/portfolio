@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import Balancer from "react-wrap-balancer";
 import { useEffect, useState } from "react"
+import { activePalette } from "@/logic/_core/common/colors";
 
 const myPrinciples = [
   {
@@ -51,18 +52,18 @@ const Principle = ( { principle }: { principle: PrincipleProps } ) => {
       col-span-2 lg:col-span-1
       h-full
     ">
-      <h1 className="font-medium 
+      <h1 className={`font-medium 
         text-xl md:text-2xl 2xl:text-3xl
-        text-primary-300
-      ">{principle.id}.</h1>
-      <h2 className="font-semibold
+        ${activePalette.text.primary["300"]}
+      `}>{principle.id}.</h1>
+      <h2 className={`font-semibold
         text-xl md:text-2xl
-        text-primary-500
-      ">{principle.title}</h2>
-      <p className="font-normal
+        ${activePalette.text.primary["500"]}
+      `}>{principle.title}</h2>
+      <p className={`font-normal
         text-md md:text-lg
-        text-primary-500
-      "><Balancer>{principle.description}</Balancer></p>
+        ${activePalette.text.primary["500"]}
+      `}><Balancer>{principle.description}</Balancer></p>
     </div>
   )
 }
@@ -73,7 +74,7 @@ const Card = ( ) => {
     "items-start justify-start",
     "m-2 py-8 px-8 md:16 gap-x-8 gap-y-16",
     "rounded-4xl justify-evenly items-center", 
-    "bg-accents-ivory bg-opacity-25 text-white",
+    `${activePalette.bg.primary["150"]} bg-opacity-25 text-white`,
     "md:col-span-2",
   );
   return (
@@ -95,11 +96,11 @@ const WorkPrinciples = () => {
       flex flex-col gap-8 justify-center items-center 
       transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
       `}>
-      <h1 className="
+      <h1 className={`
         text-2xl md:text-4xl lg:text-5xl 
         font-semibold leading-tight
-        text-primary-600
-      ">{`My Principles:`}</h1>
+        ${activePalette.text.primary["600"]}
+      `}>{`My Principles:`}</h1>
       <Card />
     </div>
   )

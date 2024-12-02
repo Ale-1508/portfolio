@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
 import { useEffect, useState } from "react"
+import { activePalette } from "@/logic/_core/common/colors";
 
 const Title = ( {isVisible} : {isVisible:boolean}) => {
   return (
@@ -11,7 +12,7 @@ const Title = ( {isVisible} : {isVisible:boolean}) => {
         text-4xl sm:text-5xl md:text-7xl lg:text-8xl  
         font-semibold leading-tight
         text-center justify-center
-        text-primary-600
+        ${activePalette.text.primary["600"]} 
         transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       {"I'm Alessandro"}
@@ -26,23 +27,34 @@ const Description = () => {
       w-full lg:w-128 
       justify-center items-center
     '>
-      <h2 className='
+      <h2 className={`
         text-xl md:text-2xl lg:text-4xl 
         font-semibold leading-tight
-        text-primary-600
-      '>
+        ${activePalette.text.primary["600"]}
+      `}>
         <Balancer className="w-full flex">
           {`An Italian Full-Stack Developer based in Venice.`}
         </Balancer>
       </h2>
-      <p className='
+      <p className={`
         text-md md:text-lg lg:text-xl 
         font-normal leading-tight
-        text-primary-600
-      '>
+        ${activePalette.text.primary["600"]}
+      `}>
         <Balancer className="w-full flex">
-          {"Hi there! I'm a passionate"} <span className='font-semibold'>Full-Stack</span> Developer with over <span className='font-semibold'>4</span> years of experience crafting elegant software solutions. <br /><br />
-          My expertise spans <span className='font-semibold'>Web</span>, <span className='font-semibold'>Desktop</span> and <span className='font-semibold'>Mobile</span> {"app development, where I bring innovative ideas to life. Let's connect and build something extraordinary together!"}
+          {"Hi there! I'm a passionate "}
+          <span className='font-semibold'>{`Full-Stack`}</span>
+          {` Developer with over `}
+          <span className='font-semibold'>{`4`}</span>
+          {` years of experience crafting elegant software solutions. `}
+          <br /><br />
+          {`My expertise spans `}
+          <span className='font-semibold'>{`Web`}</span>
+          {`, `}
+          <span className='font-semibold'>{`Desktop`}</span>
+          {` and `}
+          <span className='font-semibold'>{`Mobile`}</span>
+          {` app development, where I bring innovative ideas to life. Let's connect and build something extraordinary together!`}
         </Balancer>
       </p>
     </div>
@@ -76,7 +88,6 @@ useEffect( () => {
   return (
     <div className={`
       flex flex-col gap-16 font-sans
-      selection:bg-primary-500 selection:text-primary-50
       transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <Title isVisible={isVisible}/>
