@@ -65,7 +65,11 @@ const winterPalette = {
       900: `bg-winter-900`,
       950: `bg-winter-950`,
     },
-    hover: `hover:bg-winter-600`,
+    hover: {
+      100: `hover:bg-winter-100`,
+      200: `hover:bg-winter-200`,
+      600: `hover:bg-winter-600`,
+    },
     selection: `selection:bg-winter-300`,
   },
   bgGradient: "linear-gradient(to right, #ccf7f4, #f0efff)",

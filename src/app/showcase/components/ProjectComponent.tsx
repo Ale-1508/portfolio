@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Balancer from "react-wrap-balancer"
 
 import { Project, getStackIconSVG } from "../data/projects"
+import { activePalette } from "@/logic/_core/common/colors";
 import classNames from 'classnames';
 
 // cursor-pointer
@@ -11,33 +12,32 @@ const cardClassNames = `
   gap-8 w-full 
   py-8 px-8 md:px-16
   rounded-4xl
-  bg-accents-ivory bg-opacity-25
-  hover:bg-sageGreen-200 hover:shadow-lg hover:bg-opacity-25
+  ${activePalette.bg.primary["150"]} bg-opacity-25
+  ${activePalette.bg.hover["200"]} hover:shadow-lg hover:bg-opacity-25
   leading-tight
 `;
 
 const textSectionClassNames = `
   flex flex-col w-full
   items-start justify-start
+  ${activePalette.text.primary["600"]}
   gap-8
 `;
 
 const h1ClassNames = `
   text-2xl lg:text-3xl 
   font-semibold leading-tight
-  text-primary-600
 `;
 
 const descriptionClassNames = `
   text-md lg:text-lg 
   font-normal leading-tight
-  text-primary-800
+  ${activePalette.text.primary["800"]}
 `;
 
 const h2ClassNames = `
   text-lg lg:text-xl 
   font-semibold leading-tight
-  text-primary-600
 `;
 
 const ulClassNames = `
@@ -48,7 +48,6 @@ const ulClassNames = `
 const liClassNames = `
   list-disc
   text-md font-normal 
-  text-primary-600
 `;
 
 interface ProjectComponentProps {
@@ -71,8 +70,9 @@ const IconComponentSVG = ( { icon, label }: IconComponentPropsSVG ) => {
           <Image src={`${iconsRoot}/${icon}`} alt={label} fill style={{ objectFit: 'contain' }} />
         </div> 
         <span className="absolute bottom-full left-1/2 
-          transform -translate-x-1/2 mb-2 w-max px-2 py-1 
-          rounded bg-primary-800 text-white text-xs opacity-0 
+          transform -translate-x-1/2 
+          mb-2 w-max px-2 py-1 
+          rounded text-xs opacity-0 
           group-hover:opacity-100 transition-opacity duration-300"
         > {label} </span> 
       </div> 
