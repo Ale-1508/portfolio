@@ -64,11 +64,10 @@ const ProjectCard = ( { project } : { project:Project } ) => {
       key={project.id}
       className={`
         m-2 py-8 px-8 sm:px-16 
-        "bg-accents-ivory hover:bg-sageGreen-200
+        bg-accents-ivory hover:bg-sageGreen-200
         hover:shadow-lg bg-opacity-25 hover:bg-opacity-25
         flex flex-row gap-4 p-8
         rounded-5xl cursor-pointer
-        bg-primary-50
       `}>
       <div className="flex flex-col gap-4"> 
         <h1 className={`

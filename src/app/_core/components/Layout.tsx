@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPath, className } ) =>
       <Navbar currentPath={currentPath}/>
       <div className={classNames(
         "flex flex-col gap-16 font-sans", 
-        "selection:bg-primary-500 selection:text-primary-50",
+        `${activePalette.bg.selection} selection:text-primary-50`,
         activePalette.text.primary["500"],
         className
       )}>

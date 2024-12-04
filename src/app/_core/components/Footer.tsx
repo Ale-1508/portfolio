@@ -6,6 +6,7 @@ import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-
 import { faLinkedinIn, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { copyToClipboard } from "@/logic/_core/common/browserUtils"
 import { useEffect, useState } from "react";
+import { activePalette } from "@/logic/_core/common/colors";
 
 const contacts = {
   mail: "alessandro@masiero.biz",
@@ -32,14 +33,14 @@ const innerSectionClassNames = classNames(
 const sectionHeadingClassNames = classNames(
   'font-semibold',
   'text-lg lg:text-xl ', 
-  'text-primary-500',
+  activePalette.text.primary["500"],
 )
 
 const sectionElementsClassNames = classNames(
   'flex flex-col gap-2',
   'font-normal',
   'text-md lg:text-lg ', 
-  'text-primary-700',
+  activePalette.text.primary["700"],
 )
 
 const liClassNames = classNames(
@@ -48,7 +49,7 @@ const liClassNames = classNames(
   "cursor-pointer"
 )
 
-const iconsClassNames = "w-8 text-primary-500"
+const iconsClassNames = `w-8 ${activePalette.text.primary["700"]}`
 
 const handleClick = (e: React.MouseEvent) => {
   copyToClipboard(e.currentTarget.textContent ?? "");
@@ -143,7 +144,7 @@ const Footer = () => {
   return (
     <div className={`
       flex flex-col gap-16 justify-center p-16
-      selection:bg-primary-500 selection:text-primary-50
+      ${activePalette.bg.selection} selection:text-primary-50
       text-gray-800
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
