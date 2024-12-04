@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { activePalette } from '@/logic/_core/common/colors';
 
 interface NavbarOptionProps {
   name: string;
@@ -123,7 +124,7 @@ const NavbarOption = ( {name, route, isDefault, isSelected=false, onClick}: Navb
         font-semibold
         text-secondary
         selection:bg-primary-200
-        ${isSelected ? 'bg-primary-300 selection: bg-opacity-25' : ''}`
+        ${isSelected ? `${activePalette.bg.primary["300"]} selection: bg-opacity-25` : ''}`
       }
     >
       <Link 
