@@ -74,9 +74,10 @@ interface CardProps {
 
 const Card = ({ card }: CardProps ) => {
   const cardClassNames = classNames(
+    activePalette.bg.primary["50"],
     "flex cursor-pointer m-2 py-8 px-8 sm:px-16 gap-4",
     "rounded-5xl justify-evenly items-center", 
-    "bg-accents-ivory hover:bg-sageGreen-200 text-white",
+    "hover:bg-sageGreen-200 text-white",
     "hover:shadow-lg bg-opacity-25 hover:bg-opacity-25",
     "xs:col-span-3",
     {
