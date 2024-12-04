@@ -127,7 +127,11 @@ const springPalette = {
       900: `bg-spring-900`,
       950: `bg-spring-950`,
     },
-    hover: `hover:bg-spring-600`,
+    hover: {
+      100: `hover:bg-spring-100`,
+      200: `hover:bg-spring-200`,
+      600: `hover:bg-spring-600`,
+    },
     selection: `selection:bg-spring-300`,
     outline: `focus-within:outline-spring-300`
   },
@@ -184,7 +188,11 @@ const summerPalette = {
       900: `bg-summer-900`,
       950: `bg-summer-950`,
     },
-    hover: `hover:bg-summer-600`,
+    hover: {
+      100: `hover:bg-summer-100`,
+      200: `hover:bg-summer-200`,
+      600: `hover:bg-summer-600`,
+    },
     selection: `selection:bg-summer-300`,
     outline: `focus-within:outline-summer-300`
   },
@@ -241,7 +249,11 @@ const fallPalette = {
       900: `bg-fall-900`,
       950: `bg-fall-950`,
     },
-    hover: `hover:bg-fall-600`,
+    hover: {
+      100: `hover:bg-fall-100`,
+      200: `hover:bg-fall-200`,
+      600: `hover:bg-fall-600`,
+    },
     selection: `selection:bg-fall-300`,
     outline: `focus-within:outline-fall-300`
   },
@@ -255,7 +267,7 @@ const fallPalette = {
 export const getColorPalette = (): ColorPalette => {
   const season: Season = getSeason();
 
-  return fallPalette; // PLACEHOLDER for testing purpose
+  // return winterPalette; // PLACEHOLDER for testing purpose
   switch (season) {
     case "winter":
       return winterPalette; 

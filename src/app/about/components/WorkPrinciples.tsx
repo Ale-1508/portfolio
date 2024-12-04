@@ -74,7 +74,8 @@ const Card = ( ) => {
     "items-start justify-start",
     "m-2 py-8 px-8 md:16 gap-x-8 gap-y-16",
     "rounded-4xl justify-evenly items-center", 
-    `${activePalette.bg.primary["150"]} bg-opacity-25 text-white`,
+    activePalette.bg.primary["200"],
+    `bg-opacity-25 text-white`,
     "md:col-span-2",
   );
   return (

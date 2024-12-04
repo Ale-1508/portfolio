@@ -51,17 +51,17 @@ const DescriptionSection = () => {
       <p className="leading-tight
         flex flex-col gap-1 justify-center">
           <span>
-            <Balancer>{`I love transforming ideas into seamless user experiences.`}</Balancer>
+            <Balancer>{`I love transforming Ideas into seamless user experiences`}</Balancer>
           </span>
           <span className={`hidden sm:block`}>
-          {`let's build something amazing together!`}
+          {`I work on Desktop, Mobile and Web solutions`}
           </span>
       </p>
       <p className="w-fit hidden sm:block
         opacity-0 group-hover:opacity-100 
         transition-opacity duration-500 ease-in-out"
       >
-        <Balancer>{`You can find me crafting a Desktop, Mobile or Web apps.`}</Balancer>
+        <Balancer>{`Check my portfolio on different Seasons!`}</Balancer>
       </p>
     </div>
   )

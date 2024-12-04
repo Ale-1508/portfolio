@@ -12,7 +12,7 @@ const cardClassNames = `
   gap-8 w-full 
   py-8 px-8 md:px-16
   rounded-4xl
-  ${activePalette.bg.primary["50"]} bg-opacity-25
+  ${activePalette.bg.primary["100"]} bg-opacity-25
   ${activePalette.bg.hover["200"]} hover:shadow-lg hover:bg-opacity-25
   leading-tight
 `;
