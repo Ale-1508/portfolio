@@ -12,6 +12,8 @@ import { validateEmail, validateTextField, validateMobileNumber, validateMessage
 import Modal from "@/app/_core/components/alerts/Modal";
 import Balancer from "react-wrap-balancer";
 
+import { activePalette } from "@/logic/_core/common/colors";
+
 type formField = {
   value: string, 
   error?: string, 
@@ -260,7 +262,7 @@ const ContactMeForm = () => {
       <h1 className={`
         text-2xl lg:text-3xl 
         font-semibold leading-tight
-        text-primary-600
+        ${activePalette.text.primary["600"]}
         transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
       `}>Send Me a Message!</h1>
       <FormComponent />

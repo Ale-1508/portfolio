@@ -15,6 +15,7 @@ export interface ColorPalette {
     primary: ColorScheme,
     hover: ColorScheme,
     selection: ColorScheme,
+    outline: ColorScheme
   }
 }
 
@@ -71,6 +72,7 @@ const winterPalette = {
       600: `hover:bg-winter-600`,
     },
     selection: `selection:bg-winter-300`,
+    outline: `focus-within:outline-winter-300`
   },
   bgGradient: "linear-gradient(to right, #ccf7f4, #f0efff)",
   primary: {},
@@ -127,6 +129,7 @@ const springPalette = {
     },
     hover: `hover:bg-spring-600`,
     selection: `selection:bg-spring-300`,
+    outline: `focus-within:outline-spring-300`
   },
   bgGradient: "linear-gradient(to right, #fce9f9, #e3ffcc)",
   primary: {},
@@ -183,6 +186,7 @@ const summerPalette = {
     },
     hover: `hover:bg-summer-600`,
     selection: `selection:bg-summer-300`,
+    outline: `focus-within:outline-summer-300`
   },
   bgGradient: "linear-gradient(to right, #eed991, #ccf7f4)",
   primary: {},
@@ -239,6 +243,7 @@ const fallPalette = {
     },
     hover: `hover:bg-fall-600`,
     selection: `selection:bg-fall-300`,
+    outline: `focus-within:outline-fall-300`
   },
   bgGradient: "linear-gradient(to right, #ffedb2, #be6240)",
   primary:{},

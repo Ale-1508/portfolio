@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { activePalette } from "@/logic/_core/common/colors";
 
 interface textfieldData{
   key: string,
@@ -42,10 +43,11 @@ export const SmallTextfield = ( {
         flex flex-row items-center
         pl-4 pr-2 rounded-2xl
         text-md lg:text-lg font-normal 
-        text-primary-600
+        ${activePalette.text.primary["600"]}
         bg-white
         selectable-none hover:shadow-md
-        focus-within:outline-primary-300 focus-within:outline-2 focus-within:outline
+        ${activePalette.bg.outline} 
+        focus-within:outline-2 focus-within:outline
         ${error && "outline-supportingColors-error outline-2 outline"}
       `}>
         { data.icon!==undefined && <FontAwesomeIcon icon={data.icon} /> }
@@ -56,14 +58,14 @@ export const SmallTextfield = ( {
           placeholder={data.hint}
           onChange={handleChange}
           required={required}
-          className="
+          className={`
             px-4 py-2 w-full
             bg-transparent
             text-md lg:text-lg font-normal 
-            text-primary-600
+            ${activePalette.text.primary["600"]}
             placeholder-primary-400 placeholder-font-normal
             focus:outline-none
-            "
+          `}
         />
         { isValid && <FontAwesomeIcon icon={faCheck}/>}
         { error && <FontAwesomeIcon icon={faCircleInfo}/>}
