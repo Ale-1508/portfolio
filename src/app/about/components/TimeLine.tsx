@@ -5,15 +5,13 @@ import { useEffect, useState } from "react"
 import { workExperiences } from "@/app/experience/data/experiences";
 import { activePalette } from "@/logic/_core/common/colors";
 
-const getDateDifference = (from: number, to: number | undefined): number => {
+const getDateDifference = (from: number, to?: number): number => {
   const currentYear = new Date().getFullYear();
   if (!to) {
-    return Math.min(currentYear - from, 4);
-  } else if (to !== undefined) {
+    return Math.min(currentYear - from, getLastDigit(currentYear));
+  } else {
     const diff = to - from;
     return diff < 1 ? 1 : diff > 4 ? 4 : diff;
-  } else {
-    return 1;
   }
 };
 
@@ -52,7 +50,7 @@ const TimeLine = () => {
   }, [])
 
   return (
-    <div className={`grid grid-cols-1 ml:grid-cols-4 gap-y-4
+    <div className={`grid grid-cols-1 ml:grid-cols-5 gap-y-4
       transition-transform duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       {workExperiences.map((experience) => {
@@ -60,8 +58,11 @@ const TimeLine = () => {
           experience.period.start.getFullYear(), 
           experience.period.end?.getFullYear() 
         );
+        
+        const lastDigit = getLastDigit(experience.period.start.getFullYear());
+        const col = lastDigit + 1;
         const containerStyle = windowSize.width >= 896
-          ? {gridColumn: `${getLastDigit(experience.period.start.getFullYear()) + 1} / span ${dateDifference}`}
+          ? {gridColumn: `${ col > 5 ? 5 : col} / span ${dateDifference > 0 ? dateDifference : 1}`}
           : {}
 
         return (
