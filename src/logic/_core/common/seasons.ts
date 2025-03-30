@@ -2,9 +2,9 @@ export type Season = "winter" | "spring" | "summer" | "fall" | undefined;
 
 export const getSeason = (): Season | undefined => {
   const today = new Date();
-  const day = today.getDay();
+  const day = today.getDate();
   const month = today.getMonth();
-  
+
   if ((month === 11 && day >= 21) || (month >= 0 && month <= 1) || (month === 2 && day < 20)) 
   { 
     return "winter"; 

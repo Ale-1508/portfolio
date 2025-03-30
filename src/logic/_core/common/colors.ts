@@ -267,7 +267,9 @@ const fallPalette = {
 export const getColorPalette = (): ColorPalette => {
   const season: Season = getSeason();
 
-  // return winterPalette; // PLACEHOLDER for testing purpose
+  console.log(season);
+  
+  //return springPalette; // PLACEHOLDER for testing purpose
   switch (season) {
     case "winter":
       return winterPalette; 
