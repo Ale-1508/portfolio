@@ -1,27 +1,27 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames'
 
-import Navbar from './Navbar';
+import Navbar from './navbar/Navbar';
 import Footer from './Footer';
 
 import { activePalette } from "@/logic/_core/common/colors";
 
 type LayoutProps = {
   children: ReactNode;
-  currentPath: string;
+  currentPath?: string;
   className?: string;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children, currentPath, className } ) => {
+const Layout: React.FC<LayoutProps> = ({ children, className }) => {
 
   return (
-    <div 
+    <div
       className='flex flex-col gap-8 w-full'
-      style={{background: activePalette.bgGradient}}
+      style={{ background: activePalette.bgGradient }}
     >
-      <Navbar currentPath={currentPath}/>
+      <Navbar />
       <div className={classNames(
-        "flex flex-col gap-16 font-sans", 
+        "flex flex-col gap-16 font-sans",
         `${activePalette.bg.selection} selection:text-primary-50`,
         activePalette.text.primary["500"],
         className

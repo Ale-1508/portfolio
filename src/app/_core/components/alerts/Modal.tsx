@@ -58,7 +58,6 @@ const Modal: React.FC<ModalProps> = ({ onClose, onOk, isWaiting, children, isOpe
         ) : null
 
     useEffect(() => {
-        console.log(isWaiting)
         if(isOpen){
             dialogRef.current?.showModal();
             document.addEventListener('click', () => { closeDialog() });

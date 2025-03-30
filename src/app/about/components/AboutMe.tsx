@@ -76,7 +76,7 @@ const PictureOfMe = () => {
         height={224}
         alt="A picture of Me"
         style={{ opacity: isLoaded ? 1 : 0 }}
-        onLoadingComplete={() => setIsLoaded(true)}
+        onLoad={() => setIsLoaded(true)}
       />
     </div>
   );

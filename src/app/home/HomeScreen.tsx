@@ -6,7 +6,7 @@ import WorkInProgress from "./components/WorkInProgress";
 
 function HomeScreen() {
   return(
-    <Layout currentPath="Work" className={`
+    <Layout className={`
       gap-12 mb-16
       flex justify-center
     `}>
