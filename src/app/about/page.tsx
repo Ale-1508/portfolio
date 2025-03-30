@@ -8,7 +8,7 @@ import PictureGallery from "./components/PictureGallery";
 
 export default function AboutScreen() {
   return (
-    <Layout currentPath="About" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-24 mb-16">
+    <Layout currentPath="About" className="mx-4 sm:mx-16 md:mx-24 lg:mx-32 gap-24 mb-16">
       <AboutMe />
       <TimeLine />
       <WorkPrinciples />

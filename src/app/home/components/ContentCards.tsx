@@ -124,7 +124,7 @@ const ContentCards = () => {
 
   return (
     <ul className={`grid grid-cols-1 sm:grid-cols-3 justify-center gap-8
-                   mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
+                   mx-4 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
                    transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
       { cards.map(
         (card) => <Card key={card.id} card={card}/>

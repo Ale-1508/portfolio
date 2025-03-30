@@ -99,7 +99,7 @@ const ProjectCard = ( { project } : { project:Project } ) => {
 const ProjectSection = ( {isVisible} : {isVisible:boolean} ) => {
   return(
     <ul className={`list-none grid gap-4
-      xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
+      sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
       grid-cols-1 xl:grid-cols-2
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
@@ -123,7 +123,7 @@ export default function WorkInProgress() {
   
   return(
     <div className={`
-      flex flex-col gap-8 font-sans leading-tight mx-8
+      flex flex-col gap-8 font-sans leading-tight mx-4
       transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <TitleSection />
