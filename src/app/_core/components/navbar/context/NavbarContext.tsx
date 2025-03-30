@@ -18,6 +18,7 @@ interface Position {
 interface NavbarState {
   navbarOptions: NavbarOption[];
   position: Position;
+  isExpanded: boolean;
 }
 
 interface NavbarContextType {
@@ -41,6 +42,7 @@ export const NavbarProvider = ({ children }: { children: ReactNode }) => {
       height: 0,
       width: 0,
     },
+    isExpanded: false,
   });
 
   return (
