@@ -9,7 +9,7 @@ import { activePalette } from "@/logic/_core/common/colors";
 
 const cards = [
   {
-    id:1,
+    id: 1,
     title: "About Me",
     callToAction: "",
     description: "",
@@ -19,7 +19,7 @@ const cards = [
     alt: "Picture of Me"
   },
   {
-    id:2,
+    id: 2,
     title: "Articles",
     callToAction: "Read my latest Articles",
     description: `Welcome to my "Articles" section! Here, 
@@ -33,7 +33,7 @@ const cards = [
     alt: ""
   },
   {
-    id:3,
+    id: 3,
     title: "Showcase",
     callToAction: "Take a look at my previous Works",
     description: `Welcome to my "Work Showcase"! 
@@ -46,7 +46,7 @@ const cards = [
     alt: ""
   },
   {
-    id:4,
+    id: 4,
     title: "Contributions",
     callToAction: "",
     description: "",
@@ -72,12 +72,12 @@ interface CardProps {
   card: CardType
 }
 
-const Card = ({ card }: CardProps ) => {
+const Card = ({ card }: CardProps) => {
   const cardClassNames = classNames(
     activePalette.bg.primary["100"],
     activePalette.bg.hover["200"],
     "flex cursor-pointer m-2 py-8 px-8 sm:px-16 gap-4",
-    "rounded-5xl justify-evenly items-center", 
+    "rounded-5xl justify-evenly items-center",
     "text-white",
     "hover:shadow-lg bg-opacity-25 hover:bg-opacity-25",
     "xs:col-span-3",
@@ -86,31 +86,31 @@ const Card = ({ card }: CardProps ) => {
       'xl:col-span-1 flex-col': !card.large,
     },
   );
-  return ( 
+  return (
     <Link href={card.link} className={cardClassNames}>
-        <div className={classNames(
-          "flex flex-col gap-4 m-0 justify-start items-start h-full",
-          { 'w-full': card.large },
-          { 'justify-center': !card.large },
-        )}>
-          <h1 className={`text-3xl sm:text-4xl font-semibold sm:font-medium ${activePalette.text.primary["500"]}`}>{card.title}</h1>
-          {card.large && <p className={`text-lg ${activePalette.text.primary["800"]} font-semibold`}>{card.callToAction}</p>}
-          <Balancer className={`text-base font-normal ${activePalette.text.primary["800"]}`}>
-            {card.description}
-          </Balancer>
-        </div>
-        {card.img !== "" &&
+      <div className={classNames(
+        "flex flex-col gap-4 m-0 justify-start items-start h-full",
+        { 'w-full': card.large },
+        { 'justify-center': !card.large },
+      )}>
+        <h1 className={`text-3xl sm:text-4xl font-semibold sm:font-medium ${activePalette.text.primary["500"]}`}>{card.title}</h1>
+        {card.large && <p className={`text-lg ${activePalette.text.primary["800"]} font-semibold`}>{card.callToAction}</p>}
+        <Balancer className={`text-base font-normal ${activePalette.text.primary["800"]}`}>
+          {card.description}
+        </Balancer>
+      </div>
+      {card.img !== "" &&
         <Image
           className={classNames(
             "rounded-3xl mt-2",
-            { 'hidden md:hidden ml:inline mt-0': card.large },
+            { 'hidden md:hidden ml:inline': card.large },
           )}
           src={`/images/${card.img}`}
           width={224}
           height={224}
           alt={card.alt}
         />
-        } 
+      }
     </Link>
   )
 }
@@ -118,7 +118,7 @@ const Card = ({ card }: CardProps ) => {
 const ContentCards = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect( () => {
+  useEffect(() => {
     setIsVisible(true);
   }, [])
 
@@ -126,8 +126,8 @@ const ContentCards = () => {
     <ul className={`grid grid-cols-1 sm:grid-cols-3 justify-center gap-8
                    mx-4 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
                    transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
-      { cards.map(
-        (card) => <Card key={card.id} card={card}/>
+      {cards.map(
+        (card) => <Card key={card.id} card={card} />
       )}
     </ul>
   )

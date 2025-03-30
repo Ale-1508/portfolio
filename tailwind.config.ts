@@ -202,7 +202,19 @@ const config: Config = {
       }
       
       addUtilities(newUtilities, ['responsive', 'hover', 'focus']) 
-    },),
+    }),
+    plugin(function ({ addUtilities }: pluginsType ) {
+      const newUtilities = {
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      };
+      addUtilities(newUtilities, []);
+    })
   ],
 };
 export default config;

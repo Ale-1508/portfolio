@@ -30,7 +30,7 @@ const CollapsedNavbar = ( { currentPath } : { currentPath:string } ) => {
   }
 
   return(
-    <div className={`flex flex-col gap-4`}>
+    <div className={`flex flex-col gap-4 mx-4`}>
       <div className={`
         w-full flex px-4 
         justify-end items-center

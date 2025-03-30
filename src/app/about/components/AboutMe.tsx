@@ -61,20 +61,26 @@ const Description = () => {
   )
 }
 
-const PicureOfMe = () => {
+const PictureOfMe = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
-    <Image
-      className={`
-        rounded-t-10xl rounded-b-4xl shadow-2xl
-        select-none
-      `}
-      src={`/images/me.jpg`}
-      width={224}
-      height={224}
-      alt="A picture of Me"
-    />
-  )
-}
+    <div className="relative">
+      <Image
+        className={`
+          rounded-t-10xl rounded-b-4xl shadow-2xl
+          select-none transition-opacity duration-500
+        `}
+        src={`/images/me.jpg`}
+        width={224}
+        height={224}
+        alt="A picture of Me"
+        style={{ opacity: isLoaded ? 1 : 0 }}
+        onLoadingComplete={() => setIsLoaded(true)}
+      />
+    </div>
+  );
+};
 
 const AboutMe = () => {
   
@@ -96,7 +102,7 @@ useEffect( () => {
         gap-16 ml:gap-24
         justify-center items-center 
       ">
-        <PicureOfMe />
+        <PictureOfMe />
         <Description />
       </div>
     </div>
