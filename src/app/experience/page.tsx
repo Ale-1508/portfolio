@@ -21,7 +21,7 @@ const ShowcaseScreenBody = () => {
   }, [])
 
   return (
-    <Layout currentPath="" className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-4 mb-16">
+    <Layout currentPath="" className="mx-4 sm:mx-16 md:mx-24 lg:mx-32 gap-4 mb-16">
         <div className={`
           flex flex-col gap-16 justify-center items-center
           transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
