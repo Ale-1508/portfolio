@@ -251,6 +251,7 @@ const fallPalette = {
     },
     hover: {
       100: `hover:bg-fall-100`,
+      150: `hover:bg-fall-150`,
       200: `hover:bg-fall-200`,
       600: `hover:bg-fall-600`,
     },
