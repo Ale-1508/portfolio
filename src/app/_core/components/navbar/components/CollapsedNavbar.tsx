@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "cn";
 
 const CollapsedNavbar = () => {
-    const { navbarState, setNavbarState } = useNavbarContext();
+    const { navbarState } = useNavbarContext();
     const pathname = usePathname();
     const [showOptions, setShowOptions] = useState(false);
 
