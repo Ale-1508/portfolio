@@ -2,7 +2,6 @@
 
 import { Suspense } from "react";
 
-import Layout from "@/components/Layout";
 import { Header } from "@/components/Header";
 import { useSearchParams } from 'next/navigation'
 import ExperienceList from "./components/ExperienceList";
@@ -15,7 +14,7 @@ const ShowcaseScreenBody = () => {
   // URL -> `/experience?id=my-project-id`
 
   return (
-    <Layout currentPath="" className="mx-4 sm:mx-16 md:mx-24 lg:mx-32 gap-4 mb-16">
+    <div>
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,7 +27,7 @@ const ShowcaseScreenBody = () => {
           : <ExperienceList />
         }
       </motion.div>
-    </Layout>
+    </div>
   )
 }
 

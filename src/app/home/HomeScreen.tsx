@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import ContentCards from "./components/ContentCards";
 import WhoAmI from "./components/WhoAmI";
 import WorkInProgress from "./components/WorkInProgress";
@@ -6,14 +5,11 @@ import WorkInProgress from "./components/WorkInProgress";
 
 function HomeScreen() {
   return(
-    <Layout className={`
-      gap-12 mb-16
-      flex justify-center
-    `}>
+    <div>
       <WhoAmI />
       <ContentCards />
       <WorkInProgress />
-    </Layout>
+    </div>
   );
 }
 

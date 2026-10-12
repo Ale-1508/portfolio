@@ -1,5 +1,3 @@
-import Layout from "../_core/components/Layout";
-
 import AboutMe from "./components/AboutMe";
 import TimeLine from "./components/TimeLine";
 import WorkPrinciples from "./components/WorkPrinciples";
@@ -8,12 +6,12 @@ import PictureGallery from "./components/PictureGallery";
 
 export default function AboutScreen() {
   return (
-    <Layout className="mx-4 sm:mx-16 md:mx-24 lg:mx-32 gap-24 mb-16">
+    <div>
       <AboutMe />
       <TimeLine />
       <WorkPrinciples />
       <MoreAboutMe />
       <PictureGallery />
-    </Layout>
+    </div>
   );
 }
