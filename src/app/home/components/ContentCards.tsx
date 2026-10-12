@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { cn } from "cn";
+import { motion } from "motion/react";
 import classNames from 'classnames';
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
@@ -116,20 +117,19 @@ const Card = ({ card }: CardProps) => {
 }
 
 const ContentCards = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, [])
-
   return (
-    <ul className={`grid grid-cols-1 sm:grid-cols-3 justify-center gap-8
-                   mx-4 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2
-                   transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
+    <motion.ul
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={cn(
+        "grid grid-cols-1 sm:grid-cols-3 justify-center gap-8",
+        "mx-4 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-2",
+      )}>
       {cards.map(
         (card) => <Card key={card.id} card={card} />
       )}
-    </ul>
+    </motion.ul>
   )
 }
 

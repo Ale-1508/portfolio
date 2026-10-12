@@ -1,14 +1,15 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import classNames from 'classnames';
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { cn } from "cn";
 
 const cards = [
   {
-    id:1,
+    id: 1,
     title: "About Me",
     callToAction: "",
     description: "",
@@ -18,7 +19,7 @@ const cards = [
     alt: "Picture of Me"
   },
   {
-    id:2,
+    id: 2,
     title: "Articoli",
     callToAction: "Leggi i miei Articoli piu recenti",
     description: `Welcome to my "Articles" section! Here, 
@@ -32,7 +33,7 @@ const cards = [
     alt: ""
   },
   {
-    id:3,
+    id: 3,
     title: "Progetti",
     callToAction: "Dai un'occhiata ai miei Lavori",
     description: `Welcome to my "Work Showcase"! 
@@ -45,7 +46,7 @@ const cards = [
     alt: ""
   },
   {
-    id:4,
+    id: 4,
     title: "Contributi",
     callToAction: "",
     description: "",
@@ -71,10 +72,10 @@ interface CardProps {
   card: CardType
 }
 
-const Card = ({ card }: CardProps ) => {
+const Card = ({ card }: CardProps) => {
   const cardClassNames = classNames(
     "flex cursor-pointer m-2 py-8 px-16 gap-4",
-    "rounded-5xl justify-evenly items-center", 
+    "rounded-5xl justify-evenly items-center",
     "bg-accents-ivory hover:bg-sageGreen-200 text-white",
     "hover:shadow-lg bg-opacity-25 hover:bg-opacity-25",
     "xs:col-span-3",
@@ -83,20 +84,20 @@ const Card = ({ card }: CardProps ) => {
       '2xl:col-span-1 flex-col': !card.large,
     },
   );
-  return ( 
+  return (
     <Link href={card.link} className={cardClassNames}>
-        <div className={classNames(
-          "flex flex-col gap-4 m-0 justify-start items-start h-full",
-          { 'w-full': card.large },
-          { 'justify-center': !card.large },
-        )}>
-          <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
-          {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
-          <Balancer className="text-base font-normal text-primary-800">
-            {card.description}
-          </Balancer>
-        </div>
-        {card.img !== "" &&
+      <div className={classNames(
+        "flex flex-col gap-4 m-0 justify-start items-start h-full",
+        { 'w-full': card.large },
+        { 'justify-center': !card.large },
+      )}>
+        <h1 className="text-5xl font-medium text-primary-500">{card.title}</h1>
+        {card.large && <p className="text-lg text-primary-700 font-semibold">{card.callToAction}</p>}
+        <Balancer className="text-base font-normal text-primary-800">
+          {card.description}
+        </Balancer>
+      </div>
+      {card.img !== "" &&
         <Image
           className={classNames(
             "rounded-3xl ",
@@ -107,26 +108,26 @@ const Card = ({ card }: CardProps ) => {
           height={224}
           alt={card.alt}
         />
-        } 
+      }
     </Link>
   )
 }
 
 const ContentCards = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-
   return (
-    <ul className={`grid grid-cols-3 justify-center gap-8
-                   xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-48 my-2
-                   transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
-      { cards.map(
-        (card) => <Card key={card.id} card={card}/>
+    <motion.ul
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={cn(
+        "grid grid-cols-3 justify-center gap-8",
+        "xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-48 my-2"
+      )
+      }>
+      {cards.map(
+        (card) => <Card key={card.id} card={card} />
       )}
-    </ul>
+    </motion.ul>
   )
 }
 

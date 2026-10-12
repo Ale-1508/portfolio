@@ -2,8 +2,8 @@
 
 import classNames from "classnames";
 import Balancer from "react-wrap-balancer";
-import { useEffect, useState } from "react"
 import { activePalette } from "@/logic/_core/common/colors";
+import { motion } from "motion/react";
 
 const myPrinciples = [
   {
@@ -45,7 +45,7 @@ interface PrincipleProps {
   description: string
 }
 
-const Principle = ( { principle }: { principle: PrincipleProps } ) => {
+const Principle = ({ principle }: { principle: PrincipleProps }) => {
   return (
     <div className="
       flex flex-col gap-4
@@ -68,42 +68,37 @@ const Principle = ( { principle }: { principle: PrincipleProps } ) => {
   )
 }
 
-const Card = ( ) => {
+const Card = () => {
   const cardClassNames = classNames(
     "grid grid-cols-2",
     "items-start justify-start",
     "m-2 py-8 px-8 md:16 gap-x-8 gap-y-16",
-    "rounded-4xl justify-evenly items-center", 
+    "rounded-4xl justify-evenly items-center",
     activePalette.bg.primary["200"],
     `bg-opacity-25 text-white`,
     "md:col-span-2",
   );
   return (
     <div className={cardClassNames}>
-      { myPrinciples.map( (principle, index)=> ( index<4 && <Principle key={principle.id} principle={principle} /> ))}
+      {myPrinciples.map((principle, index) => (index < 4 && <Principle key={principle.id} principle={principle} />))}
     </div>
   )
 }
 
 const WorkPrinciples = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-
   return (
-    <div className={`
-      flex flex-col gap-8 justify-center items-center 
-      transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-      `}>
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`flex flex-col gap-8 justify-center items-center`}>
       <h1 className={`
         text-2xl md:text-4xl lg:text-5xl 
         font-semibold leading-tight
         ${activePalette.text.primary["600"]}
       `}>{`My Principles:`}</h1>
       <Card />
-    </div>
+    </motion.div>
   )
 }
 

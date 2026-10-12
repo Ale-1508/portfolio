@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react"
 import { workExperiences } from "@/app/experience/data/experiences";
 import { activePalette } from "@/logic/_core/common/colors";
+import { motion } from "motion/react";
 
 const getDateDifference = (from: number, to?: number): number => {
   const currentYear = new Date().getFullYear();
@@ -18,7 +19,6 @@ const getDateDifference = (from: number, to?: number): number => {
 const getLastDigit = (number: number) => number % 10;
 
 const TimeLine = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0
@@ -44,25 +44,23 @@ const TimeLine = () => {
       };
     }
   }, [])
-  
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
 
   return (
-    <div className={`grid grid-cols-1 ml:grid-cols-5 gap-y-4
-      transition-transform duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`grid grid-cols-1 ml:grid-cols-5 gap-y-4`}>
       {workExperiences.map((experience) => {
         const dateDifference = getDateDifference(
-          experience.period.start.getFullYear(), 
-          experience.period.end?.getFullYear() 
+          experience.period.start.getFullYear(),
+          experience.period.end?.getFullYear()
         );
-        
+
         const lastDigit = getLastDigit(experience.period.start.getFullYear());
         const col = lastDigit + 1;
         const containerStyle = windowSize.width >= 896
-          ? {gridColumn: `${ col > 5 ? 5 : col} / span ${dateDifference > 0 ? dateDifference : 1}`}
+          ? { gridColumn: `${col > 5 ? 5 : col} / span ${dateDifference > 0 ? dateDifference : 1}` }
           : {}
 
         return (
@@ -86,11 +84,11 @@ const TimeLine = () => {
                 text-md lg:text-lg
               '>{experience.role}</h3>
             </div>
-            <h1 className='text-3xl font-semibold'>{dateDifference}{ !experience.period.end ? "+" : ""}</h1>
+            <h1 className='text-3xl font-semibold'>{dateDifference}{!experience.period.end ? "+" : ""}</h1>
           </Link>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 

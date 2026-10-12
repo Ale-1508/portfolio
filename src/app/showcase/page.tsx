@@ -3,26 +3,21 @@
 import Layout from "../_core/components/Layout";
 
 import { Header } from "@/components/Header";
-import { useEffect, useState } from "react"
+import { motion } from 'motion/react';
 import ProjectList from "./components/ProjectList";
 
 export default function ShowcaseScreen() {
-
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-
   return (
     <Layout currentPath="Showcase" className="mx-4 sm:mx-16 md:mx-24 lg:mx-32 gap-4 mb-16">
-      <div className={`
-        flex flex-col gap-8 sm:gap-16 justify-center items-center
-        transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-        `}>
-        <Header title="Project Showcase" isVisible={isVisible}></Header>
+      <motion.div
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="flex flex-col gap-8 sm:gap-16 justify-center items-center"
+      >
+        <Header title="Project Showcase"></Header>
         <ProjectList />
-      </div>
+      </motion.div>
     </Layout>
   );
 }

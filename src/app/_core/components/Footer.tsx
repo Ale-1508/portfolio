@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { copyToClipboard } from "@/logic/_core/common/browserUtils"
-import { useEffect, useState } from "react";
 import { activePalette } from "@/logic/_core/common/colors";
+import { motion } from "motion/react";
 
 const contacts = {
   mail: "alessandro@masiero.biz",
@@ -32,14 +32,14 @@ const innerSectionClassNames = classNames(
 
 const sectionHeadingClassNames = classNames(
   'font-semibold',
-  'text-lg lg:text-xl ', 
+  'text-lg lg:text-xl ',
   activePalette.text.primary["500"],
 )
 
 const sectionElementsClassNames = classNames(
   'flex flex-col gap-2',
   'font-normal',
-  'text-md lg:text-lg ', 
+  'text-md lg:text-lg ',
   activePalette.text.primary["700"],
 )
 
@@ -72,23 +72,23 @@ const Social = () => {
       <div className={innerSectionClassNames}>
         <h3 className={sectionHeadingClassNames}>Social</h3>
         <ul className={sectionElementsClassNames}>
-          <a 
+          <a
             onClick={handleClick}
-            href={`https://www.linkedin.com/in/alessandro-masiero`} 
+            href={`https://www.linkedin.com/in/alessandro-masiero`}
             className={liClassNames}
           >
             <FontAwesomeIcon icon={faLinkedinIn} className={iconsClassNames} />
             {socials.linkedin}
           </a>
-          <a 
+          <a
             onClick={handleClick}
-            href={`https://github.com/Ale-1508`} 
+            href={`https://github.com/Ale-1508`}
             className={liClassNames}
           >
             <FontAwesomeIcon icon={faGithub} className={iconsClassNames} />
             {socials.gitHub}
           </a>
-          <li 
+          <li
             onClick={handleClick}
             className={liClassNames}
           >
@@ -107,22 +107,22 @@ const ContactInfo = () => {
       <div className={innerSectionClassNames}>
         <h3 className={sectionHeadingClassNames}>Contact</h3>
         <ul className={sectionElementsClassNames}>
-          <a 
-            href={`mailto:${contacts.mail}`} 
+          <a
+            href={`mailto:${contacts.mail}`}
             className={liClassNames} onClick={handleClick}
           >
             <FontAwesomeIcon icon={faEnvelope} className={iconsClassNames} />
             {contacts.mail}
           </a>
-          <a 
-            href={`tel:${contacts.phone}`} 
+          <a
+            href={`tel:${contacts.phone}`}
             className={liClassNames} onClick={handleClick}
           >
             <FontAwesomeIcon icon={faPhone} className={iconsClassNames} />
             {contacts.phone}
           </a>
           <a
-            href={`https://www.google.com/maps?q=45.493120, 12.109530`} 
+            href={`https://www.google.com/maps?q=45.493120, 12.109530`}
             className={liClassNames} onClick={handleClick}
           >
             <FontAwesomeIcon icon={faLocationDot} className={iconsClassNames} />
@@ -135,26 +135,24 @@ const ContactInfo = () => {
 }
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-  
   return (
-    <div className={`
-      flex flex-col gap-16 justify-center p-16
-      ${activePalette.bg.selection} selection:text-primary-50
-      text-gray-800
-      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
+    <motion.footer
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`
+        flex flex-col gap-16 justify-center p-16
+        ${activePalette.bg.selection} selection:text-primary-50
+        text-gray-800
+      `}
+    >
       <div className="grid grid-cols-1 gap-16 md-gap-8 md:grid-cols-3">
         <MadeBy />
         <Social />
         <ContactInfo />
       </div>
-      
-    </div>
+
+    </motion.footer>
   )
 }
 

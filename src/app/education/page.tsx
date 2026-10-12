@@ -1,23 +1,17 @@
 "use client";
 
+import { motion } from "motion/react";
 import Layout from "../_core/components/Layout";
-import { useEffect, useState } from "react"
 
 export default function EducationScreen() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-
   return (
     <Layout className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-4 mb-16">
-      <div className={`
-        flex flex-col gap-16 justify-center items-center
-        transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-        `}>
-
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`flex flex-col gap-16 justify-center items-center`}>
+      </motion.div>
     </Layout>
   );
 }

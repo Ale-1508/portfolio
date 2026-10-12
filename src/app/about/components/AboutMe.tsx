@@ -2,21 +2,26 @@
 
 import Image from 'next/image'
 import Balancer from "react-wrap-balancer";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { activePalette } from "@/logic/_core/common/colors";
+import { motion } from 'motion/react';
 
-const Title = ( {isVisible} : {isVisible:boolean}) => {
+const Title = () => {
   return (
-    <h1 className={`
+    <motion.h1
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`
         flex flex-row w-full
-        text-4xl sm:text-5xl md:text-7xl lg:text-8xl  
+        text-4xl sm:text-5xl md:text-7xl lg:text-8xl
         font-semibold leading-tight
         text-center justify-center
-        ${activePalette.text.primary["600"]} 
-        transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
+        ${activePalette.text.primary["600"]}
+      `}
+    >
       {"I'm Alessandro"}
-    </h1>
+    </motion.h1>
   )
 }
 
@@ -83,20 +88,14 @@ const PictureOfMe = () => {
 };
 
 const AboutMe = () => {
-  
-const [isVisible, setIsVisible] = useState(false);
-
-useEffect( () => {
-  setIsVisible(true);
-}, [])
-
-
   return (
-    <div className={`
-      flex flex-col gap-16 font-sans
-      transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
-      <Title isVisible={isVisible}/>
+    <motion.div
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="flex flex-col gap-16 font-sans"
+    >
+      <Title />
       <div className="
         flex flex-col ml:flex-row 
         gap-16 ml:gap-24
@@ -105,7 +104,7 @@ useEffect( () => {
         <PictureOfMe />
         <Description />
       </div>
-    </div>
+    </motion.div>
   )
 }
 

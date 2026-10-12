@@ -2,10 +2,11 @@
 
 import Balancer from 'react-wrap-balancer'
 import { projects, Project } from "../data/projects"
-import { useEffect, useState } from 'react'
+import { motion } from 'motion/react';
+import { cn } from 'cn';
 
 const TitleSection = () => {
-  return(
+  return (
     <h1 className="
       w-full text-7xl text-center
       font-semibold
@@ -20,7 +21,7 @@ const TitleSection = () => {
 const DescriptionSection = () => {
   const projectNumber: number = projects.length
 
-  return(
+  return (
     <div className='
       flex flex-col group gap-4
       justify-center items-center 
@@ -31,7 +32,7 @@ const DescriptionSection = () => {
         `}>
         {"I'm currently working on"}
         <span className="mx-1 text-primary-600 text-xl md:text-2xl font-semibold leading-tight">{projectNumber}</span>
-        {projectNumber>1 ? "projects" : "project"} from start to finish!
+        {projectNumber > 1 ? "projects" : "project"} from start to finish!
       </h1>
       <p className="text-md font-semibold
         opacity-0 group-hover:opacity-100 
@@ -44,9 +45,9 @@ const DescriptionSection = () => {
 }
 
 //md:basis-1/2 lg:basis-2/3
-const ProjectCard = ( { project } : { project:Project } ) => {
-  return(
-    <li 
+const ProjectCard = ({ project }: { project: Project }) => {
+  return (
+    <li
       key={project.id}
       className={`
         m-2 py-8 px-16 
@@ -56,7 +57,7 @@ const ProjectCard = ( { project } : { project:Project } ) => {
         rounded-5xl cursor-pointer
         bg-primary-50
       `}>
-      <div className="flex flex-col gap-4"> 
+      <div className="flex flex-col gap-4">
         <h1 className="
           w-full text-2xl text-ellipsis
           leading-tight
@@ -71,49 +72,53 @@ const ProjectCard = ( { project } : { project:Project } ) => {
           text-left items-center
           font-medium
           text-gray-700">
-            <Balancer>
-              {project.description}
-            </Balancer>
-        </h1>  
+          <Balancer>
+            {project.description}
+          </Balancer>
+        </h1>
       </div>
     </li>
   );
 }
 
-const ProjectSection = ( {isVisible} : {isVisible:boolean} ) => {
-  return(
-    <ul className={`list-none grid gap-4
-      xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
-      grid-cols-1 xl:grid-cols-2
-      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
-       { projects.map(
-        (project, index) => (
-          index < 4 
-          ? <ProjectCard key={project.id} project={project}/>
-          : null
+const ProjectSection = () => {
+  return (
+    <motion.ul
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={cn(
+        "list-none grid gap-4",
+        "xs:mx-8 sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4",
+        "grid-cols-1 xl:grid-cols-2"
+      )}>
+      {
+        projects.map(
+          (project, index) => (
+            index < 4
+              ? <ProjectCard key={project.id} project={project} />
+              : null
+          )
         )
-      ) }
-    </ul>
+      }
+    </motion.ul >
   );
 }
 
 export default function WorkInProgress() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-  
-  return(
-    <div className={`
-      flex flex-col gap-8 font-sans leading-tight
-      selection:bg-primary-500 selection:text-primary-50
-      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={cn(
+        "flex flex-col gap-8 font-sans leading-tight",
+        "selection:bg-primary-500 selection:text-primary-50"
+      )}
+    >
       <TitleSection />
       <DescriptionSection />
-      <ProjectSection isVisible={isVisible} />
-    </div>
+      <ProjectSection />
+    </motion.div>
   );
 }

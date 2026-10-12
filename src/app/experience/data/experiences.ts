@@ -83,7 +83,8 @@ export const workExperiences: WorkExperiences[] = [
     empowering them to leverage cutting-edge technology to meet their business needs.
     `,
     period: {
-      start: new Date(2025, 1, 2)
+      start: new Date(2025, 1, 2),
+      end: new Date(2025, 6, 1)
     },
     achievements: [
       `Enhanced Accessibility and Efficiency: Implemented a text-to-speech service with multilingual support, 
@@ -94,5 +95,26 @@ export const workExperiences: WorkExperiences[] = [
       `Empowered End-Users: Designed and built a robust module enabling customers of the client to independently 
       create and manage their own orders, enhancing user autonomy and satisfaction.`,
     ]
+  },
+  {
+    id: 4,
+    company: "TM Automatismi",
+    role: "Software Developer, CAD Designer",
+    description: `
+    The company specializes in the design and manufacturing of electrical panels for industrial automation, 
+    with a strong focus on water treatment plants, machinery automation, and high-profile partnerships with major joint-stock companies (S.p.A.). 
+    As a CAD Designer and HMI/Internal Software Developer, I play a pivotal role in engineering tailored automation solutions 
+    and developing proprietary software to optimize engineering workflows and operational efficiency.
+    `,
+    period: {
+      start: new Date(2025, 6, 1),
+    },
+    achievements: [
+      `Accelerated Engineering Workflows: Significantly reduced electrical schematic development time by designing and deploying a custom internal management software that automates core workflows across CAD design, HMI creation, and PLC programming.`,
+      `Enhanced Version Control: Standardized and implemented a comprehensive history tracking and version control system for electrical schematics, PLC programs, and HMI software, ensuring project traceability and data integrity.`,
+      `Optimized Shop-Floor Operations: Designed and developed a dedicated internal web application that enables workshop technicians to instantly upload technical documentation and project photos to the corporate server directly from the production floor.`,
+      `Tailored Client Solutions: Programmed and deployed bespoke internal software applications specifically engineered to streamline management processes and meet the unique requirements of high-value clients.`,
+    ]
+
   },
 ]

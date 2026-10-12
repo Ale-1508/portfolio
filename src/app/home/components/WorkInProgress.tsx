@@ -1,12 +1,13 @@
 "use client";
 
+import { cn } from 'cn';
+import { motion } from 'motion/react';
 import Balancer from 'react-wrap-balancer'
 import { projects, Project } from "../data/projects"
-import { useEffect, useState } from 'react'
 import { activePalette } from "@/logic/_core/common/colors";
 
 const TitleSection = () => {
-  return(
+  return (
     <h1 className="
       w-full text-center
       text-3xl xs:text-4xl sm:text-5xl lg:text-7xl
@@ -21,7 +22,7 @@ const TitleSection = () => {
 const DescriptionSection = () => {
   const projectNumber: number = projects.length
 
-  return(
+  return (
     <div className={`
       flex flex-col group gap-4
       justify-center items-center 
@@ -41,7 +42,7 @@ const DescriptionSection = () => {
           `}>
             {projectNumber}
           </span>
-          {projectNumber>1 ? "projects" : "project"}
+          {projectNumber > 1 ? "projects" : "project"}
           {` from start to finish!`}
         </Balancer>
       </h1>
@@ -58,9 +59,9 @@ const DescriptionSection = () => {
 }
 
 //md:basis-1/2 lg:basis-2/3
-const ProjectCard = ( { project } : { project:Project } ) => {
-  return(
-    <li 
+const ProjectCard = ({ project }: { project: Project }) => {
+  return (
+    <li
       key={project.id}
       className={`
         m-2 py-8 px-8 sm:px-16 
@@ -70,7 +71,7 @@ const ProjectCard = ( { project } : { project:Project } ) => {
         flex flex-row gap-4 p-8
         rounded-5xl cursor-pointer
       `}>
-      <div className="flex flex-col gap-4"> 
+      <div className="flex flex-col gap-4">
         <h1 className={`
           w-full text-xl sm:text-2xl text-ellipsis
           leading-tight
@@ -90,45 +91,46 @@ const ProjectCard = ( { project } : { project:Project } ) => {
           <Balancer>
             {project.description}
           </Balancer>
-        </h1>  
+        </h1>
       </div>
     </li>
   );
 }
 
-const ProjectSection = ( {isVisible} : {isVisible:boolean} ) => {
-  return(
-    <ul className={`list-none grid gap-4
-      sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4
-      grid-cols-1 xl:grid-cols-2
-      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
-    `}>
-       { projects.map(
+const ProjectSection = () => {
+  return (
+    <motion.ul
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={cn(
+        "list-none grid gap-4",
+        "sm:mx-16 md:mx-24 lg:mx-32 2xl:mx-64 my-4",
+        "grid-cols-1 xl:grid-cols-2",
+      )}>
+      {projects.map(
         (project, index) => (
-          index < 4 
-          ? <ProjectCard key={project.id} project={project}/>
-          : null
+          index < 4
+            ? <ProjectCard key={project.id} project={project} />
+            : null
         )
-      ) }
-    </ul>
+      )}
+    </motion.ul>
   );
 }
 
 export default function WorkInProgress() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect( () => {
-    setIsVisible(true);
-  }, [])
-  
-  return(
-    <div className={`
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`
       flex flex-col gap-8 font-sans leading-tight mx-4
-      transition-transform duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
     `}>
       <TitleSection />
       <DescriptionSection />
-      <ProjectSection isVisible={isVisible} />
-    </div>
+      <ProjectSection />
+    </motion.div>
   );
 }
