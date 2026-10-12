@@ -24,26 +24,23 @@ const TimeLine = () => {
     height: 0
   });
 
-  const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-  };
-
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    const updateWindowSize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
-      window.addEventListener('resize', handleResize);
+    };
 
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, [])
+    const frameId = window.requestAnimationFrame(updateWindowSize);
+
+    window.addEventListener("resize", updateWindowSize);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", updateWindowSize);
+    };
+  }, []);
 
   return (
     <motion.div
