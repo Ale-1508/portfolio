@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,7 +14,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -19,19 +23,50 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@/components/*": ["src/app/_core/components/*"],
-      "@/textfields/*": ["src/app/_core/components/textfields/*"],
-      "@/labels/*": ["src/app/_core/components/labels/*"],
-      "@/buttons/*": ["src/app/_core/components/buttons/*"],
-      "@/formLogic/*": ["src/logic/_core/form/*"],
-      "@/logicCore/*": ["src/logic/_core/*"],
-      "@/logic/*": ["src/logic/*"],
-      "@/api/*": ["src/app/api/*"],
-      "@/data/*": ["src/data/*"],
-      "@/models/*": ["src/data/models/*"],
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "@/components/*": [
+        "src/app/_core/components/*"
+      ],
+      "@/textfields/*": [
+        "src/app/_core/components/textfields/*"
+      ],
+      "@/labels/*": [
+        "src/app/_core/components/labels/*"
+      ],
+      "@/buttons/*": [
+        "src/app/_core/components/buttons/*"
+      ],
+      "@/formLogic/*": [
+        "src/logic/_core/form/*"
+      ],
+      "@/logicCore/*": [
+        "src/logic/_core/*"
+      ],
+      "@/logic/*": [
+        "src/logic/*"
+      ],
+      "@/api/*": [
+        "src/app/api/*"
+      ],
+      "@/data/*": [
+        "src/data/*"
+      ],
+      "@/models/*": [
+        "src/data/models/*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
