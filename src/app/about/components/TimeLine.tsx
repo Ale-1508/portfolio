@@ -1,90 +1,111 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react"
 import { workExperiences } from "@/app/experience/data/experiences";
 import { activePalette } from "@/logic/_core/common/colors";
 import { motion } from "motion/react";
 
-const getDateDifference = (from: number, to?: number): number => {
-  const currentYear = new Date().getFullYear();
-  if (!to) {
-    return Math.min(currentYear - from, getLastDigit(currentYear));
-  } else {
-    const diff = to - from;
-    return diff < 1 ? 1 : diff > 4 ? 4 : diff;
-  }
+const COLUMNS_PER_YEAR = 4;
+
+const getQuarterIndex = (date: Date): number =>
+  date.getFullYear() * COLUMNS_PER_YEAR +
+  Math.floor(date.getMonth() / 3);
+
+const getDurationYears = (start: Date, end: Date): number => {
+  const months =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    end.getMonth() -
+    start.getMonth();
+
+  return Math.max(1, Math.ceil(months / 12));
 };
 
-const getLastDigit = (number: number) => number % 10;
-
 const TimeLine = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: 0,
-    height: 0
+  const currentDate = new Date();
+  const currentQuarter = getQuarterIndex(currentDate);
+
+  const timelineItems = workExperiences.map((experience) => {
+    const startQuarter = getQuarterIndex(experience.period.start);
+    const endQuarter = experience.period.end
+      ? getQuarterIndex(experience.period.end)
+      : currentQuarter;
+
+    return {
+      experience,
+      startColumn: startQuarter,
+      columnSpan: Math.max(2, endQuarter - startQuarter + 1),
+      durationYears: getDurationYears(
+        experience.period.start,
+        experience.period.end ?? currentDate
+      ),
+    };
   });
 
-  useEffect(() => {
-    const updateWindowSize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+  const minQuarter = Math.min(
+    ...timelineItems.map((item) => item.startColumn)
+  );
 
-    const frameId = window.requestAnimationFrame(updateWindowSize);
+  const maxQuarter = Math.max(
+    ...timelineItems.map(
+      (item) => item.startColumn + item.columnSpan - 1
+    )
+  );
 
-    window.addEventListener("resize", updateWindowSize);
-
-    return () => {
-      window.cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", updateWindowSize);
-    };
-  }, []);
+  const totalColumns = maxQuarter - minQuarter + 1;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`grid grid-cols-1 ml:grid-cols-5 gap-y-4`}>
-      {workExperiences.map((experience) => {
-        const dateDifference = getDateDifference(
-          experience.period.start.getFullYear(),
-          experience.period.end?.getFullYear()
-        );
+      className="timeline-grid gap-y-4"
+      style={
+        {
+          "--timeline-columns": totalColumns,
+        } as React.CSSProperties
+      }
+    >
+      {timelineItems.map(
+        ({ experience, startColumn, columnSpan, durationYears }) => {
+          const gridColumnStart = startColumn - minQuarter + 1;
 
-        const lastDigit = getLastDigit(experience.period.start.getFullYear());
-        const col = lastDigit + 1;
-        const containerStyle = windowSize.width >= 896
-          ? { gridColumn: `${col > 5 ? 5 : col} / span ${dateDifference > 0 ? dateDifference : 1}` }
-          : {}
+          return (
+            <Link
+              key={experience.id}
+              href={`/experience?id=${encodeURIComponent(experience.company)}`}
+              style={
+                {
+                  "--timeline-start": gridColumnStart,
+                  "--timeline-span": columnSpan,
+                } as React.CSSProperties
+              }
+              className={`
+                timeline-item
+                flex justify-between items-center
+                rounded-4xl py-4 px-8
+                ${activePalette.bg.primary["500"]} text-white
+                ${activePalette.bg.selection} cursor-pointer
+                ${activePalette.bg.hover["600"]} hover:shadow-2xl
+              `}
+            >
+              <div className="flex flex-col gap-2">
+                <h2 className="font-semibold text-xl lg:text-2xl">
+                  {experience.company}
+                </h2>
 
-        return (
-          <Link
-            key={experience.id}
-            href={`/experience?id=${experience.company}`}
-            style={containerStyle}
-            className={`
-              timeline-media 
-              flex justify-between items-center
-              rounded-4xl py-4 px-8
-              ${activePalette.bg.primary["500"]} text-white
-              ${activePalette.bg.selection} cursor-pointer
-              ${activePalette.bg.hover["600"]} hover:shadow-2xl
-            `}>
-            <div className='flex flex-col gap-2'>
-              <h2 className='font-semibold
-                text-xl lg:text-2xl
-              '>{experience.company}</h2>
-              <h3 className=' font-normal
-                text-md lg:text-lg
-              '>{experience.role}</h3>
-            </div>
-            <h1 className='text-3xl font-semibold'>{dateDifference}{!experience.period.end ? "+" : ""}</h1>
-          </Link>
-        );
-      })}
+                <h3 className="font-normal text-md lg:text-lg">
+                  {experience.role}
+                </h3>
+              </div>
+
+              <span className="text-3xl font-semibold">
+                {durationYears}
+                {!experience.period.end ? "+" : ""}
+              </span>
+            </Link>
+          );
+        }
+      )}
     </motion.div>
   );
 };

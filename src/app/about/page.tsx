@@ -6,7 +6,7 @@ import PictureGallery from "./components/PictureGallery";
 
 export default function AboutScreen() {
   return (
-    <div>
+    <div className="flex flex-col gap-16">
       <AboutMe />
       <TimeLine />
       <WorkPrinciples />

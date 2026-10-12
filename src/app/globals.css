@@ -18,12 +18,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input:-webkit-autofill, 
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active { 
-  -webkit-box-shadow: 0 0 0 30px transparent inset !important; transition: background-color 5000s ease-in-out 0s; 
-} 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
 @layer utilities {
   .text-balance {
@@ -38,5 +39,26 @@ input:-webkit-autofill:active {
            text-white bg-gray-900
            text-xs font-bold
            transition-all duration-100 scale-0 origin-left;
+  }
+}
+
+/* Timeline Classes */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-columns), minmax(0, 1fr));
+}
+
+.timeline-item {
+  grid-column: var(--timeline-start) / span var(--timeline-span);
+}
+
+/* @media (max-width: 895px) { */
+@media (max-width: 1536px) {
+  .timeline-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timeline-item {
+    grid-column: auto;
   }
 }
