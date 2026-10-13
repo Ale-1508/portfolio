@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavbarProvider>
-          <Layout className="mx-8 sm:mx-16 md:mx-24 lg:mx-32 gap-12 mb-16">
+          <Layout className="mx-3 sm:mx-16 md:mx-24 lg:mx-32 gap-12 mb-16">
             {children}
           </Layout>
         </NavbarProvider>

@@ -1,6 +1,6 @@
 "use client";
 
-import classNames from "classnames";
+import { cn } from "cn";
 import { ChangeEvent, useState } from "react"
 import { faEnvelope, faUser, faMobile, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,6 @@ import Balancer from "react-wrap-balancer";
 
 import { activePalette } from "@/logic/_core/common/colors";
 import { motion } from "motion/react";
-import { cn } from "cn";
 
 type formField = {
   value: string,
@@ -96,17 +95,6 @@ const FormComponent = () => {
     isWaiting: false,
     description: ""
   })
-
-  const cardClassNames = classNames(
-    "flex flex-col",
-    "w-full md:max-w-4xl",
-    "items-start justify-start",
-    "m-2 py-8 px-8 md:px-16 gap-8",
-    "rounded-4xl justify-evenly items-center",
-    "bg-accents-ivory bg-opacity-25 text-white",
-    "md:col-span-2",
-  );
-  const fieldClassNames = "flex flex-col gap-2 w-full md:w-96"
 
   const validateForm = (): boolean => {
     let isValid = true
@@ -213,10 +201,20 @@ const FormComponent = () => {
   }));
 
   return (
-    <div className="flex justify-center w-full md:w-auto">
-      <form className={cardClassNames} onSubmit={formSubmit} noValidate={true}>
+    <div className={cn(
+      "flex justify-center w-full md:max-w-3xl",
+    )}>
+      <form className={cn(
+        "w-full md:max-w-4xl",
+        "flex flex-col m-2 gap-8",
+        "items-center justify-evenly",
+        "px-8 md:px-16 py-8 md:py-16 ",
+        "rounded-5xl lg:rounded-10xl",
+        "bg-accents-ivory/15 text-white",
+        "md:col-span-2",
+      )} onSubmit={formSubmit} noValidate={true}>
         {formFields.map((field) => (
-          <div className={fieldClassNames} key={field.key}>
+          <div className="flex flex-col gap-2 w-full md:w-10/12" key={field.key}>
             <SmallLabel value={field.label} />
             <SmallTextfield
               value={formData[field.key].value}
@@ -226,7 +224,7 @@ const FormComponent = () => {
               error={formData[field.key].error} />
           </div>
         ))}
-        <div className={fieldClassNames}>
+        <div className="flex flex-col gap-2 w-full md:w-10/12">
           <SmallLabel value="Your Message" />
           <LargeTextField value={formData.message.value} name="message" hint="Write here your message" handleChange={handleChange} minLenght={20} />
         </div>
@@ -245,7 +243,7 @@ const FormComponent = () => {
           <Balancer>{modal.description}</Balancer>
         </p>
       </Modal>
-    </div>
+    </div >
   )
 }
 
@@ -261,7 +259,7 @@ const ContactMeForm = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         className={cn(
-          "text-2xl lg:text-3xl",
+          "text-3xl lg:text-4xl",
           "font-semibold leading-tight",
           activePalette.text.primary["600"]
         )}>Send Me a Message!</motion.h1>
