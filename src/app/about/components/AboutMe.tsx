@@ -34,12 +34,10 @@ const Description = () => {
     '>
       <h2 className={`
         text-xl md:text-2xl lg:text-4xl 
-        font-semibold leading-tight
+        font-semibold leading-tight text-balance
         ${activePalette.text.primary["600"]}
       `}>
-        <Balancer className="w-full flex">
-          {`An Italian Full-Stack Developer based in Venice.`}
-        </Balancer>
+        {`An Italian Full-Stack Developer based in Venice.`}
       </h2>
       <p className={`
         text-md md:text-lg lg:text-xl 
