@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from 'cn';
+import { activePalette } from '@/logic/_core/common/colors';
 import React, { ReactNode, useRef, useEffect, useCallback } from 'react';
 import { PrimaryButton } from '@/buttons/PrimaryButton';
 import { SimpleLoadingAnimation } from '@/components/loading/SimpleLoadingAnimation';
@@ -14,7 +16,7 @@ interface ModalProps {
     loadingMessage?: string
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, onOk, isWaiting, children, isOpen, loadingMessage="Loading..." }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ onClose, onOk, isWaiting, children, isOpen, loadingMessage = "Loading..." }: ModalProps) => {
     const dialogRef = useRef<null | HTMLDialogElement>(null)
 
     const closeDialog = useCallback(() => {
@@ -29,41 +31,41 @@ const Modal: React.FC<ModalProps> = ({ onClose, onOk, isWaiting, children, isOpe
 
     const dialog: JSX.Element | null = isOpen
         ? (
-            <dialog ref={dialogRef} className={`
-                w-64 sm:w-96 px-16 py-8
-                justify-between items-center
-                flex flex-col gap-8
-                rounded-4xl
-                text-lg text-primary-700
-                font-sans font-medium
-                bg-white
-            `}>
+            <dialog ref={dialogRef} className={cn(
+                "w-64 sm:w-96 px-16 py-8",
+                "justify-between items-center",
+                "flex flex-col gap-8",
+                "rounded-4xl",
+                "text-lg text-primary-700",
+                "font-sans font-medium",
+                activePalette.bg.primary["50"],
+            )}>
                 {
                     isWaiting
-                    ? <>   
-                        <div className={`pt-8 pb-2`}>
-                            <SimpleLoadingAnimation />
-                        </div>
-                        <p className={`pb-8`}>{loadingMessage}</p>
-                    </>
-                    : <>
-                        {children}
-                        <PrimaryButton
-                            text="OK"
-                            onClick={clickOk}
-                        />
-                    </>
+                        ? <>
+                            <div className={`pt-8 pb-2`}>
+                                <SimpleLoadingAnimation />
+                            </div>
+                            <p className={`pb-8`}>{loadingMessage}</p>
+                        </>
+                        : <>
+                            {children}
+                            <PrimaryButton
+                                text="OK"
+                                onClick={clickOk}
+                            />
+                        </>
                 }
             </dialog>
         ) : null
 
     useEffect(() => {
-        if(isOpen){
+        if (isOpen) {
             dialogRef.current?.showModal();
             document.addEventListener('click', () => { closeDialog() });
         } else {
             dialogRef.current?.close();
-            document.removeEventListener('click', () => {} );
+            document.removeEventListener('click', () => { });
         }
     }, [isOpen, closeDialog, isWaiting]);
 

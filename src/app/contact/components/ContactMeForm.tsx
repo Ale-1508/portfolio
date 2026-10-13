@@ -147,6 +147,9 @@ const FormComponent = () => {
         });
 
         if (!response.ok) {
+          if (response.status === 500) {
+            output = "Oops! Server temporarily unavailable, contact me at +39 3345785733"
+          }
           throw new Error('Failed to send message');
         }
 
@@ -155,7 +158,7 @@ const FormComponent = () => {
         setFormData(initialFormData);
         output = "Thank you! Your message has been successfully sent.";
       } catch (error) {
-        output = "Oops! An error occurred. Please try again.";
+        output ||= "Oops! An error occurred. Please try again.";
         console.error('Error:', error);
       }
 
