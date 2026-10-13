@@ -4,6 +4,8 @@ import { cn } from "cn";
 import { ChangeEvent, useState } from "react"
 import { faEnvelope, faUser, faMobile, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
+import { useSeason } from "@/hooks";
+
 import { SmallTextfield } from "@/textfields/SmallTextfield";
 import { LargeTextField } from "@/textfields/LargeTextField";
 import { SmallLabel } from "@/labels/SmallLabel";
@@ -95,6 +97,8 @@ const FormComponent = () => {
     isWaiting: false,
     description: ""
   })
+
+  const { season } = useSeason();
 
   const validateForm = (): boolean => {
     let isValid = true
@@ -198,6 +202,17 @@ const FormComponent = () => {
     setFormData(prevState => ({ ...prevState, [name]: { ...[name], value: value, valid: validInput }, }));
   };
 
+  const getCardBgColor = () => {
+    switch (season) {
+      case "fall":
+        return "bg-accents-ivory/15";
+      case "spring":
+        return "bg-accents-ivory/45";
+      default:
+        return "bg-accents-ivory/25";
+    }
+  };
+
   const closeModal = () => setModal(prevState => ({
     ...prevState,
     isOpen: false
@@ -213,8 +228,8 @@ const FormComponent = () => {
         "items-center justify-evenly",
         "px-8 md:px-16 py-8 md:py-16 ",
         "rounded-5xl lg:rounded-10xl",
-        "bg-accents-ivory/15 text-white",
         "md:col-span-2",
+        getCardBgColor(),
       )} onSubmit={formSubmit} noValidate={true}>
         {formFields.map((field) => (
           <div className="flex flex-col gap-2 w-full md:w-10/12" key={field.key}>
