@@ -1,5 +1,3 @@
-import Balancer from "react-wrap-balancer"
-
 import { cn } from "cn";
 import { Project, getStackIcon } from "../data/projects"
 import { activePalette } from "@/logic/_core/common/colors";
@@ -32,7 +30,7 @@ const h1ClassNames = `
 `;
 
 const descriptionClassNames = `
-  text-md lg:text-lg 
+  text-md lg:text-lg text-balance
   font-normal leading-tight
   ${activePalette.text.primary["800"]}
 `;
@@ -90,7 +88,7 @@ const TextSection = ({ project }: ProjectComponentProps) => {
   return (
     <div className={textSectionClassNames}>
       <h1 className={h1ClassNames}>{project.title}</h1>
-      <p className={descriptionClassNames}><Balancer>{project.description}</Balancer></p>
+      <p className={descriptionClassNames}>{project.description}</p>
       <h2 className={h2ClassNames}>Key Features</h2>
       <ul className={ulClassNames}>
         {project.keyFeatures.map((feature) => (<li key={feature} className={liClassNames}>{feature}</li>))}
