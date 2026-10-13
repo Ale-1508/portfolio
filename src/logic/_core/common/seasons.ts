@@ -17,3 +17,5 @@ export const getSeason = (): Season | undefined => {
     return undefined
   }
 }
+
+export const seasonScript = `document.documentElement.dataset.season = (${getSeason.toString()})() ?? "";`

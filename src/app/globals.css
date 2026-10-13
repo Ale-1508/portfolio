@@ -12,6 +12,99 @@
   }
 }
 
+:root,
+[data-season="winter"] {
+  --palette-gradient: linear-gradient(to right, #ccf7f4, #f0efff);
+  --palette-50: 230 240 243;
+  --palette-100: 204 224 231;
+  --palette-150: 179 209 219;
+  --palette-200: 153 194 207;
+  --palette-250: 128 179 195;
+  --palette-300: 102 163 182;
+  --palette-350: 77 148 170;
+  --palette-400: 51 133 158;
+  --palette-450: 26 117 146;
+  --palette-500: 0 102 134;
+  --palette-550: 0 92 121;
+  --palette-600: 0 82 107;
+  --palette-650: 0 71 94;
+  --palette-700: 0 61 80;
+  --palette-750: 0 51 67;
+  --palette-800: 0 41 54;
+  --palette-850: 0 31 40;
+  --palette-900: 0 20 27;
+  --palette-950: 0 10 13;
+}
+
+[data-season="spring"] {
+  --palette-gradient: linear-gradient(to right, #fce9f9, #e3ffcc);
+  --palette-50: 234 241 232;
+  --palette-100: 213 227 209;
+  --palette-150: 192 214 186;
+  --palette-200: 171 200 163;
+  --palette-250: 150 186 140;
+  --palette-300: 128 172 117;
+  --palette-350: 107 158 94;
+  --palette-400: 86 145 71;
+  --palette-450: 65 131 48;
+  --palette-500: 44 117 25;
+  --palette-550: 40 105 23;
+  --palette-600: 35 94 20;
+  --palette-650: 31 82 18;
+  --palette-700: 26 70 15;
+  --palette-750: 22 59 13;
+  --palette-800: 18 47 10;
+  --palette-850: 13 35 7;
+  --palette-900: 9 23 5;
+  --palette-950: 4 12 2;
+}
+
+[data-season="summer"] {
+  --palette-gradient: linear-gradient(to right, #eed991, #ccf7f4);
+  --palette-50: 231 240 240;
+  --palette-100: 207 225 224;
+  --palette-150: 182 211 209;
+  --palette-200: 158 196 193;
+  --palette-250: 134 181 178;
+  --palette-300: 110 166 162;
+  --palette-350: 86 151 147;
+  --palette-400: 61 137 131;
+  --palette-450: 159 194 146;
+  --palette-500: 13 107 100;
+  --palette-550: 12 96 90;
+  --palette-600: 10 86 80;
+  --palette-650: 9 75 70;
+  --palette-700: 8 64 60;
+  --palette-750: 7 54 50;
+  --palette-800: 5 43 40;
+  --palette-850: 4 32 30;
+  --palette-900: 3 21 20;
+  --palette-950: 1 11 10;
+}
+
+[data-season="fall"] {
+  --palette-gradient: linear-gradient(to right, #ffedb2, #be6240);
+  --palette-50: 236 231 230;
+  --palette-100: 217 207 205;
+  --palette-150: 198 182 180;
+  --palette-200: 179 158 155;
+  --palette-250: 161 134 130;
+  --palette-300: 142 110 104;
+  --palette-350: 123 86 79;
+  --palette-400: 104 61 54;
+  --palette-450: 85 37 29;
+  --palette-500: 66 13 4;
+  --palette-550: 59 12 4;
+  --palette-600: 53 10 3;
+  --palette-650: 46 9 3;
+  --palette-700: 40 8 2;
+  --palette-750: 33 7 2;
+  --palette-800: 26 5 2;
+  --palette-850: 20 4 1;
+  --palette-900: 13 3 1;
+  --palette-950: 7 1 0;
+}
+
 body {
   height: 100%;
   color: var(--foreground);

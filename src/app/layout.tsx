@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { NavbarProvider } from '@/components/navbar/context/NavbarContext';
 import Layout from "./_core/components/Layout";
+import { seasonScript } from "@/logic/_core/common/seasons";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,8 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: seasonScript }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
